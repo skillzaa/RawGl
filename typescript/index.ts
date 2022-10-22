@@ -15,15 +15,20 @@ const triangle  = new Triangle(gl,
     50,0, 
     50,100,
     new Rgba(1,0,0) );
-triangle.draw(gl);
 
-const triangle02  = new Triangle(gl,
-    50,0,
-    100,0,
-    75,100,
-    new Rgba(0,1,0)
-    );
-triangle02.draw(gl);
+function draw(){
+    glPack.clear(0.2,0.1,0);
+    triangle.draw(gl);
+requestAnimationFrame(draw);
+}    
+draw();
+// const triangle02  = new Triangle(gl,
+//     20,0,
+//     100,0,
+//     75,100,
+//     new Rgba(0,1,0)
+//     );
+// triangle02.draw(gl);
 
 // ////////////////////////////////////////////////////
 // glPack.createProgram( verShaderFirst() ,fragShaderFirst() );

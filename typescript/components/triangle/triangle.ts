@@ -62,6 +62,7 @@ gl.useProgram(this.program);
 
 
 gl.drawArrays(gl.TRIANGLES, 0, 3);    
+this.vertices[0] = this.vertices[0]+ 0.001; 
 }
 
 private createShader(gl :WebGLRenderingContext,str :string, type:number):WebGLShader {

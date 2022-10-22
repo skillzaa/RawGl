@@ -6,9 +6,12 @@ const glPack = new GlPack("bilza");
 glPack.clear(0.5, 0.3, 0);
 const gl = glPack.getGl();
 const triangle = new Triangle(gl, 0, 0, 50, 0, 50, 100, new Rgba(1, 0, 0));
-triangle.draw(gl);
-const triangle02 = new Triangle(gl, 50, 0, 100, 0, 75, 100, new Rgba(0, 1, 0));
-triangle02.draw(gl);
+function draw() {
+    glPack.clear(0.2, 0.1, 0);
+    triangle.draw(gl);
+    requestAnimationFrame(draw);
+}
+draw();
 console.log("perc2glCoord-0", perc2glCoord(0));
 console.log("perc2glCoord-25", perc2glCoord(25));
 console.log("perc2glCoord-50", perc2glCoord(50));

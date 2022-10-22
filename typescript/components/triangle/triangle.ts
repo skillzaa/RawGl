@@ -10,8 +10,15 @@ private vertexPosBuffer :WebGLBuffer;
 private vertices :number[];
 
 constructor (gl :WebGLRenderingContext,x1 :number,y1 :number,x2 :number,y2 :number,x3 :number,y3 :number,rgba :Rgba){
-    // perc2glCoord
-this.vertices = [x1,y1,x2,y2,x3,y3];
+perc2glCoord
+this.vertices = [
+    perc2glCoord(x1),
+    perc2glCoord(y1),
+    perc2glCoord(x2),
+    perc2glCoord(y2),
+    perc2glCoord(x3),
+    perc2glCoord(y3)
+];
 this.vertexPosBuffer  = this.getBuffer(gl);
 
 this.program = this.getProgram(gl,verShaderFirst(),

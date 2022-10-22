@@ -1,8 +1,17 @@
 import verShaderFirst from "../../shaders/vertex/verShaderFirst.js";
 import fragShaderFirst from "../../shaders/fragment/fragShaderFirst.js";
+import perc2glCoord from "../../functions/perc2glCoord.js";
 export default class Triangle {
     constructor(gl, x1, y1, x2, y2, x3, y3, rgba) {
-        this.vertices = [x1, y1, x2, y2, x3, y3];
+        perc2glCoord;
+        this.vertices = [
+            perc2glCoord(x1),
+            perc2glCoord(y1),
+            perc2glCoord(x2),
+            perc2glCoord(y2),
+            perc2glCoord(x3),
+            perc2glCoord(y3)
+        ];
         this.vertexPosBuffer = this.getBuffer(gl);
         this.program = this.getProgram(gl, verShaderFirst(), fragShaderFirst(rgba.r, rgba.g, rgba.b, rgba.a));
     }

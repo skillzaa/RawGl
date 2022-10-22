@@ -1,5 +1,5 @@
-import GlPack from "./glPack/glPack.js";
-import verShaderFirst from "./shaders/vertex/verShaderFirst.js";
+import GlPack from "../glPack/glPack.js";
+import verShaderFirst from "../shaders/vertex/verShaderFirst.js";
 import fragShaderFirst from "../shaders/fragment/fragShaderFirst.js";
 const glPack = new GlPack("bilza");
 glPack.clear(0.5, 0.3, 0);

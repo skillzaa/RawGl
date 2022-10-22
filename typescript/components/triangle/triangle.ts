@@ -1,15 +1,17 @@
 import verShaderFirst from "../../shaders/vertex/verShaderFirst.js";
 import fragShaderFirst from "../../shaders/fragment/fragShaderFirst.js";
 import Rgba from "../../functions/rgba.js";
+import perc2glCoord from "../../functions/perc2glCoord.js";
+//----------------------------------
 export default class Triangle {
 
 private program : WebGLProgram;
 private vertexPosBuffer :WebGLBuffer;
 private vertices :number[];
 
-constructor (gl :WebGLRenderingContext,vertices :number[],rgba :Rgba){
-
-this.vertices = vertices;
+constructor (gl :WebGLRenderingContext,x1 :number,y1 :number,x2 :number,y2 :number,x3 :number,y3 :number,rgba :Rgba){
+    // perc2glCoord
+this.vertices = [x1,y1,x2,y2,x3,y3];
 this.vertexPosBuffer  = this.getBuffer(gl);
 
 this.program = this.getProgram(gl,verShaderFirst(),
@@ -32,25 +34,21 @@ if (pgm == null){throw new Error("failed to create program");}
    gl.attachShader(pgm, vshader);
    gl.attachShader(pgm, fshader);
 //-------------
+//@ts-expect-error
 pgm.vertexPosAttrib = gl.getAttribLocation( pgm , 'pos');
 
 // this.gl.useProgram(this.program);  
 return pgm; 
 }
 
-private setVertexPosition(gl :WebGLRenderingContext){
-// if (this.program == null){throw new Error("program not set");}    
-// this.program.vertexPosAttrib = gl.getAttribLocation(this.program, 'pos');
-// gl.enableVertexAttribArray(this.program.vertexPosAttrib);
-// gl.vertexAttribPointer(this.program.vertexPosAttrib, 2, gl.FLOAT, false, 0, 0);
-}
 draw(gl :WebGLRenderingContext){
 gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexPosBuffer);
 gl.bufferData( gl.ARRAY_BUFFER, new Float32Array(this.vertices), 
 gl.STATIC_DRAW);
 
-// this.setVertexPosition(gl); 
+//@ts-expect-error
 gl.enableVertexAttribArray(this.program.vertexPosAttrib);
+//@ts-expect-error
 gl.vertexAttribPointer(this.program.vertexPosAttrib, 2, gl.FLOAT, false, 0, 0);   
 gl.linkProgram(this.program);
 gl.useProgram(this.program);

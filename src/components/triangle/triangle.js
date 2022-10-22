@@ -1,8 +1,8 @@
 import verShaderFirst from "../../shaders/vertex/verShaderFirst.js";
 import fragShaderFirst from "../../shaders/fragment/fragShaderFirst.js";
 export default class Triangle {
-    constructor(gl, vertices, rgba) {
-        this.vertices = vertices;
+    constructor(gl, x1, y1, x2, y2, x3, y3, rgba) {
+        this.vertices = [x1, y1, x2, y2, x3, y3];
         this.vertexPosBuffer = this.getBuffer(gl);
         this.program = this.getProgram(gl, verShaderFirst(), fragShaderFirst(rgba.r, rgba.g, rgba.b, rgba.a));
     }
@@ -24,8 +24,6 @@ export default class Triangle {
         gl.attachShader(pgm, fshader);
         pgm.vertexPosAttrib = gl.getAttribLocation(pgm, 'pos');
         return pgm;
-    }
-    setVertexPosition(gl) {
     }
     draw(gl) {
         gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexPosBuffer);

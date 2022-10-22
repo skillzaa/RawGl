@@ -3,10 +3,9 @@ export default class Triangle {
     private program;
     private vertexPosBuffer;
     private vertices;
-    constructor(gl: WebGLRenderingContext, vertices: number[], rgba: Rgba);
+    constructor(gl: WebGLRenderingContext, x1: number, y1: number, x2: number, y2: number, x3: number, y3: number, rgba: Rgba);
     private getBuffer;
     private getProgram;
-    private setVertexPosition;
     draw(gl: WebGLRenderingContext): void;
     private createShader;
 }

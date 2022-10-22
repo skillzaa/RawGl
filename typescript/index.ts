@@ -1,43 +1,15 @@
-import GlPack from "./glPack/glPack.js";
-import verShaderFirst from "./shaders/vertex/verShaderFirst.js";
-import fragShaderFirst from "./shaders/fragment/fragShaderFirst.js";
-import hsl2rgba from "./functions/hsl2rgba.js";
-import Triangle from "./components/triangle/triangle.js";
-import Rgba from "./functions/rgba.js";
-import perc2glCoord from "./functions/perc2glCoord.js";
+import EngineGl from "./engineGl/engineGl.js";
+import rgba from "./functions/rgba.js";
 /////////////////////////////////////////////
-const glPack = new GlPack("bilza");
-glPack.clear(0.5,0.3,0);
-const gl = glPack.getGl();
+const engine = new EngineGl("bilza");
+const gl = engine.getGl();
+// engine.setBackgroundColor(rgba(0.2,0,0.2));
+////////////////////////////////
 
-const triangle  = new Triangle(gl,
-    0,0, 
-    50,0, 
-    50,100,
-    new Rgba(1,0,0) );
-
-function draw(){
-    glPack.clear(0.2,0.1,0);
-    triangle.draw(gl);
-requestAnimationFrame(draw);
-}    
-draw();
-// const triangle02  = new Triangle(gl,
-//     20,0,
-//     100,0,
-//     75,100,
-//     new Rgba(0,1,0)
-//     );
-// triangle02.draw(gl);
-
-// ////////////////////////////////////////////////////
-// glPack.createProgram( verShaderFirst() ,fragShaderFirst() );
-
-// glPack.setVertexPosition();
-// glPack.draw();
-// //--WAITING FOR THE UNKNOWN
-console.log("perc2glCoord-0",perc2glCoord(0));
-console.log("perc2glCoord-25",perc2glCoord(25));
-console.log("perc2glCoord-50",perc2glCoord(50));
-console.log("perc2glCoord-75",perc2glCoord(75));
-console.log("perc2glCoord-100",perc2glCoord(100));
+// const rect = new Rectangle(gl,0,50,75,5);
+engine.add().rectangle(rgba(1),70,40,20,50);
+engine.add().triangle(rgba(0,1,0),10,10,50,10,30,50);
+engine.add().ellipse(rgba(0,1,1),50,50,20,10,60);
+engine.draw();
+// rect.draw(gl);
+console.log("engine",engine);

@@ -1,4 +1,4 @@
-import Rgba from "./rgba.js";
+import Rgba from "./rgbaObj.js";
 /**
  * Converts an HSL color value to RGB. Conversion formula
  * adapted from http://en.wikipedia.org/wiki/HSL_color_space.

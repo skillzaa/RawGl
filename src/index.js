@@ -1,19 +1,9 @@
-import GlPack from "./glPack/glPack.js";
-import Triangle from "./components/triangle/triangle.js";
-import Rgba from "./functions/rgba.js";
-import perc2glCoord from "./functions/perc2glCoord.js";
-const glPack = new GlPack("bilza");
-glPack.clear(0.5, 0.3, 0);
-const gl = glPack.getGl();
-const triangle = new Triangle(gl, 0, 0, 50, 0, 50, 100, new Rgba(1, 0, 0));
-function draw() {
-    glPack.clear(0.2, 0.1, 0);
-    triangle.draw(gl);
-    requestAnimationFrame(draw);
-}
-draw();
-console.log("perc2glCoord-0", perc2glCoord(0));
-console.log("perc2glCoord-25", perc2glCoord(25));
-console.log("perc2glCoord-50", perc2glCoord(50));
-console.log("perc2glCoord-75", perc2glCoord(75));
-console.log("perc2glCoord-100", perc2glCoord(100));
+import EngineGl from "./engineGl/engineGl.js";
+import rgba from "./functions/rgba.js";
+const engine = new EngineGl("bilza");
+const gl = engine.getGl();
+engine.add().rectangle(rgba(1), 70, 40, 20, 50);
+engine.add().triangle(rgba(0, 1, 0), 10, 10, 50, 10, 30, 50);
+engine.add().ellipse(rgba(0, 1, 1), 50, 50, 20, 10, 60);
+engine.draw();
+console.log("engine", engine);

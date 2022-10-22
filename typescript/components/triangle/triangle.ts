@@ -1,6 +1,6 @@
 import verShaderFirst from "../../shaders/vertex/verShaderFirst.js";
 import fragShaderFirst from "../../shaders/fragment/fragShaderFirst.js";
-import Rgba from "../../functions/rgba.js";
+import RgbaObj from "../../functions/rgbaObj.js";
 import perc2glCoord from "../../functions/perc2glCoord.js";
 //----------------------------------
 export default class Triangle {
@@ -9,8 +9,8 @@ private program : WebGLProgram;
 private vertexPosBuffer :WebGLBuffer;
 private vertices :number[];
 
-constructor (gl :WebGLRenderingContext,x1 :number,y1 :number,x2 :number,y2 :number,x3 :number,y3 :number,rgba :Rgba){
-perc2glCoord
+constructor (gl :WebGLRenderingContext,rgba :RgbaObj,x1 :number,y1 :number,x2 :number,y2 :number,x3 :number,y3 :number){
+    
 this.vertices = [
     perc2glCoord(x1),
     perc2glCoord(y1),
@@ -62,7 +62,7 @@ gl.useProgram(this.program);
 
 
 gl.drawArrays(gl.TRIANGLES, 0, 3);    
-this.vertices[0] = this.vertices[0]+ 0.001; 
+// this.vertices[0] = this.vertices[0]+ 0.001; 
 }
 
 private createShader(gl :WebGLRenderingContext,str :string, type:number):WebGLShader {

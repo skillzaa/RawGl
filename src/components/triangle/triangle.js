@@ -2,8 +2,7 @@ import verShaderFirst from "../../shaders/vertex/verShaderFirst.js";
 import fragShaderFirst from "../../shaders/fragment/fragShaderFirst.js";
 import perc2glCoord from "../../functions/perc2glCoord.js";
 export default class Triangle {
-    constructor(gl, x1, y1, x2, y2, x3, y3, rgba) {
-        perc2glCoord;
+    constructor(gl, rgba, x1, y1, x2, y2, x3, y3) {
         this.vertices = [
             perc2glCoord(x1),
             perc2glCoord(y1),
@@ -42,7 +41,6 @@ export default class Triangle {
         gl.linkProgram(this.program);
         gl.useProgram(this.program);
         gl.drawArrays(gl.TRIANGLES, 0, 3);
-        this.vertices[0] = this.vertices[0] + 0.001;
     }
     createShader(gl, str, type) {
         var shader = gl.createShader(type);

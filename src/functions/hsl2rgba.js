@@ -1,4 +1,4 @@
-import Rgba from "./rgba.js";
+import Rgba from "./rgbaObj.js";
 export default function hsl2Rgba(h, s, l, a = 1) {
     var r, g, b;
     if (s == 0) {

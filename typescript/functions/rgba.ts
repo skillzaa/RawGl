@@ -1,20 +1,9 @@
 
-
-export default class Rgba {
-
-public readonly r :number;
-public readonly g :number;
-public readonly b :number;
-public readonly a :number;
+import RgbaObj from "./rgbaObj.js";
 
 
-constructor(r :number,g :number,b :number,a :number=1){
-this.r = r;
-this.g = g;
-this.b = b;
-this.a = a;
-}
+export default function rgba(r :number=0,g:number=0,b:number=0,a :number=1):RgbaObj {
 
-
+return new RgbaObj(r,g,b,a);
 
 }

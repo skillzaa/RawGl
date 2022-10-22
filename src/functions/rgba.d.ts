@@ -1,8 +1,3 @@
-export default class Rgba {
-    readonly r: number;
-    readonly g: number;
-    readonly b: number;
-    readonly a: number;
-    constructor(r: number, g: number, b: number, a?: number);
-}
+import RgbaObj from "./rgbaObj.js";
+export default function rgba(r?: number, g?: number, b?: number, a?: number): RgbaObj;
 //# sourceMappingURL=rgba.d.ts.map

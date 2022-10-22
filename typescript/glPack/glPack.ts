@@ -28,7 +28,9 @@ public clear(
 this.gl.clearColor(r, g, b, w);
 this.gl.clear(this.gl.COLOR_BUFFER_BIT);
 }
-
+getGl():WebGLRenderingContext{
+    return this.gl;
+}
 addVertices(vertices :number[]){
 let vertexPosBuffer = this.gl.createBuffer();
 this.gl.bindBuffer(this.gl.ARRAY_BUFFER, vertexPosBuffer);
@@ -62,7 +64,7 @@ this.gl.enableVertexAttribArray(this.program.vertexPosAttrib);
 this.gl.vertexAttribPointer(this.program.vertexPosAttrib, 2, this.gl.FLOAT, false, 0, 0);
 }
 draw(){
-    this.gl.drawArrays(this.gl.TRIANGLES, 0, 3);    
+    this.gl.drawArrays(this.gl.TRIANGLES, 0, 6);    
 }
 // useProgram(){
 // if (this.program == null){throw new Error("program not set");}    

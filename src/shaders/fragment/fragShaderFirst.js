@@ -1,8 +1,8 @@
-export default function fragShaderFirst() {
+export default function fragShaderFirst(r = 1, g = 0, b = 0, a = 1) {
     return `
 precision mediump float;
 void main() { 
-    gl_FragColor = vec4(0,0.8,0,1); 
+    gl_FragColor = vec4(${r},${g},${b},${a}); 
 }
 `;
 }

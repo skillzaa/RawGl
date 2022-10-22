@@ -15,6 +15,9 @@ export default class GlPack {
         this.gl.clearColor(r, g, b, w);
         this.gl.clear(this.gl.COLOR_BUFFER_BIT);
     }
+    getGl() {
+        return this.gl;
+    }
     addVertices(vertices) {
         let vertexPosBuffer = this.gl.createBuffer();
         this.gl.bindBuffer(this.gl.ARRAY_BUFFER, vertexPosBuffer);
@@ -41,7 +44,7 @@ export default class GlPack {
         this.gl.vertexAttribPointer(this.program.vertexPosAttrib, 2, this.gl.FLOAT, false, 0, 0);
     }
     draw() {
-        this.gl.drawArrays(this.gl.TRIANGLES, 0, 3);
+        this.gl.drawArrays(this.gl.TRIANGLES, 0, 6);
     }
     createShader(str, type) {
         var shader = this.gl.createShader(type);

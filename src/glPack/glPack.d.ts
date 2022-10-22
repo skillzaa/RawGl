@@ -3,6 +3,7 @@ export default class GlPack {
     private program;
     constructor(canvasId?: string);
     clear(r?: number, g?: number, b?: number, w?: number): void;
+    getGl(): WebGLRenderingContext;
     addVertices(vertices: number[]): void;
     createProgram(vstr: string, fstr: string): void;
     setVertexPosition(): void;

@@ -50,6 +50,9 @@ return pgm;
 }
 
 draw(gl :WebGLRenderingContext){
+// gl.enable( gl.BLEND_COLOR);
+// gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
 gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexPosBuffer);
 gl.bufferData( gl.ARRAY_BUFFER, new Float32Array(this.vertices), 
 gl.STATIC_DRAW);

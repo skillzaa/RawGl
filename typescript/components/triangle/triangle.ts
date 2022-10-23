@@ -8,7 +8,7 @@ export default class Triangle {
 private program : WebGLProgram;
 private vertexPosBuffer :WebGLBuffer;
 private vertices :number[];
-
+// private vertexPosAttrib :number;
 constructor (gl :WebGLRenderingContext,rgba :RgbaObj,x1 :number,y1 :number,x2 :number,y2 :number,x3 :number,y3 :number){
     
 this.vertices = [
@@ -23,6 +23,8 @@ this.vertexPosBuffer  = this.getBuffer(gl);
 
 this.program = this.getProgram(gl,verShaderFirst(),
 fragShaderFirst(rgba.r,rgba.g,rgba.b,rgba.a) );
+
+
 }
 
 private getBuffer(gl :WebGLRenderingContext):WebGLBuffer{
@@ -41,8 +43,7 @@ if (pgm == null){throw new Error("failed to create program");}
    gl.attachShader(pgm, vshader);
    gl.attachShader(pgm, fshader);
 //-------------
-//@ts-expect-error
-pgm.vertexPosAttrib = gl.getAttribLocation( pgm , 'pos');
+// pgm.vertexPosAttrib = gl.getAttribLocation( pgm , 'pos');
 
 // this.gl.useProgram(this.program);  
 return pgm; 
@@ -53,12 +54,13 @@ gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexPosBuffer);
 gl.bufferData( gl.ARRAY_BUFFER, new Float32Array(this.vertices), 
 gl.STATIC_DRAW);
 
-//@ts-expect-error
-gl.enableVertexAttribArray(this.program.vertexPosAttrib);
-//@ts-expect-error
-gl.vertexAttribPointer(this.program.vertexPosAttrib, 2, gl.FLOAT, false, 0, 0);   
 gl.linkProgram(this.program);
 gl.useProgram(this.program);
+
+const vertexPosAttrib = gl.getAttribLocation( this.program , 'pos');
+
+gl.enableVertexAttribArray( vertexPosAttrib);
+gl.vertexAttribPointer( vertexPosAttrib, 2, gl.FLOAT, false, 0, 0);   
 
 
 gl.drawArrays(gl.TRIANGLES, 0, 3);    

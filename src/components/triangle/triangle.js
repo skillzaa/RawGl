@@ -30,16 +30,16 @@ export default class Triangle {
         }
         gl.attachShader(pgm, vshader);
         gl.attachShader(pgm, fshader);
-        pgm.vertexPosAttrib = gl.getAttribLocation(pgm, 'pos');
         return pgm;
     }
     draw(gl) {
         gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexPosBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.vertices), gl.STATIC_DRAW);
-        gl.enableVertexAttribArray(this.program.vertexPosAttrib);
-        gl.vertexAttribPointer(this.program.vertexPosAttrib, 2, gl.FLOAT, false, 0, 0);
         gl.linkProgram(this.program);
         gl.useProgram(this.program);
+        const vertexPosAttrib = gl.getAttribLocation(this.program, 'pos');
+        gl.enableVertexAttribArray(vertexPosAttrib);
+        gl.vertexAttribPointer(vertexPosAttrib, 2, gl.FLOAT, false, 0, 0);
         gl.drawArrays(gl.TRIANGLES, 0, 3);
     }
     createShader(gl, str, type) {

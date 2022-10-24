@@ -1,16 +1,18 @@
 import EngineGl from "./engineGl/engineGl.js";
 import rgba from "./functions/rgba.js";
-import T2P from "./components/t2p.js";
+import FragComp from "./components/fragComp.js";
+import Rectangle from "./components/rectangle.js";
 /////////////////////////////////////////////
 const engine = new EngineGl("bilza");
+
 const gl = engine.getGl();
-engine.setBackgroundColor(rgba(0.2,0,0.2,0.2));
+engine.setBackgroundColor(rgba(0.0,1.0,0.0,1.0));
+engine.clear();
 ////////////////////////////////
 
 
-// rect.draw(gl);
 console.log("engine",engine);
+const comp = new Rectangle(gl,rgba(1,0,0),10,10,80,80);
+engine.clear();
 
-const t2p = new T2P(gl,rgba(1),50,50,40,10);
-
-t2p.draw(gl);
+comp.draw(gl);

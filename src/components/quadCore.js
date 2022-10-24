@@ -1,18 +1,15 @@
-import verShaderFirst from "../../shaders/vertex/verShaderFirst.js";
-import fragShaderFirst from "../../shaders/frag/fragShaderFirst.js";
-import perc2glCoord from "../../functions/perc2glCoord.js";
-export default class Triangle {
-    constructor(gl, rgba, x1, y1, x2, y2, x3, y3) {
+import verShaderFirst from "../shaders/vertex/verShaderFirst.js";
+import rectFrag from "../shaders/frag/rectFrag.js";
+export default class QuadCore {
+    constructor(gl, rgba) {
         this.vertices = [
-            perc2glCoord(x1),
-            perc2glCoord(y1),
-            perc2glCoord(x2),
-            perc2glCoord(y2),
-            perc2glCoord(x3),
-            perc2glCoord(y3)
+            -1,
+            -1,
+            1,
+            1
         ];
         this.vertexPosBuffer = this.getBuffer(gl);
-        this.program = this.getProgram(gl, verShaderFirst(), fragShaderFirst(rgba.r, rgba.g, rgba.b, rgba.a));
+        this.program = this.getProgram(gl, verShaderFirst(), rectFrag(rgba.r, rgba.g, rgba.b, rgba.a));
     }
     getBuffer(gl) {
         let b = gl.createBuffer();
@@ -40,7 +37,7 @@ export default class Triangle {
         const vertexPosAttrib = gl.getAttribLocation(this.program, 'pos');
         gl.enableVertexAttribArray(vertexPosAttrib);
         gl.vertexAttribPointer(vertexPosAttrib, 2, gl.FLOAT, false, 0, 0);
-        gl.drawArrays(gl.TRIANGLES, 0, 3);
+        gl.drawArrays(gl.TRIANGLE_FAN, 0, 3);
     }
     createShader(gl, str, type) {
         var shader = gl.createShader(type);

@@ -7,7 +7,6 @@ precision mediump float;
 uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
-
 //////////////////
 vec3 circle(vec2 position){
 vec3 color = vec3(1);
@@ -16,17 +15,10 @@ float radius = 0.25;
 float distance = length(position); 
 float blur = .009;
 color = vec3(smoothstep(radius,radius- blur,distance));
-// if ( len >= radius){
-// 		color = vec3(0.0,0.0,0.0);
-// 	}else {
-// 		color = vec3(1.0,1.0,1.0);
-// }
 return color;
 }
 /////////////////////////
 void main(){
-
 vec2 position = gl_FragCoord.xy / u_resolution.xy;
-
 gl_FragColor = vec4( circle(position), 1.0 );
 }

@@ -15,8 +15,8 @@ export default class RawComp {
         this.rgba = rgba;
     }
     init(gl, fragShaderStr) {
-        this.vertexPosBuffer = this.getBuffer(gl);
         this.program = this.getProgram(gl, verShaderFirst(), fragShaderStr);
+        this.vertexPosBuffer = this.getBuffer(gl);
     }
     getBuffer(gl) {
         let b = gl.createBuffer();

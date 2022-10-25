@@ -19,6 +19,7 @@ const comp = new RawComp(rgba(1));
 comp.addVertex(10,10);
 comp.addVertex(50,10);
 comp.addVertex(50,50);
+
 comp.init(gl,fragShaderFirst(0,0,1));
 
 comp.draw(gl);

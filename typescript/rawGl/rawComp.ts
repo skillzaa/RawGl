@@ -33,11 +33,10 @@ setColor(rgba :RgbaObj){
 this.rgba = rgba;
 }
 init(gl :WebGLRenderingContext,fragShaderStr :string){
+this.program = this.getProgram(gl,verShaderFirst(),
+    fragShaderStr);    
 this.vertexPosBuffer  =  this.getBuffer(gl);
 
-this.program = this.getProgram(gl,verShaderFirst(),
-fragShaderStr);    
-// fragShaderFirst(0,0,1,1) );    
 }
 
 private getBuffer(gl :WebGLRenderingContext):WebGLBuffer{
@@ -65,22 +64,19 @@ return pgm;
 draw(gl :WebGLRenderingContext){
 if (this.program == null){throw new Error("init error");
 }    
-// gl.enable( gl.BLEND_COLOR);
-// gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-
+//--Bind Buffer and Adding data to the butter
 gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexPosBuffer);
 gl.bufferData( gl.ARRAY_BUFFER, new Float32Array(this.vertices), 
 gl.STATIC_DRAW);
 
+//---link program
 gl.linkProgram(this.program);
 gl.useProgram(this.program);
-
+//----Attrib pointer can just be obtained if program is linked
 const vertexPosAttrib = gl.getAttribLocation( this.program , 'pos');
-
 gl.enableVertexAttribArray( vertexPosAttrib);
-gl.vertexAttribPointer( vertexPosAttrib, 2, gl.FLOAT, false, 0, 0);   
-
-
+gl.vertexAttribPointer( vertexPosAttrib, 2, gl.FLOAT, false, 0, 0); 
+///////////---draw call
 gl.drawArrays(gl.TRIANGLES, 0, this.vertices.length);    
 // this.vertices[0] = this.vertices[0]+ 0.001; 
 }

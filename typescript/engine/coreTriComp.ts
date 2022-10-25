@@ -1,31 +1,51 @@
 import verShaderFirst from "../shaders/vertex/verShaderFirst.js";
 import fragShaderFirst from "../shaders/frag/fragShaderFirst.js";
-import circle from "../shaders/frag/circle.js";
 import RgbaObj from "../functions/rgbaObj.js";
 import perc2glCoord from "../functions/perc2glCoord.js";
 
 //----------------------------------
-export default class RawComp {
+export default class CoreTriComp {
+public drawMode : "triangles" | "lines" | "points";
+public width :number;
+public height :number;
+public x :number;
+public y :number;
+
 
 private program : WebGLProgram | null;
 private vertexPosBuffer :WebGLBuffer | null;
 private vertices :number[];
 rgba :RgbaObj;
 
-// private vertexPosAttrib :number;
-
-constructor (rgba :RgbaObj){
+//--------------------------------------------------------
+constructor (rgba :RgbaObj,x :number=0,y:number=0,width:number=20,height :number=10){
+//-----------------------
+this.x = x;
+this.y = y;
+this.width = width;
+this.height = height;
+//------------------------
 this.rgba = rgba;    
 this.vertices = [ ];
 
 this.vertexPosBuffer  =  null;//this.getBuffer(gl);
 this.program = null;
-
+this.drawMode = "triangles";
 }
 
 addVertex( x :number , y :number){
  this.vertices.push(perc2glCoord( x ));
  this.vertices.push(perc2glCoord( y ));
+//  this.vertices.push( x );
+//  this.vertices.push( y );
+}
+addTri( x1 :number , y1 :number,x2 :number , y2 :number,x3 :number , y3 :number){
+ this.vertices.push(perc2glCoord( x1 ));
+ this.vertices.push(perc2glCoord( y1 ));
+ this.vertices.push(perc2glCoord( x2 ));
+ this.vertices.push(perc2glCoord( y2 ));
+ this.vertices.push(perc2glCoord( x3 ));
+ this.vertices.push(perc2glCoord( y3 ));
 //  this.vertices.push( x );
 //  this.vertices.push( y );
 }
@@ -77,7 +97,23 @@ const vertexPosAttrib = gl.getAttribLocation( this.program , 'pos');
 gl.enableVertexAttribArray( vertexPosAttrib);
 gl.vertexAttribPointer( vertexPosAttrib, 2, gl.FLOAT, false, 0, 0); 
 ///////////---draw call
-gl.drawArrays(gl.TRIANGLES, 0, this.vertices.length);    
+switch (this.drawMode) {
+    case "triangles":
+        gl.drawArrays(gl.TRIANGLES , 0, this.vertices.length); 
+        break;
+
+    case "lines":
+        gl.drawArrays(gl.LINES , 0, this.vertices.length);    
+        break;
+
+    case "points":
+        gl.drawArrays(gl.POINTS , 0, this.vertices.length);    
+        break;
+
+default:
+break;
+}
+//---This line not only explains animation but also provide a way using which the draw part and the animation part can be kept seperate.
 // this.vertices[0] = this.vertices[0]+ 0.001; 
 }
 

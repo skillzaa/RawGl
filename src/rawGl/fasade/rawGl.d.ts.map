@@ -1,0 +1,1 @@
+{"version":3,"file":"rawGl.d.ts","sourceRoot":"","sources":["../../../typescript/rawGl/fasade/rawGl.ts"],"names":[],"mappings":"AACA,OAAO,OAAO,MAAM,4BAA4B,CAAC;AAIjD,MAAM,CAAC,OAAO,OAAO,KAAK;IAE1B,OAAO,CAAC,MAAM,CAAS;gBACX,QAAQ,GAAE,MAAe,EAAC,KAAK,GAAE,OAAqB;CAMjE"}

@@ -1,16 +1,14 @@
-import IGLEngineComp from "../components/IGLEngineComp";
 import rgba from "../functions/rgba.js";
 import RgbaObj from "../functions/rgbaObj.js";
 import CompFactory from "./compFactory.js";
 
-export default class EngineGl {
-    
-private gl :WebGLRenderingContext;
-private comps :IGLEngineComp[];
-public colorBackground :RgbaObj;
-// private compFactory :CompFactory;
 
-constructor (canvasId :string ="bilza",color :RgbaObj = rgba(0,0,1)){
+
+export default class Engine {
+private gl :WebGLRenderingContext;
+public colorBackground :RgbaObj;
+
+constructor(canvasId :string ="bilza",color :RgbaObj = rgba(0,0,1)){
     const canvas = document.getElementById(canvasId) as HTMLCanvasElement;
 
     if (canvas == null){
@@ -23,7 +21,6 @@ constructor (canvasId :string ="bilza",color :RgbaObj = rgba(0,0,1)){
     }
 //---Got gl    
 this.gl = gl;
-this.comps = [];
 this.colorBackground = color;
 }
 public clear(){
@@ -49,5 +46,6 @@ draw(){
     }
     // this.gl.drawArrays(this.gl.TRIANGLES, 0, 6);    
 }
+
 
 }

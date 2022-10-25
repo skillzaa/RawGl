@@ -1,6 +1,6 @@
-import RawComp from "./shapes/rawComp.js";
-import rgba from "../functions/rgba.js";
-import fragShaderFirst from "../shaders/frag/fragShaderFirst.js";
+import RawComp from "./rawComp.js";
+import rgba from "../../functions/rgba.js";
+import fragShaderFirst from "../../shaders/frag/fragShaderFirst.js";
 export default class Rectangle {
     constructor(rgbaObj = rgba(1, 1, 1, 1), x = 50, y = 50, width = 40, height = 20) {
         this.rawComp = new RawComp(rgbaObj);

@@ -1,6 +1,5 @@
-import rgba from "../functions/rgba.js";
-import CompFactory from "../engine/compFactory.js";
-export default class EngineGl {
+import rgba from "../../functions/rgba.js";
+export default class Engine {
     constructor(canvasId = "bilza", color = rgba(0, 0, 1)) {
         const canvas = document.getElementById(canvasId);
         if (canvas == null) {
@@ -11,7 +10,6 @@ export default class EngineGl {
             throw new Error("Unable to initialize WebGL. Your browser or machine may not support it.");
         }
         this.gl = gl;
-        this.comps = [];
         this.colorBackground = color;
     }
     clear() {

@@ -1,14 +1,12 @@
-import RgbaObj from "../functions/rgbaObj.js";
-import CompFactory from "../engine/compFactory.js";
-export default class EngineGl {
+import RgbaObj from "../../functions/rgbaObj.js";
+export default class Engine {
     private gl;
-    private comps;
     colorBackground: RgbaObj;
     constructor(canvasId?: string, color?: RgbaObj);
     clear(): void;
     getGl(): WebGLRenderingContext;
     setBackgroundColor(rgba: RgbaObj): void;
-    add(): CompFactory;
+    add(): any;
     draw(): void;
 }
-//# sourceMappingURL=engineGl.d.ts.map
+//# sourceMappingURL=engine.d.ts.map

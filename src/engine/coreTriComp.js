@@ -1,4 +1,5 @@
 import verShaderFirst from "../shaders/vertex/verShaderFirst.js";
+import fragShaderFirst from "../shaders/frag/fragShaderFirst.js";
 import perc2glCoord from "../functions/perc2glCoord.js";
 export default class CoreTriComp {
     constructor(rgba, x = 0, y = 0, width = 20, height = 10) {
@@ -7,7 +8,11 @@ export default class CoreTriComp {
         this.width = width;
         this.height = height;
         this.rgba = rgba;
-        this.vertices = [];
+        this.vertices = [
+            0.0, 0.5, 1.0, 0.0, 0.0,
+            -0.5, -0.5, 0.0, 1.0, 0.0,
+            0.5, -0.5, 0.0, 0.0, 1.0,
+        ];
         this.vertexPosBuffer = null;
         this.program = null;
         this.drawMode = "triangles";
@@ -16,19 +21,8 @@ export default class CoreTriComp {
         this.vertices.push(perc2glCoord(x));
         this.vertices.push(perc2glCoord(y));
     }
-    addTri(x1, y1, x2, y2, x3, y3) {
-        this.vertices.push(perc2glCoord(x1));
-        this.vertices.push(perc2glCoord(y1));
-        this.vertices.push(perc2glCoord(x2));
-        this.vertices.push(perc2glCoord(y2));
-        this.vertices.push(perc2glCoord(x3));
-        this.vertices.push(perc2glCoord(y3));
-    }
-    setColor(rgba) {
-        this.rgba = rgba;
-    }
-    init(gl, fragShaderStr) {
-        this.program = this.getProgram(gl, verShaderFirst(), fragShaderStr);
+    init(gl) {
+        this.program = this.getProgram(gl, verShaderFirst(), fragShaderFirst());
         this.vertexPosBuffer = this.getBuffer(gl);
     }
     getBuffer(gl) {
@@ -57,22 +51,15 @@ export default class CoreTriComp {
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.vertices), gl.STATIC_DRAW);
         gl.linkProgram(this.program);
         gl.useProgram(this.program);
-        const vertexPosAttrib = gl.getAttribLocation(this.program, 'pos');
+        const vertexPosAttrib = gl.getAttribLocation(this.program, 'a_pos');
+        const vertexColorAttrib = gl.getAttribLocation(this.program, 'a_clr');
+        console.log("vertexPosAttrib", vertexPosAttrib);
+        console.log("vertexColorAttrib", vertexColorAttrib);
         gl.enableVertexAttribArray(vertexPosAttrib);
-        gl.vertexAttribPointer(vertexPosAttrib, 2, gl.FLOAT, false, 0, 0);
-        switch (this.drawMode) {
-            case "triangles":
-                gl.drawArrays(gl.TRIANGLES, 0, this.vertices.length);
-                break;
-            case "lines":
-                gl.drawArrays(gl.LINES, 0, this.vertices.length);
-                break;
-            case "points":
-                gl.drawArrays(gl.POINTS, 0, this.vertices.length);
-                break;
-            default:
-                break;
-        }
+        gl.enableVertexAttribArray(vertexColorAttrib);
+        gl.vertexAttribPointer(vertexPosAttrib, 2, gl.FLOAT, false, 5 * 4, 0);
+        gl.vertexAttribPointer(vertexColorAttrib, 3, gl.FLOAT, false, 5 * 4, 2 * 4);
+        gl.drawArrays(gl.TRIANGLES, 0, 3);
     }
     createShader(gl, str, type) {
         var shader = gl.createShader(type);
@@ -81,6 +68,11 @@ export default class CoreTriComp {
         }
         gl.shaderSource(shader, str);
         gl.compileShader(shader);
+        let compiled = gl.getShaderParameter(shader, gl.COMPILE_STATUS);
+        if (!compiled) {
+            var errors = gl.getShaderInfoLog(shader);
+            console.log('Failed to compile with these errors:' + "type:" + type, errors);
+        }
         return shader;
     }
 }

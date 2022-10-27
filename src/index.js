@@ -1,16 +1,10 @@
+import CoreTriComp from "./engine/coreTriComp.js";
 import RawGl from "./engine/engine.js";
 import rgba from "./functions/rgba.js";
-import Shape from "./shape/shape.js";
 const raw = new RawGl("bilza");
 const gl = raw.getGl();
-raw.setBackgroundColor(rgba(0.2, 0.1, 0.1, 1.0));
 console.log("raw", raw);
-const comp = new Shape(rgba(0.9, 0.9), 30, 40, 40, 20);
-comp.setBackgroundColor(0, 1, 0);
-comp.addRect(0, 0, 20, 100);
-comp.addRect(40, 0, 20, 100);
-comp.addRect(80, 0, 20, 100);
-comp.setColor(1);
+const comp = new CoreTriComp(rgba(0.9, 0.9));
 comp.init(gl);
 raw.clear();
 comp.draw(gl);

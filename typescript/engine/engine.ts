@@ -34,18 +34,18 @@ getGl():WebGLRenderingContext{
 setBackgroundColor(rgba :RgbaObj){
 this.colorBackground = rgba;
 }
-add(){
-    const cf = new CompFactory(this.gl,this.comps); 
-    return cf;
-}
-draw(){
-    this.clear();
-    for (let i = 0; i < this.comps.length; i++) {
-        const glEngComp = this.comps[i];
-        glEngComp.draw(this.gl);
-    }
-    // this.gl.drawArrays(this.gl.TRIANGLES, 0, 6);    
-}
+// add(){
+//     const cf = new CompFactory(this.gl,this.comps); 
+//     return cf;
+// }
+// draw(){
+//     this.clear();
+//     for (let i = 0; i < this.comps.length; i++) {
+//         const glEngComp = this.comps[i];
+//         glEngComp.draw(this.gl);
+//     }
+//     // this.gl.drawArrays(this.gl.TRIANGLES, 0, 6);    
+// }
 
 
 }

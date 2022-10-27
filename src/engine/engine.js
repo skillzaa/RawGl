@@ -1,5 +1,4 @@
 import rgba from "../functions/rgba.js";
-import CompFactory from "./compFactory.js";
 export default class Engine {
     constructor(canvasId = "bilza", color = rgba(0, 0, 1)) {
         const canvas = document.getElementById(canvasId);
@@ -22,16 +21,5 @@ export default class Engine {
     }
     setBackgroundColor(rgba) {
         this.colorBackground = rgba;
-    }
-    add() {
-        const cf = new CompFactory(this.gl, this.comps);
-        return cf;
-    }
-    draw() {
-        this.clear();
-        for (let i = 0; i < this.comps.length; i++) {
-            const glEngComp = this.comps[i];
-            glEngComp.draw(this.gl);
-        }
     }
 }

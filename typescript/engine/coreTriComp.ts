@@ -26,8 +26,11 @@ this.width = width;
 this.height = height;
 //------------------------
 this.rgba = rgba;    
-this.vertices = [ ];
-
+this.vertices =  [
+    0.0,   0.5,          1.0, 0.0, 0.0,    // reg
+    -0.5, -0.5,          0.0, 1.0, 0.0,    // green
+    0.5,  -0.5,          0.0, 0.0, 1.0,    // blue
+  ];
 this.vertexPosBuffer  =  null;//this.getBuffer(gl);
 this.program = null;
 this.drawMode = "triangles";
@@ -39,22 +42,22 @@ addVertex( x :number , y :number){
 //  this.vertices.push( x );
 //  this.vertices.push( y );
 }
-addTri( x1 :number , y1 :number,x2 :number , y2 :number,x3 :number , y3 :number){
- this.vertices.push(perc2glCoord( x1 ));
- this.vertices.push(perc2glCoord( y1 ));
- this.vertices.push(perc2glCoord( x2 ));
- this.vertices.push(perc2glCoord( y2 ));
- this.vertices.push(perc2glCoord( x3 ));
- this.vertices.push(perc2glCoord( y3 ));
-//  this.vertices.push( x );
-//  this.vertices.push( y );
-}
-setColor(rgba :RgbaObj){
-this.rgba = rgba;
-}
-init(gl :WebGLRenderingContext,fragShaderStr :string){
+// addTri( x1 :number , y1 :number,x2 :number , y2 :number,x3 :number , y3 :number){
+//  this.vertices.push(perc2glCoord( x1 ));
+//  this.vertices.push(perc2glCoord( y1 ));
+//  this.vertices.push(perc2glCoord( x2 ));
+//  this.vertices.push(perc2glCoord( y2 ));
+//  this.vertices.push(perc2glCoord( x3 ));
+//  this.vertices.push(perc2glCoord( y3 ));
+// //  this.vertices.push( x );
+// //  this.vertices.push( y );
+// }
+// setColor(rgba :RgbaObj){
+// this.rgba = rgba;
+// }
+init(gl :WebGLRenderingContext){
 this.program = this.getProgram(gl,verShaderFirst(),
-    fragShaderStr);    
+fragShaderFirst());    
 this.vertexPosBuffer  =  this.getBuffer(gl);
 
 }
@@ -93,26 +96,53 @@ gl.STATIC_DRAW);
 gl.linkProgram(this.program);
 gl.useProgram(this.program);
 //----Attrib pointer can just be obtained if program is linked
-const vertexPosAttrib = gl.getAttribLocation( this.program , 'pos');
+// const vertexPosAttrib = gl.getAttribLocation( this.program , 'pos');
+const vertexPosAttrib = gl.getAttribLocation(this.program, 'a_pos');
+const vertexColorAttrib = gl.getAttribLocation(this.program, 'a_clr');
+
+console.log("vertexPosAttrib",vertexPosAttrib);
+console.log("vertexColorAttrib",vertexColorAttrib);
+
 gl.enableVertexAttribArray( vertexPosAttrib);
-gl.vertexAttribPointer( vertexPosAttrib, 2, gl.FLOAT, false, 0, 0); 
+gl.enableVertexAttribArray( vertexColorAttrib);
+
+gl.vertexAttribPointer( 
+vertexPosAttrib, //index 
+2,               //number of components =2 x and y
+gl.FLOAT,       //data type
+false,          //normalized
+5 * 4 ,         //stride - the comple vertex row bytes
+0               //offset = 0 
+); 
+gl.vertexAttribPointer( 
+vertexColorAttrib, //index 
+3,               //number of components =3 r g b
+gl.FLOAT,       //data type
+false,          //normalized
+5 * 4 ,         //stride - the comple vertex row bytes
+2 * 4           //offset = 2 elements of 4 bytes of x andy be skiped 
+); 
+
+gl.drawArrays(gl.TRIANGLES , 0, 3); 
+
+////////
 ///////////---draw call
-switch (this.drawMode) {
-    case "triangles":
-        gl.drawArrays(gl.TRIANGLES , 0, this.vertices.length); 
-        break;
+// switch (this.drawMode) {
+//     case "triangles":
+//         gl.drawArrays(gl.TRIANGLES , 0, 3); 
+//         break;
 
-    case "lines":
-        gl.drawArrays(gl.LINES , 0, this.vertices.length);    
-        break;
+//     case "lines":
+//         gl.drawArrays(gl.LINES , 0, this.vertices.length);    
+//         break;
 
-    case "points":
-        gl.drawArrays(gl.POINTS , 0, this.vertices.length);    
-        break;
+//     case "points":
+//         gl.drawArrays(gl.POINTS , 0, this.vertices.length);    
+//         break;
 
-default:
-break;
-}
+// default:
+// break;
+// }
 //---This line not only explains animation but also provide a way using which the draw part and the animation part can be kept seperate.
 // this.vertices[0] = this.vertices[0]+ 0.001; 
 }
@@ -124,6 +154,13 @@ if (shader == null){
 }
     gl.shaderSource(shader, str);
     gl.compileShader(shader);
+
+    let compiled = gl.getShaderParameter(shader, gl.COMPILE_STATUS);
+    if (!compiled) {
+      // There are errors, so display them
+      var errors = gl.getShaderInfoLog(shader);
+      console.log('Failed to compile with these errors:' + "type:" + type, errors );
+    }
     return shader;
 }
 

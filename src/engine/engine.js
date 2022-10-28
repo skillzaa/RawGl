@@ -5,7 +5,7 @@ export default class Engine {
         if (canvas == null) {
             throw new Error("canvas not found");
         }
-        const gl = canvas.getContext("webgl");
+        const gl = canvas.getContext("webgl", { alpha: true, depth: true });
         if (gl == null) {
             throw new Error("Unable to initialize WebGL. Your browser or machine may not support it.");
         }

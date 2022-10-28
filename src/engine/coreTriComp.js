@@ -1,6 +1,6 @@
-import verShaderFirst from "../shaders/vertex/verShaderFirst.js";
 import fragShaderFirst from "../shaders/frag/fragShaderFirst.js";
 import perc2glCoord from "../functions/perc2glCoord.js";
+import verShaderFirst from "../shaders/vertex/verShaderFirst.js";
 export default class CoreTriComp {
     constructor(rgba, x = 0, y = 0, width = 20, height = 10) {
         this.x = x;
@@ -8,18 +8,25 @@ export default class CoreTriComp {
         this.width = width;
         this.height = height;
         this.rgba = rgba;
-        this.vertices = [
-            0.0, 0.5, 1.0, 0.0, 0.0,
-            -0.5, -0.5, 0.0, 1.0, 0.0,
-            0.5, -0.5, 0.0, 0.0, 1.0,
-        ];
+        this.vertices = [];
         this.vertexPosBuffer = null;
         this.program = null;
         this.drawMode = "triangles";
     }
-    addVertex(x, y) {
+    addVertex(x, y, r = 0, g = 0, b = 0) {
         this.vertices.push(perc2glCoord(x));
         this.vertices.push(perc2glCoord(y));
+        this.vertices.push(r);
+        this.vertices.push(g);
+        this.vertices.push(b);
+    }
+    addTri(x1, y1, x2, y2, x3, y3, r = 0, g = 0, b = 0) {
+        this.addVertex(x1, y1, r, g, b);
+        this.addVertex(x2, y2, r, g, b);
+        this.addVertex(x3, y3, r, g, b);
+    }
+    setColor(rgba) {
+        this.rgba = rgba;
     }
     init(gl) {
         this.program = this.getProgram(gl, verShaderFirst(), fragShaderFirst());
@@ -53,8 +60,6 @@ export default class CoreTriComp {
         gl.useProgram(this.program);
         const vertexPosAttrib = gl.getAttribLocation(this.program, 'a_pos');
         const vertexColorAttrib = gl.getAttribLocation(this.program, 'a_clr');
-        console.log("vertexPosAttrib", vertexPosAttrib);
-        console.log("vertexColorAttrib", vertexColorAttrib);
         gl.enableVertexAttribArray(vertexPosAttrib);
         gl.enableVertexAttribArray(vertexColorAttrib);
         gl.vertexAttribPointer(vertexPosAttrib, 2, gl.FLOAT, false, 5 * 4, 0);

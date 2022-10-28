@@ -1,4 +1,4 @@
-import Triangle from "./coreTriComp.js";
+import Triangle from "./coreTriComp-old.js";
 export default class FragRect {
     constructor(rgbaObj, x, y, width, height) {
         this.tri1 = new Triangle(rgbaObj);

@@ -14,8 +14,12 @@ constructor(canvasId :string ="bilza",color :RgbaObj = rgba(0,0,1)){
     if (canvas == null){
         throw new Error("canvas not found");
     }
-
-    const gl = canvas.getContext("webgl");
+    // let options = {
+    //     alpha: true,
+    //     depth: true
+    // };
+    // const gl = canvas.getContext( "webgl", options );  // (or "webgl2")
+    const gl = canvas.getContext("webgl",{ alpha: true,depth: true});
     if (gl == null) {
         throw new Error("Unable to initialize WebGL. Your browser or machine may not support it.");
     }

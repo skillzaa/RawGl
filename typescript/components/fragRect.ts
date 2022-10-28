@@ -1,4 +1,4 @@
-import Triangle from "./coreTriComp.js";
+import Triangle from "./coreTriComp-old.js";
 import rgba from "../functions/rgba.js";
 import IGLEngineComp from "./IGLEngineComp.js";
 import RgbaObj from "../functions/rgbaObj.js";

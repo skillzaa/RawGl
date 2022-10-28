@@ -1,8 +1,8 @@
-import verShaderFirst from "../shaders/vertex/verShaderFirst.js";
+// import verShaderFirst from "../shaders/vertex/verShaderFirst.js";
 import fragShaderFirst from "../shaders/frag/fragShaderFirst.js";
 import RgbaObj from "../functions/rgbaObj.js";
 import perc2glCoord from "../functions/perc2glCoord.js";
-
+import verShaderFirst from "../shaders/vertex/verShaderFirst.js";
 //----------------------------------
 export default class CoreTriComp {
 public drawMode : "triangles" | "lines" | "points";
@@ -26,37 +26,35 @@ this.width = width;
 this.height = height;
 //------------------------
 this.rgba = rgba;    
-this.vertices =  [
-    0.0,   0.5,          1.0, 0.0, 0.0,    // reg
-    -0.5, -0.5,          0.0, 1.0, 0.0,    // green
-    0.5,  -0.5,          0.0, 0.0, 1.0,    // blue
-  ];
+this.vertices =  [ ];
+//     -1.0, -1.0,          1.0, 0.0, 0.0,    // reg
+//     0.0,   1.0,          0.0, 1.0, 0.0,    // green
+//     1.0,  -1.0,          0.0, 0.0, 1.0,    // blue
+//   ];
 this.vertexPosBuffer  =  null;//this.getBuffer(gl);
 this.program = null;
 this.drawMode = "triangles";
 }
 
-addVertex( x :number , y :number){
+addVertex( x :number , y :number, r:number=0,g:number=0,b:number=0){
  this.vertices.push(perc2glCoord( x ));
  this.vertices.push(perc2glCoord( y ));
-//  this.vertices.push( x );
-//  this.vertices.push( y );
+ this.vertices.push(r);
+ this.vertices.push(g);
+ this.vertices.push(b);
+//  this.vertices.push(a);
 }
-// addTri( x1 :number , y1 :number,x2 :number , y2 :number,x3 :number , y3 :number){
-//  this.vertices.push(perc2glCoord( x1 ));
-//  this.vertices.push(perc2glCoord( y1 ));
-//  this.vertices.push(perc2glCoord( x2 ));
-//  this.vertices.push(perc2glCoord( y2 ));
-//  this.vertices.push(perc2glCoord( x3 ));
-//  this.vertices.push(perc2glCoord( y3 ));
-// //  this.vertices.push( x );
-// //  this.vertices.push( y );
-// }
-// setColor(rgba :RgbaObj){
-// this.rgba = rgba;
-// }
+addTri( x1 :number , y1 :number,x2 :number , y2 :number,x3 :number , y3 :number, r:number=0,g:number=0,b:number=0){
+this.addVertex(x1,y1,r,g,b);    
+this.addVertex(x2,y2,r,g,b);    
+this.addVertex(x3,y3,r,g,b);    
+}
+
+setColor(rgba :RgbaObj){
+this.rgba = rgba;
+}
 init(gl :WebGLRenderingContext){
-this.program = this.getProgram(gl,verShaderFirst(),
+this.program = this.getProgram(gl, verShaderFirst(),
 fragShaderFirst());    
 this.vertexPosBuffer  =  this.getBuffer(gl);
 
@@ -96,13 +94,25 @@ gl.STATIC_DRAW);
 gl.linkProgram(this.program);
 gl.useProgram(this.program);
 //----Attrib pointer can just be obtained if program is linked
-// const vertexPosAttrib = gl.getAttribLocation( this.program , 'pos');
 const vertexPosAttrib = gl.getAttribLocation(this.program, 'a_pos');
 const vertexColorAttrib = gl.getAttribLocation(this.program, 'a_clr');
 
-console.log("vertexPosAttrib",vertexPosAttrib);
-console.log("vertexColorAttrib",vertexColorAttrib);
+/////////////////////--unforms
+/////////////////////--unforms
+/////////////////////--unforms
+/////////////////////--unforms
+// const u_cosLoc = gl.getUniformLocation(this.program, "u_cos");
+// const u_sinLoc = gl.getUniformLocation(this.program, "u_sin");
+// const angle = 90;
+// const rads = Math.PI * angle / 180;
+// const cosB = Math.cos(rads);
+// const sinB = Math.sin(rads);
 
+// gl.uniform1f(u_cosLoc,cosB);
+// gl.uniform1f(u_sinLoc,sinB);
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
 gl.enableVertexAttribArray( vertexPosAttrib);
 gl.enableVertexAttribArray( vertexColorAttrib);
 
@@ -125,26 +135,6 @@ false,          //normalized
 
 gl.drawArrays(gl.TRIANGLES , 0, 3); 
 
-////////
-///////////---draw call
-// switch (this.drawMode) {
-//     case "triangles":
-//         gl.drawArrays(gl.TRIANGLES , 0, 3); 
-//         break;
-
-//     case "lines":
-//         gl.drawArrays(gl.LINES , 0, this.vertices.length);    
-//         break;
-
-//     case "points":
-//         gl.drawArrays(gl.POINTS , 0, this.vertices.length);    
-//         break;
-
-// default:
-// break;
-// }
-//---This line not only explains animation but also provide a way using which the draw part and the animation part can be kept seperate.
-// this.vertices[0] = this.vertices[0]+ 0.001; 
 }
 
 private createShader(gl :WebGLRenderingContext,str :string, type:number):WebGLShader {

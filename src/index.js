@@ -2,19 +2,26 @@ import GlUtil from "./glUtil/glUtil.js";
 const gl = GlUtil.getGl("bilza");
 console.log(gl);
 const vertices = [
-    -1, -1, 1, 0, 0,
-    1, -1, 0, 1, 0,
-    0, 1, 0, 0, 1,
+    -0.5, -0.5, 1, 0, 0,
+    0, -0.5, 0, 1, 0,
+    0, 0, 0, 0, 1,
+    -1, -0.5, 1, 0, 0,
+    -0.4, -0.5, 0, 1, 0,
+    -0.2, 0, 0, 0, 1,
 ];
 const vertexShaderSrc = `
 attribute highp vec2 a_pos;
 attribute highp vec3 a_clr;
+
+uniform float translateX;
+uniform float translateY;
+uniform float angle;
 varying highp vec3 vColor;
 
 void main(void) {
     gl_Position = vec4( 
-                        a_pos.x,
-                        a_pos.y,
+                        translateX  + (a_pos.x * cos(angle) - a_pos.y * sin(angle)),
+                        translateY + (a_pos.x * sin(angle) + a_pos.y * cos(angle)),
                         1.0,
                         1.0 );
     vColor = a_clr;
@@ -32,7 +39,20 @@ const programe = GlUtil.getProgram(gl, vertexShader, fragmentShader);
 const VOB = GlUtil.getBuffer(gl);
 GlUtil.bindBuffer(gl, VOB, vertices);
 GlUtil.linkNuseProgram(gl, programe);
-GlUtil.setAttribute(gl, "a_pos", programe, 2, 4 * 5, 0);
-GlUtil.setAttribute(gl, "a_clr", programe, 3, 4 * 5, 2 * 4);
-GlUtil.clear(gl, 0.1, 0.1, 0.2);
-gl.drawArrays(gl.TRIANGLES, 0, 3);
+let angleValue = 0;
+function draw() {
+    GlUtil.setAttribute(gl, "a_pos", programe, 2, 4 * 5, 0);
+    GlUtil.setAttribute(gl, "a_clr", programe, 3, 4 * 5, 2 * 4);
+    const translateXLoc = gl.getUniformLocation(programe, "translateX");
+    gl.uniform1f(translateXLoc, 0.0);
+    const translateYLoc = gl.getUniformLocation(programe, "translateY");
+    gl.uniform1f(translateYLoc, 0.0);
+    const angleLoc = gl.getUniformLocation(programe, "angle");
+    const rands = Math.PI * angleValue / 180;
+    gl.uniform1f(angleLoc, rands);
+    angleValue += 0.1;
+    GlUtil.clear(gl, 0.1, 0.1, 0.2);
+    gl.drawArrays(gl.TRIANGLES, 0, 6);
+    requestAnimationFrame(draw);
+}
+draw();

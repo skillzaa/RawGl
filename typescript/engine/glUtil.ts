@@ -83,8 +83,37 @@ offset               //offset = 0
 ); 
 }
 
+static stdVertexShaderSrc():string{
+const r = `
+attribute highp vec2 a_pos;
+attribute highp vec3 a_clr;
 
+uniform float translateX;
+uniform float translateY;
+uniform float angle;
+varying highp vec3 vColor;
 
+void main(void) {
+  gl_PointSize = 1.0;
+    gl_Position = vec4( 
+                        translateX  + (a_pos.x * cos(angle) - a_pos.y * sin(angle)),
+                        translateY + (a_pos.x * sin(angle) + a_pos.y * cos(angle)),
+                        1.0,
+                        1.0 );
+    vColor = a_clr;
+}
+`;
+return r;
+}
 
+static stdFragShaderSrc():string{
+const r = `
+varying highp vec3 vColor;
+void main(void) {
+  gl_FragColor = vec4 (vColor , 1.0);
+}
+`;
+return r;
+}
 ///////////////////////////////////////////////
 }

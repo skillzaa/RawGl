@@ -1,4 +1,4 @@
-import GlUtil from "./glUtil/glUtil.js";
+import GlUtil from "./engine/glUtil.js";
 const gl = GlUtil.getGl("bilza");
 const vertices = [
     -1, -1, 1, 0, 0,

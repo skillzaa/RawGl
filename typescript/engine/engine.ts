@@ -1,55 +1,43 @@
-import rgba from "../functions/rgba.js";
-import RgbaObj from "../functions/rgbaObj.js";
-import CompFactory from "./compFactory.js";
+import GlUtil from "./glUtil.js";
 
 
-
-export default class Engine {
+export default class engine{
 private gl :WebGLRenderingContext;
-public colorBackground :RgbaObj;
-
-constructor(canvasId :string ="bilza",color :RgbaObj = rgba(0,0,1)){
-    const canvas = document.getElementById(canvasId) as HTMLCanvasElement;
-
-    if (canvas == null){
-        throw new Error("canvas not found");
-    }
-    // let options = {
-    //     alpha: true,
-    //     depth: true
-    // };
-    // const gl = canvas.getContext( "webgl", options );  // (or "webgl2")
-    const gl = canvas.getContext("webgl",{ alpha: true,depth: true});
-    if (gl == null) {
-        throw new Error("Unable to initialize WebGL. Your browser or machine may not support it.");
-    }
-//---Got gl    
-this.gl = gl;
-this.colorBackground = color;
+constructor(canvasId :string ="bilza"){
+this.gl = GlUtil.getGl(canvasId);
 }
-public clear(){
-this.gl.clearColor(this.colorBackground.r, this.colorBackground.g, this.colorBackground.b, this.colorBackground.a);
-this.gl.clear(this.gl.COLOR_BUFFER_BIT);
-}
-
 getGl():WebGLRenderingContext{
     return this.gl;
 }
-setBackgroundColor(rgba :RgbaObj){
-this.colorBackground = rgba;
+getProgram(vshader:WebGLShader, fshader :WebGLShader) :WebGLProgram{
+return  GlUtil.getProgram(this.gl,vshader,fshader);
 }
-// add(){
-//     const cf = new CompFactory(this.gl,this.comps); 
-//     return cf;
-// }
-// draw(){
-//     this.clear();
-//     for (let i = 0; i < this.comps.length; i++) {
-//         const glEngComp = this.comps[i];
-//         glEngComp.draw(this.gl);
-//     }
-//     // this.gl.drawArrays(this.gl.TRIANGLES, 0, 6);    
-// }
+getBuffer():WebGLBuffer{
+return GlUtil.getBuffer(this.gl);
+}
+createShader(shaderSource :string, shaderType:number):WebGLShader{
+return GlUtil.createShader(this.gl, shaderSource,shaderType);
+}
 
+bindBuffer(buff :WebGLBuffer,buffData :number[]){
+return GlUtil.bindBuffer(this.gl,buff,buffData);
+}
 
+linkNuseProgram(prgrm :WebGLProgram){
+return GlUtil.linkNuseProgram(this.gl,prgrm); 
+}
+clear(r:number=0,g:number=0,b:number=0,a:number=1){
+    GlUtil.clear(this.gl,r,g,b,a);    
+}
+
+setAttribute(nameStr :string,programe :WebGLProgram,numberOfComps :number,stride:number, offset :number=0){
+GlUtil.setAttribute(this.gl,nameStr,programe,numberOfComps,stride, offset);    
+}
+stdVertexShaderSrc():string{
+return GlUtil.stdVertexShaderSrc();
+}
+stdFragShaderSrc():string{
+return GlUtil.stdFragShaderSrc();
+}
+///////////////////////////////////////////////////
 }

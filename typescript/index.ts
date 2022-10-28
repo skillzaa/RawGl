@@ -1,85 +1,85 @@
-import GlUtil from "./glUtil/glUtil.js";
 import perc2glCoord from "./functions/perc2glCoord.js";
-const gl = GlUtil.getGl("bilza");
-console.log(gl);
+import Engine from "./engine/engine.js";
 
+const engine = new Engine("bilza");
+const gl = engine.getGl();
 const vertices = [
-    perc2glCoord (25)   ,perc2glCoord (50),    1,0,0,
-    perc2glCoord (50)   ,perc2glCoord (75),      0,1,0,
-    perc2glCoord (50)    ,perc2glCoord (50),       0,0,1,
-
-    perc2glCoord (25)  ,perc2glCoord (50),     1,0,0,
-    perc2glCoord (50) ,perc2glCoord (75),   0,1,0,
-    perc2glCoord (50) ,perc2glCoord (25),   0,0,1,
-
-    perc2glCoord (50)   ,perc2glCoord (50),    1,0,0,
-    perc2glCoord (50)   ,perc2glCoord (75),      0,1,0,
-    perc2glCoord (75)    ,perc2glCoord (50),       0,0,1,
-    
-    perc2glCoord (50)   ,perc2glCoord (50),    1,0,0,
-    perc2glCoord (75)   ,perc2glCoord (50),      0,1,0,
-    perc2glCoord (50)    ,perc2glCoord (25),       0,0,1,
-
-
+      // left column
+      perc2glCoord(0), perc2glCoord(0),
+      perc2glCoord(20), perc2glCoord(0),
+      perc2glCoord(20), perc2glCoord(20),
+      
 ];
 
 const vertexShaderSrc = 
-`
-attribute highp vec2 a_pos;
-attribute highp vec3 a_clr;
+`attribute highp vec2 a_position;
+uniform vec2 u_resolution;
+uniform vec2 u_translation;
+uniform vec2 u_rotation;
+// ======================
+void main() {
+  // Rotate the position
+  vec2 rotatedPosition = vec2(
+     a_position.x * u_rotation.y + a_position.y * u_rotation.x,
+     a_position.y * u_rotation.y - a_position.x * u_rotation.x);
 
-uniform float translateX;
-uniform float translateY;
-uniform float angle;
-varying highp vec3 vColor;
+  // Add in the translation
+  vec2 position = rotatedPosition + u_translation;
 
-void main(void) {
-    gl_Position = vec4( 
-                        translateX  + (a_pos.x * cos(angle) - a_pos.y * sin(angle)),
-                        translateY + (a_pos.x * sin(angle) + a_pos.y * cos(angle)),
-                        1.0,
-                        1.0 );
-    vColor = a_clr;
+  // convert the position from pixels to 0.0 to 1.0
+//   vec2 zeroToOne = position / u_resolution;
+
+  // convert from 0->1 to 0->2
+//   vec2 zeroToTwo = zeroToOne * 2.0;
+
+  // convert from 0->2 to -1->+1 (clipspace)
+//   vec2 clipSpace = zeroToTwo - 1.0;
+
+  gl_Position = vec4(position , 0, 1);
 }
-`;
+`; 
 const fragShaderSrc = 
 `
-varying highp vec3 vColor;
+precision highp float;
 void main(void) {
-  gl_FragColor = vec4 (vColor , 1.0);
-}
-`;
+gl_FragColor = vec4 (1, 0, 0, 1.0);
+  }` ;
 
-const vertexShader = GlUtil.createShader(gl,vertexShaderSrc,gl.VERTEX_SHADER);
-const fragmentShader = GlUtil.createShader(gl,fragShaderSrc,gl.FRAGMENT_SHADER);
+const vertexShader = engine.createShader(vertexShaderSrc,gl.VERTEX_SHADER);
+const fragmentShader = engine.createShader(fragShaderSrc,gl.FRAGMENT_SHADER);
 
-const programe = GlUtil.getProgram(gl,vertexShader,fragmentShader);
+const program = engine.getProgram(vertexShader,fragmentShader);
 
-const VOB = GlUtil.getBuffer(gl);
+const VOB = engine.getBuffer();
 
- GlUtil.bindBuffer(gl,VOB,vertices);
+engine.bindBuffer(VOB,vertices);
 
-GlUtil.linkNuseProgram(gl,programe);
+engine.linkNuseProgram(program);
 
 let angleValue = 0;
 function draw(){
-GlUtil.setAttribute(gl,"a_pos",programe, 2 ,4*5,0);
-GlUtil.setAttribute(gl,"a_clr",programe, 3 , 4*5,2 * 4);
+    const translation = [150,100];
+    const rotation = [0.8,0.5];
+    // const color = [Math.random(),Math.random(),Math.random(),1];
 
-const translateXLoc = gl.getUniformLocation(programe, "translateX");
-gl.uniform1f(translateXLoc,0.0);
+const positionLoc = gl.getAttribLocation(program,'a_position');
+  
 
-const translateYLoc = gl.getUniformLocation(programe, "translateY");
-gl.uniform1f(translateYLoc,0.0);
-const angleLoc = gl.getUniformLocation(programe, "angle");
-const rands  = Math.PI * angleValue /180;
-gl.uniform1f(angleLoc,rands);
-angleValue+= 0.1;
+const resolutionLoc = gl.getUniformLocation(program,'u_resolution');
+const translationLoc = gl.getUniformLocation(program,'u_translation');
+const rotationLoc = gl.getUniformLocation(program,'u_rotation');
+
+gl.uniform2f(resolutionLoc,gl.canvas.width,gl.canvas.height);
+gl.uniform2fv(translationLoc,translation);
+gl.uniform2fv(rotationLoc,rotation);
+/////////////////////////////////////////////
+
+gl.vertexAttribPointer(positionLoc,2,gl.FLOAT,false,0,0);
 
 /////////////////////---draw-----------------
-GlUtil.clear(gl,0.1,0.1,0.2);
+engine.clear(0.1,0.1,0.2);
 gl.drawArrays(gl.TRIANGLES , 0, vertices.length); 
-requestAnimationFrame(draw);
+// requestAnimationFrame(draw);
 }
 
 draw();

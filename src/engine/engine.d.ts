@@ -1,10 +1,15 @@
-import RgbaObj from "../functions/rgbaObj.js";
-export default class Engine {
+export default class engine {
     private gl;
-    colorBackground: RgbaObj;
-    constructor(canvasId?: string, color?: RgbaObj);
-    clear(): void;
+    constructor(canvasId?: string);
     getGl(): WebGLRenderingContext;
-    setBackgroundColor(rgba: RgbaObj): void;
+    getProgram(vshader: WebGLShader, fshader: WebGLShader): WebGLProgram;
+    getBuffer(): WebGLBuffer;
+    createShader(shaderSource: string, shaderType: number): WebGLShader;
+    bindBuffer(buff: WebGLBuffer, buffData: number[]): void;
+    linkNuseProgram(prgrm: WebGLProgram): void;
+    clear(r?: number, g?: number, b?: number, a?: number): void;
+    setAttribute(nameStr: string, programe: WebGLProgram, numberOfComps: number, stride: number, offset?: number): void;
+    stdVertexShaderSrc(): string;
+    stdFragShaderSrc(): string;
 }
 //# sourceMappingURL=engine.d.ts.map

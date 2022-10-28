@@ -1,13 +1,20 @@
 import GlUtil from "./glUtil/glUtil.js";
+import perc2glCoord from "./functions/perc2glCoord.js";
 const gl = GlUtil.getGl("bilza");
 console.log(gl);
 const vertices = [
-    -0.5, -0.5, 1, 0, 0,
-    0, -0.5, 0, 1, 0,
-    0, 0, 0, 0, 1,
-    -1, -0.5, 1, 0, 0,
-    -0.4, -0.5, 0, 1, 0,
-    -0.2, 0, 0, 0, 1,
+    perc2glCoord(25), perc2glCoord(50), 1, 0, 0,
+    perc2glCoord(50), perc2glCoord(75), 0, 1, 0,
+    perc2glCoord(50), perc2glCoord(50), 0, 0, 1,
+    perc2glCoord(25), perc2glCoord(50), 1, 0, 0,
+    perc2glCoord(50), perc2glCoord(75), 0, 1, 0,
+    perc2glCoord(50), perc2glCoord(25), 0, 0, 1,
+    perc2glCoord(50), perc2glCoord(50), 1, 0, 0,
+    perc2glCoord(50), perc2glCoord(75), 0, 1, 0,
+    perc2glCoord(75), perc2glCoord(50), 0, 0, 1,
+    perc2glCoord(50), perc2glCoord(50), 1, 0, 0,
+    perc2glCoord(75), perc2glCoord(50), 0, 1, 0,
+    perc2glCoord(50), perc2glCoord(25), 0, 0, 1,
 ];
 const vertexShaderSrc = `
 attribute highp vec2 a_pos;
@@ -52,7 +59,7 @@ function draw() {
     gl.uniform1f(angleLoc, rands);
     angleValue += 0.1;
     GlUtil.clear(gl, 0.1, 0.1, 0.2);
-    gl.drawArrays(gl.TRIANGLES, 0, 6);
+    gl.drawArrays(gl.TRIANGLES, 0, vertices.length);
     requestAnimationFrame(draw);
 }
 draw();

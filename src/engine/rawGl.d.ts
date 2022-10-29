@@ -1,9 +1,8 @@
 export default class engine {
     private gl;
     constructor(canvasId?: string);
-    createProgram(vertices: number[], vertexShaderSrc: string, fragShaderSrc: string): WebGLProgram;
     getGl(): WebGLRenderingContext;
-    private getProgram;
+    getProgram(vshader: WebGLShader, fshader: WebGLShader): WebGLProgram;
     getBuffer(): WebGLBuffer;
     createShader(shaderSource: string, shaderType: number): WebGLShader;
     bindBuffer(buff: WebGLBuffer, buffData: number[]): void;

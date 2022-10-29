@@ -3,15 +3,6 @@ export default class engine {
     constructor(canvasId = "bilza") {
         this.gl = GlUtil.getGl(canvasId);
     }
-    createProgram(vertices, vertexShaderSrc, fragShaderSrc) {
-        const vertexShader = this.createShader(vertexShaderSrc, this.gl.VERTEX_SHADER);
-        const fragmentShader = this.createShader(fragShaderSrc, this.gl.FRAGMENT_SHADER);
-        const programe = this.getProgram(vertexShader, fragmentShader);
-        const VOB = this.getBuffer();
-        this.bindBuffer(VOB, vertices);
-        this.linkNuseProgram(programe);
-        return programe;
-    }
     getGl() {
         return this.gl;
     }

@@ -6,10 +6,27 @@ private gl :WebGLRenderingContext;
 constructor(canvasId :string ="bilza"){
 this.gl = GlUtil.getGl(canvasId);
 }
+//------------------------init------------------
+createProgram(vertices :number[],vertexShaderSrc:string,fragShaderSrc:string):WebGLProgram{
+const vertexShader = this.createShader(vertexShaderSrc,this.gl.VERTEX_SHADER);
+const fragmentShader = this.createShader(fragShaderSrc,this.gl.FRAGMENT_SHADER);
+const programe = this.getProgram(vertexShader,fragmentShader);
+const VOB = this.getBuffer();
+this.bindBuffer(VOB,vertices);
+this.linkNuseProgram(programe);
+return programe;
+// this.setAttribute("a_pos",programe, 2 ,4*5,0);
+// this.setAttribute("a_clr",programe, 3 , 4*5,2 * 4);
+
+// const translateXLoc = this.gl.getUniformLocation(programe, "translateX");
+// this.gl.uniform1f(translateXLoc,0.0);
+// const translateYLoc = this.gl.getUniformLocation(programe, "translateY");
+// const angleLoc = this.gl.getUniformLocation(programe, "angle");
+}
 getGl():WebGLRenderingContext{
     return this.gl;
 }
-getProgram(vshader:WebGLShader, fshader :WebGLShader) :WebGLProgram{
+private getProgram(vshader:WebGLShader, fshader :WebGLShader) :WebGLProgram{
 return  GlUtil.getProgram(this.gl,vshader,fshader);
 }
 getBuffer():WebGLBuffer{

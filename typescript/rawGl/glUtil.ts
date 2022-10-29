@@ -10,7 +10,7 @@ static getGl(canvasId :string ="bilza"):WebGLRenderingContext{
         throw new Error("canvas not found");
     }
 
-    const gl = canvas.getContext("webgl");
+    const gl = canvas.getContext("webgl2");
     if (gl == null) {
         throw new Error("Unable to initialize WebGL. Your browser or machine may not support it.");
     }

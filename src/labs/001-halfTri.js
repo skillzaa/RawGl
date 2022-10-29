@@ -1,6 +1,5 @@
 import GlUtil from "../rawGl/glUtil.js";
 const gl = GlUtil.getGl("bilza");
-console.log(gl);
 const vertices = [
     -1, -1, 1, 0, 0,
     1, -1, 0, 1, 0,
@@ -32,7 +31,11 @@ const programe = GlUtil.getProgram(gl, vertexShader, fragmentShader);
 const VOB = GlUtil.getBuffer(gl);
 GlUtil.bindBuffer(gl, VOB, vertices);
 GlUtil.linkNuseProgram(gl, programe);
-GlUtil.setAttribute(gl, "a_pos", programe, 2, 4 * 5, 0);
-GlUtil.setAttribute(gl, "a_clr", programe, 3, 4 * 5, 2 * 4);
-GlUtil.clear(gl, 0.1, 0.1, 0.2);
+const vertexPosAttrib = gl.getAttribLocation(programe, 'a_pos');
+const vertexColorAttrib = gl.getAttribLocation(programe, 'a_clr');
+gl.enableVertexAttribArray(vertexPosAttrib);
+gl.enableVertexAttribArray(vertexColorAttrib);
+gl.vertexAttribPointer(vertexPosAttrib, 2, gl.FLOAT, false, 5 * 4, 0);
+gl.vertexAttribPointer(vertexColorAttrib, 3, gl.FLOAT, false, 5 * 4, 2 * 4);
+GlUtil.clear(gl, 0, 0, 1);
 gl.drawArrays(gl.TRIANGLES, 0, 3);

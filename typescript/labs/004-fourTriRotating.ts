@@ -1,4 +1,4 @@
-import GlUtil from "../engine/glUtil.js";
+import GlUtil from "../rawGl/glUtil.js";
 import perc2glCoord from "../functions/perc2glCoord.js";
 const gl = GlUtil.getGl("bilza");
 console.log(gl);

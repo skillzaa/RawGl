@@ -1,8 +1,12 @@
 export default class BaseCoreComp {
     private vertices;
     private buffer;
+    private colorLoc;
+    r: number;
+    g: number;
+    b: number;
     private program;
-    constructor();
+    constructor(r?: number, g?: number, b?: number);
     init(gl: WebGL2RenderingContext, vertexShaderSrc: string, fragShaderSrc: string): void;
     addTriangle(x1: number, y1: number, x2: number, y2: number, x3: number, y3: number): void;
     protected getProgram(): WebGLProgram;

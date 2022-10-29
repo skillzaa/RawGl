@@ -2,13 +2,12 @@ import GlUtil from "./glUtil.js";
 export default class engine {
     constructor(canvasId = "bilza") {
         this._gl = GlUtil.getGl(canvasId);
+        this.vao = null;
     }
     createProgram(vertices, vertexShaderSrc, fragShaderSrc) {
         const vertexShader = this.createShader(vertexShaderSrc, this._gl.VERTEX_SHADER);
         const fragmentShader = this.createShader(fragShaderSrc, this._gl.FRAGMENT_SHADER);
         const programe = this.getProgram(vertexShader, fragmentShader);
-        const VOB = this.getBuffer();
-        this.bindBuffer(VOB, vertices);
         this.linkNuseProgram(programe);
         return programe;
     }
@@ -18,14 +17,8 @@ export default class engine {
     getProgram(vshader, fshader) {
         return GlUtil.getProgram(this._gl, vshader, fshader);
     }
-    getBuffer() {
-        return GlUtil.getBuffer(this._gl);
-    }
     createShader(shaderSource, shaderType) {
         return GlUtil.createShader(this._gl, shaderSource, shaderType);
-    }
-    bindBuffer(buff, buffData) {
-        return GlUtil.bindBuffer(this._gl, buff, buffData);
     }
     linkNuseProgram(prgrm) {
         return GlUtil.linkNuseProgram(this._gl, prgrm);
@@ -71,5 +64,11 @@ void main(void) {
             throw new Error("uniform not found");
         }
         return x;
+    }
+    getBuffer() {
+        return GlUtil.getBuffer(this._gl);
+    }
+    bindBuffer(buff, buffData) {
+        return GlUtil.bindBuffer(this._gl, buff, buffData);
     }
 }

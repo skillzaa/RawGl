@@ -57,4 +57,11 @@ export default class GlUtil {
         gl.enableVertexAttribArray(vertexPosAttrib);
         gl.vertexAttribPointer(vertexPosAttrib, numberOfComps, gl.FLOAT, false, stride, offset);
     }
+    static getUniformLocation(gl, programe, uniformName) {
+        const x = gl.getUniformLocation(programe, uniformName);
+        if (x == null) {
+            throw new Error("uniform not found");
+        }
+        return x;
+    }
 }

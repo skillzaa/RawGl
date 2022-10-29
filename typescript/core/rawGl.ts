@@ -4,42 +4,35 @@ import GlUtil from "./glUtil.js";
  */
 
 export default class engine{
-private _gl :WebGL2RenderingContext;
+private readonly _gl :WebGL2RenderingContext;
+// vertices :number[];
+vao :WebGLBuffer | null;
+
 constructor(canvasId :string ="bilza"){
 this._gl = GlUtil.getGl(canvasId);
+this.vao = null;
+// this.vertices = [];
 }
 //------------------------init------------------
-createProgram(vertices :number[],vertexShaderSrc:string,fragShaderSrc:string):WebGLProgram{
+createProgram(vertices :number[], vertexShaderSrc:string,fragShaderSrc:string):WebGLProgram{
 const vertexShader = this.createShader(vertexShaderSrc,this._gl.VERTEX_SHADER);
 const fragmentShader = this.createShader(fragShaderSrc,this._gl.FRAGMENT_SHADER);
 const programe = this.getProgram(vertexShader,fragmentShader);
-const VOB = this.getBuffer();
-this.bindBuffer(VOB,vertices);
+// this.vao = this.getBuffer();
+// this.bindBuffer(this.vao, vertices);//-move to draw then update
 this.linkNuseProgram(programe);
 return programe;
-// this.setAttribute("a_pos",programe, 2 ,4*5,0);
-// this.setAttribute("a_clr",programe, 3 , 4*5,2 * 4);
 
-// const translateXLoc = this._gl.getUniformLocation(programe, "translateX");
-// this._gl.uniform1f(translateXLoc,0.0);
-// const translateYLoc = this._gl.getUniformLocation(programe, "translateY");
-// const angleLoc = this._gl.getUniformLocation(programe, "angle");
 }
 gl():WebGL2RenderingContext{
     return this._gl;
 }
-private getProgram(vshader:WebGLShader, fshader :WebGLShader) :WebGLProgram{
+getProgram(vshader:WebGLShader, fshader :WebGLShader) :WebGLProgram{
 return  GlUtil.getProgram(this._gl,vshader,fshader);
 }
-getBuffer():WebGLBuffer{
-return GlUtil.getBuffer(this._gl);
-}
+
 createShader(shaderSource :string, shaderType:number):WebGLShader{
 return GlUtil.createShader(this._gl, shaderSource,shaderType);
-}
-
-bindBuffer(buff :WebGLBuffer,buffData :number[]){
-return GlUtil.bindBuffer(this._gl,buff,buffData);
 }
 
 linkNuseProgram(prgrm :WebGLProgram){
@@ -86,5 +79,18 @@ const x =    this._gl.getUniformLocation(programe, uniformName);
 if (x==null){throw new Error("uniform not found");}
 return x;
 }
+//////////////////
+getBuffer():WebGLBuffer{
+  return GlUtil.getBuffer(this._gl);
+}
+  
+bindBuffer(buff :WebGLBuffer,buffData :number[]){
+return GlUtil.bindBuffer(this._gl,buff,buffData);
+}
+  
+// update(vertices :number[]){
+//   const VOB = this.getBuffer();
+//   this.bindBuffer(VOB,vertices);
+// }
 ///////////////////////////////////////////////////
 }

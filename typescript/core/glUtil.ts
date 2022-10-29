@@ -82,6 +82,11 @@ stride ,         //stride - the comple vertex row bytes
 offset               //offset = 0 
 ); 
 }
+static getUniformLocation(gl :WebGL2RenderingContext, programe :WebGLProgram, uniformName :string):WebGLUniformLocation{
+const x =    gl.getUniformLocation(programe, uniformName);
+if (x==null){throw new Error("uniform not found");}
+return x;
+}
 
 ///////////////////////////////////////////////
 }

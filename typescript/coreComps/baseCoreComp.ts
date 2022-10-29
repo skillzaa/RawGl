@@ -38,13 +38,15 @@ this.vertices.push(perc2glCoord (y3));
 
 }
 
-getProgram():WebGLProgram{
+protected getProgram():WebGLProgram{
 if (this.program==null){throw new Error("program is null the comp may not be initialized");}
 return this.program;
 }
 
-update(){
+update(gl: WebGL2RenderingContext){
     this.vertices[0] += 0.001;
+if (this.buffer==null){throw new Error("buffer is null the comp may not be initialized");}    
+    GlUtil.bindBuffer(gl,this.buffer, this.vertices);//-move to draw then update
 }
 
 draw(gl :WebGL2RenderingContext){
@@ -53,15 +55,12 @@ draw(gl :WebGL2RenderingContext){
 if (this.buffer == null){throw new Error("buffer is null the comp may not be initialized");
 }   
 GlUtil.bindBuffer(gl,this.buffer,this.vertices);  
-  // engine.bindBuffer(engine.vao,vertices);
-/////////////////////---draw-----------------
-// engine.clear(0.1,0.1,0.2);
 gl.drawArrays(gl.TRIANGLES , 0, this.vertices.length); 
 }
-setAttribute(gl :WebGL2RenderingContext,nameStr :string,numberOfComps :number,stride:number, offset :number=0){
+protected setAttribute(gl :WebGL2RenderingContext,nameStr :string,numberOfComps :number,stride:number, offset :number=0){
 GlUtil.setAttribute(gl,nameStr,this.getProgram() ,numberOfComps,stride, offset);
 }
-getUniformLocation(gl :WebGL2RenderingContext,uniformName :string):WebGLUniformLocation{
+protected  getUniformLocation(gl :WebGL2RenderingContext,uniformName :string):WebGLUniformLocation{
   return GlUtil.getUniformLocation(gl,this.getProgram(), uniformName);
 
   

@@ -29,8 +29,12 @@ export default class BaseCoreComp {
         }
         return this.program;
     }
-    update() {
+    update(gl) {
         this.vertices[0] += 0.001;
+        if (this.buffer == null) {
+            throw new Error("buffer is null the comp may not be initialized");
+        }
+        GlUtil.bindBuffer(gl, this.buffer, this.vertices);
     }
     draw(gl) {
         if (this.buffer == null) {

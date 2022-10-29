@@ -4,7 +4,7 @@ import GlUtil from "./glUtil.js";
  */
 
 export default class engine{
-private _gl :WebGLRenderingContext;
+private _gl :WebGL2RenderingContext;
 constructor(canvasId :string ="bilza"){
 this._gl = GlUtil.getGl(canvasId);
 }
@@ -25,7 +25,7 @@ return programe;
 // const translateYLoc = this._gl.getUniformLocation(programe, "translateY");
 // const angleLoc = this._gl.getUniformLocation(programe, "angle");
 }
-gl():WebGLRenderingContext{
+gl():WebGL2RenderingContext{
     return this._gl;
 }
 private getProgram(vshader:WebGLShader, fshader :WebGLShader) :WebGLProgram{
@@ -53,10 +53,33 @@ setAttribute(nameStr :string,programe :WebGLProgram,numberOfComps :number,stride
 GlUtil.setAttribute(this._gl,nameStr,programe,numberOfComps,stride, offset);    
 }
 stdVertexShaderSrc():string{
-return GlUtil.stdVertexShaderSrc();
+     const r = `
+attribute highp vec2 a_pos;
+attribute highp vec3 a_clr;
+
+// uniform float angle;
+varying highp vec3 vColor;
+
+void main(void) {
+  gl_PointSize = 1.0;
+    gl_Position = vec4( 
+                        a_pos.x,
+                        a_pos.y,
+                        1.0,
+                        1.0 );
+    vColor = a_clr;
+}
+`;
+return r;
 }
 stdFragShaderSrc():string{
-return GlUtil.stdFragShaderSrc();
+    const r = `
+    varying highp vec3 vColor;
+    void main(void) {
+      gl_FragColor = vec4 (vColor , 1.0);
+    }
+    `;
+    return r;
 }
 getUniformLocation(programe :WebGLProgram, uniformName :string):WebGLUniformLocation{
 const x =    this._gl.getUniformLocation(programe, uniformName);

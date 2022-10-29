@@ -7,7 +7,5 @@ export default class GlUtil {
     static linkNuseProgram(gl: WebGLRenderingContext, prgrm: WebGLProgram): void;
     static clear(gl: WebGLRenderingContext, r?: number, g?: number, b?: number, a?: number): void;
     static setAttribute(gl: WebGLRenderingContext, nameStr: string, programe: WebGLProgram, numberOfComps: number, stride: number, offset?: number): void;
-    static stdVertexShaderSrc(): string;
-    static stdFragShaderSrc(): string;
 }
 //# sourceMappingURL=glUtil.d.ts.map

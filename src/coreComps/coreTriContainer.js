@@ -1,13 +1,19 @@
 import GlUtil from "../core/glUtil.js";
 const vertexShaderSrc = `
 attribute highp vec2 a_pos;
+
+attribute highp vec3 a_clr;
+varying highp vec3 v_clr;
+
+
 uniform float u_width;
 uniform float u_height;
 uniform float u_x;
 uniform float u_y;
 
 void main(void) {
-  
+v_clr = a_clr;
+//-------------------------------------------------------
     gl_PointSize = 1.0;
     gl_Position = vec4( 
                         ( (u_x + ( u_width * a_pos.x)) - 1.0 ),
@@ -17,9 +23,10 @@ void main(void) {
 }
 `;
 const fragShaderSrc = `
-uniform highp vec3 u_Color;
+varying highp vec3 v_clr;
+
 void main(void) {
-  gl_FragColor = vec4 (u_Color , 1.0);
+  gl_FragColor = vec4 (v_clr , 1.0);
 }
 `;
 export default class CoreTriContainer {
@@ -30,25 +37,21 @@ export default class CoreTriContainer {
         this.height = height;
         this.program = null;
         this.buffer = null;
-        this.colorLoc = null;
         this.u_xLoc = null;
         this.u_yLoc = null;
         this.u_widthLoc = null;
         this.u_heightLoc = null;
         this.vertices = [];
-        this.vertices.push(0.0);
-        this.vertices.push(0.0);
-        this.vertices.push(50.0);
-        this.vertices.push(0.0);
-        this.vertices.push(50.0);
-        this.vertices.push(50.0);
+        this.addTriangle(0, 0, 100, 0, 100, 100, 1, 0, 0);
+        this.addTriangle(100, 100, 0, 100, 0, 0, 0, 1, 0);
+        this.addTriangle(4, 40, 40, 10, 50, 90, 0, 0, 0);
+        this.addTriangle(20, 20, 80, 20, 60, 80, 0, 0, 1);
         this.r = r;
         this.g = g;
         this.b = b;
     }
     update(gl) {
         const twoDivBy100 = 2 / 100;
-        gl.uniform3fv(this.colorLoc, [this.r, this.g, this.b]);
         gl.uniform1f(this.u_xLoc, (twoDivBy100 * this.x));
         gl.uniform1f(this.u_yLoc, (twoDivBy100 * this.y));
         const wdForShader = twoDivBy100 * this.width;
@@ -67,20 +70,29 @@ export default class CoreTriContainer {
         GlUtil.bindBuffer(gl, this.buffer, this.vertices);
         GlUtil.linkNuseProgram(gl, program);
         this.program = program;
-        this.setAttribute(gl, "a_pos", 2, 4 * 2, 0);
-        this.colorLoc = this.getUniformLocation(gl, "u_Color");
+        this.setAttribute(gl, "a_pos", 2, 4 * 5, 0);
+        this.setAttribute(gl, "a_clr", 3, 4 * 5, 2 * 4);
         this.u_xLoc = this.getUniformLocation(gl, "u_x");
         this.u_yLoc = this.getUniformLocation(gl, "u_y");
         this.u_widthLoc = this.getUniformLocation(gl, "u_width");
         this.u_heightLoc = this.getUniformLocation(gl, "u_height");
     }
-    addTriangle(x1, y1, x2, y2, x3, y3) {
-        this.vertices.push((this.x - x1));
-        this.vertices.push((this.y - y1));
-        this.vertices.push((this.x - x2));
-        this.vertices.push((this.y - y2));
-        this.vertices.push((this.x - x3));
-        this.vertices.push((this.y - y3));
+    addTriangle(x1, y1, x2, y2, x3, y3, r = 0, g = 0, b = 0) {
+        this.vertices.push((x1));
+        this.vertices.push((y1));
+        this.vertices.push((r));
+        this.vertices.push((g));
+        this.vertices.push((b));
+        this.vertices.push((x2));
+        this.vertices.push((y2));
+        this.vertices.push((r));
+        this.vertices.push((g));
+        this.vertices.push((b));
+        this.vertices.push((x3));
+        this.vertices.push((y3));
+        this.vertices.push((r));
+        this.vertices.push((g));
+        this.vertices.push((b));
     }
     getProgram() {
         if (this.program == null) {
@@ -93,7 +105,7 @@ export default class CoreTriContainer {
             throw new Error("buffer is null the comp may not be initialized");
         }
         GlUtil.bindBuffer(gl, this.buffer, this.vertices);
-        gl.drawArrays(gl.TRIANGLES, 0, this.vertices.length);
+        gl.drawArrays(gl.TRIANGLES, 0, (this.vertices.length));
     }
     setAttribute(gl, nameStr, numberOfComps, stride, offset = 0) {
         GlUtil.setAttribute(gl, nameStr, this.getProgram(), numberOfComps, stride, offset);

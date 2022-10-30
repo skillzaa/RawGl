@@ -44,8 +44,6 @@ export default class CoreTriContainer {
         this.u_heightLoc = null;
         this.bgVertices = new VAO();
         this.vertices = new VAO();
-        this.vertices.addTriangle(4, 40, 40, 10, 50, 90, 0, 0, 0);
-        this.vertices.addTriangle(20, 20, 80, 20, 60, 80, 0, 0, 1);
         this.r = r;
         this.g = g;
         this.b = b;

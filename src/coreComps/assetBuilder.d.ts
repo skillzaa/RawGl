@@ -1,5 +1,6 @@
 import CoreTriContainer from "./coreTriContainer.js";
 import ColorObj from "./colorObj.js";
+import VAO from "./vao.js";
 export default class AssetBuilder {
     showBackground: boolean;
     color: ColorObj;
@@ -8,8 +9,8 @@ export default class AssetBuilder {
     y: number;
     width: number;
     height: number;
-    private vertices;
-    private bgVertices;
+    vertices: VAO;
+    bgVertices: VAO;
     constructor(x?: number, y?: number, width?: number, height?: number);
     getAsset(): CoreTriContainer;
 }

@@ -15,8 +15,8 @@ public y :number;
 public width :number;
 public height :number;
 //----------------
-private vertices :VAO;
-private bgVertices :VAO;
+public vertices :VAO;
+public bgVertices :VAO;
 //----------------
 constructor(x:number=0, y:number= 0,width:number= 20,height:number=20){
     this.showBackground = true;
@@ -41,9 +41,6 @@ if (this.showBackground == true){
 this.bgVertices.addTriangle(0,0,100,0,100,100,  1,0,0);
 this.bgVertices.addTriangle(100,100,0,100,0,0,  0,1,0);    
 }
-//------------
-this.vertices.addTriangle(4,40, 40,10, 50,90,  0,0,0);
-this.vertices.addTriangle(20,20, 80,20, 60,80,  0,0,1);
 //------------
 
 ctc.setBgVertices(this.bgVertices);

@@ -67,8 +67,8 @@ this.bgVertices = new VAO();
 // this.bgVertices.addTriangle(100,100,0,100,0,0,  0,1,0);
 //----
 this.vertices = new VAO();
-this.vertices.addTriangle(4,40, 40,10, 50,90,  0,0,0);
-this.vertices.addTriangle(20,20, 80,20, 60,80,  0,0,1);
+// this.vertices.addTriangle(4,40, 40,10, 50,90,  0,0,0);
+// this.vertices.addTriangle(20,20, 80,20, 60,80,  0,0,1);
 //-----------------------------
 this.r = r;this.g = g;this.b = b;
 }

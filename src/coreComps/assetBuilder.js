@@ -19,8 +19,6 @@ export default class AssetBuilder {
             this.bgVertices.addTriangle(0, 0, 100, 0, 100, 100, 1, 0, 0);
             this.bgVertices.addTriangle(100, 100, 0, 100, 0, 0, 0, 1, 0);
         }
-        this.vertices.addTriangle(4, 40, 40, 10, 50, 90, 0, 0, 0);
-        this.vertices.addTriangle(20, 20, 80, 20, 60, 80, 0, 0, 1);
         ctc.setBgVertices(this.bgVertices);
         ctc.setVertices(this.vertices);
         return ctc;

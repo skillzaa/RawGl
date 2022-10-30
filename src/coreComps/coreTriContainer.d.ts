@@ -1,7 +1,5 @@
-import VAO from "./vao.js";
 export default class CoreTriContainer {
-    private vertices;
-    private bgVertices;
+    vertices: number[];
     private buffer;
     private u_xLoc;
     private u_yLoc;
@@ -16,7 +14,5 @@ export default class CoreTriContainer {
     init(gl: WebGL2RenderingContext): void;
     update(gl: WebGL2RenderingContext): void;
     draw(gl: WebGL2RenderingContext): void;
-    setVertices(ver: VAO): void;
-    setBgVertices(verBg: VAO): void;
 }
 //# sourceMappingURL=coreTriContainer.d.ts.map

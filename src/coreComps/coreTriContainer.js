@@ -1,5 +1,4 @@
 import GlUtil from "../core/glUtil.js";
-import VAO from "./vao.js";
 const vertexShaderSrc = `
 attribute highp vec2 a_pos;
 
@@ -42,15 +41,30 @@ export default class CoreTriContainer {
         this.u_yLoc = null;
         this.u_widthLoc = null;
         this.u_heightLoc = null;
-        this.bgVertices = new VAO();
-        this.vertices = new VAO();
+        this.vertices = [
+            0, 0, 0.4, 0, 0,
+            100, 0, 0.4, 0, 0,
+            100, 100, 0.4, 0, 0,
+            0, 100, 0.4, 0, 0,
+            100, 100, 0.4, 0, 0,
+            0, 0, 0.4, 0, 0,
+            0, 0, 0, 1, 0,
+            50, 0, 0, 1, 0,
+            25, 100, 0, 1, 0,
+            50, 0, 1, 1, 0,
+            100, 0, 1, 1, 0,
+            75, 90, 1, 1, 0,
+            25, 0, 0, 0.7, 0.3,
+            75, 0, 0, 0.7, 0.3,
+            50, 60, 0, 0.7, 0.3,
+        ];
     }
     init(gl) {
         const vertexShader = GlUtil.createShader(gl, vertexShaderSrc, gl.VERTEX_SHADER);
         const fragmentShader = GlUtil.createShader(gl, fragShaderSrc, gl.FRAGMENT_SHADER);
         this.program = GlUtil.getProgram(gl, vertexShader, fragmentShader);
         this.buffer = GlUtil.getBuffer(gl);
-        GlUtil.bindBuffer(gl, this.buffer, this.vertices.getVertices());
+        GlUtil.bindBuffer(gl, this.buffer, this.vertices);
         GlUtil.linkNuseProgram(gl, this.program);
         GlUtil.setAttribute(gl, "a_pos", this.program, 2, 4 * 5, 0);
         GlUtil.setAttribute(gl, "a_clr", this.program, 3, 4 * 5, 2 * 4);
@@ -76,15 +90,7 @@ export default class CoreTriContainer {
         if (this.buffer == null) {
             throw new Error("buffer is null the comp may not be initialized");
         }
-        GlUtil.bindBuffer(gl, this.buffer, this.bgVertices.getVertices());
-        gl.drawArrays(gl.TRIANGLES, 0, (this.bgVertices.getVertices().length));
-        GlUtil.bindBuffer(gl, this.buffer, this.vertices.getVertices());
-        gl.drawArrays(gl.TRIANGLES, 0, (this.vertices.getVertices().length));
-    }
-    setVertices(ver) {
-        this.vertices = ver;
-    }
-    setBgVertices(verBg) {
-        this.bgVertices = verBg;
+        GlUtil.bindBuffer(gl, this.buffer, this.vertices);
+        gl.drawArrays(gl.TRIANGLES, 0, (this.vertices.length));
     }
 }

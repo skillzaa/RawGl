@@ -44,7 +44,7 @@ this.bgVertices.addTriangle(0,0,100,0,100,100,  this.colorBackground.r(),this.co
 this.bgVertices.addTriangle(100,100,0,100,0,0,  this.colorBackground.r(),this.colorBackground.g(),this.colorBackground.b());    
 }
 //------------
-ctc.setBgVertices(this.bgVertices);
+// ctc.setBgVertices(this.bgVertices);
 // ctc.setVertices(this.vertices);
 return ctc;
 }

@@ -1,5 +1,5 @@
 import GlUtil from "../core/glUtil.js";
-import VAO from "./vao.js";
+// import VAO from "./vao.js";
 ////////////////////////////////////////////////
 const vertexShaderSrc = `
 attribute highp vec2 a_pos;
@@ -34,8 +34,8 @@ void main(void) {
 ` ;
 //////////////////////////////////////////
 export default class CoreTriContainer{
-private vertices  :VAO;
-private bgVertices  :VAO;
+public vertices  :number[];
+// public bgVertices  :VAO;
 private buffer :WebGLBuffer | null;
 // ------------------------------------;
 private u_xLoc : WebGLUniformLocation | null;
@@ -61,8 +61,32 @@ this.u_yLoc = null;
 this.u_widthLoc = null;
 this.u_heightLoc = null;
 ////////////////////////////////
-this.bgVertices = new VAO(); 
-this.vertices = new VAO();
+// this.bgVertices = new VAO(); 
+this.vertices = [
+  ////////////////////////-->>>> background
+0,   0,       0.4,0,0,
+100,  0,      0.4,0,0,
+100,  100,    0.4,0,0,
+//---
+0,   100,     0.4,0,0,
+100,  100,    0.4,0,0,
+0,  0,      0.4,0,0,
+////////////////////////-->>>> asset body
+0,   0,     0,1,0,
+50,  0,     0,1,0,
+25,  100,   0,1,0,
+////////////////////////
+50,  0,    1,1,0,
+100, 0,     1,1,0,
+75,  90,   1,1,0,
+////////////////////////
+////////////////////////
+25,  0,    0,0.7,0.3,
+75, 0,     0,0.7,0.3,
+50, 60,    0,0.7,0.3,
+////////////////////////
+];
+
 //-----------------------------
 //---important 
 // this.init(gl);
@@ -77,7 +101,7 @@ const fragmentShader = GlUtil.createShader(gl, fragShaderSrc,gl.FRAGMENT_SHADER)
 
 this.program = GlUtil.getProgram(gl,vertexShader,fragmentShader);
 this.buffer = GlUtil.getBuffer(gl);
-GlUtil.bindBuffer(gl,this.buffer, this.vertices.getVertices());//-move to draw then update
+GlUtil.bindBuffer(gl,this.buffer, this.vertices);//-move to draw then update
 GlUtil.linkNuseProgram(gl, this.program);
 //------------bind attri and uniforms
 GlUtil.setAttribute(gl, "a_pos",this.program, 2 , 4 * 5,0);
@@ -110,17 +134,17 @@ public draw(gl :WebGL2RenderingContext){
 //we need to bind twice
 if (this.buffer == null){throw new Error("buffer is null the comp may not be initialized");
 }
-GlUtil.bindBuffer(gl,this.buffer,this.bgVertices.getVertices());  
-gl.drawArrays(gl.TRIANGLES , 0, (this.bgVertices.getVertices().length) ); 
+// GlUtil.bindBuffer(gl,this.buffer,this.bgVertices.getVertices());  
+// gl.drawArrays(gl.TRIANGLES , 0, (this.bgVertices.getVertices().length) ); 
 
-GlUtil.bindBuffer(gl,this.buffer,this.vertices.getVertices());  
-gl.drawArrays(gl.TRIANGLES , 0, (this.vertices.getVertices().length) ); 
+GlUtil.bindBuffer(gl,this.buffer,this.vertices);  
+gl.drawArrays(gl.TRIANGLES , 0, (this.vertices.length) ); 
 }
 ////////////////////////////////////
-public setVertices(ver :VAO){
-  this.vertices = ver;
-  }  
-public setBgVertices(verBg :VAO){
-  this.bgVertices = verBg;
-}  
+// public setVertices(ver :VAO){
+//   this.vertices = ver;
+//   }  
+// public setBgVertices(verBg :VAO){
+//   this.bgVertices = verBg;
+// }  
 }

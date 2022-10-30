@@ -1,4 +1,5 @@
 import GlUtil from "../core/glUtil.js";
+import AVO from "./avo.js";
 const vertexShaderSrc = `
 attribute highp vec2 a_pos;
 
@@ -41,11 +42,12 @@ export default class CoreTriContainer {
         this.u_yLoc = null;
         this.u_widthLoc = null;
         this.u_heightLoc = null;
-        this.vertices = [];
-        this.addTriangle(0, 0, 100, 0, 100, 100, 1, 0, 0);
-        this.addTriangle(100, 100, 0, 100, 0, 0, 0, 1, 0);
-        this.addTriangle(4, 40, 40, 10, 50, 90, 0, 0, 0);
-        this.addTriangle(20, 20, 80, 20, 60, 80, 0, 0, 1);
+        this.bgVertices = new AVO();
+        this.bgVertices.addTriangle(0, 0, 100, 0, 100, 100, 1, 0, 0);
+        this.bgVertices.addTriangle(100, 100, 0, 100, 0, 0, 0, 1, 0);
+        this.vertices = new AVO();
+        this.vertices.addTriangle(4, 40, 40, 10, 50, 90, 0, 0, 0);
+        this.vertices.addTriangle(20, 20, 80, 20, 60, 80, 0, 0, 1);
         this.r = r;
         this.g = g;
         this.b = b;
@@ -67,7 +69,7 @@ export default class CoreTriContainer {
         const fragmentShader = GlUtil.createShader(gl, fragShaderSrc, gl.FRAGMENT_SHADER);
         const program = GlUtil.getProgram(gl, vertexShader, fragmentShader);
         this.buffer = GlUtil.getBuffer(gl);
-        GlUtil.bindBuffer(gl, this.buffer, this.vertices);
+        GlUtil.bindBuffer(gl, this.buffer, this.vertices.getVertices());
         GlUtil.linkNuseProgram(gl, program);
         this.program = program;
         this.setAttribute(gl, "a_pos", 2, 4 * 5, 0);
@@ -76,23 +78,6 @@ export default class CoreTriContainer {
         this.u_yLoc = this.getUniformLocation(gl, "u_y");
         this.u_widthLoc = this.getUniformLocation(gl, "u_width");
         this.u_heightLoc = this.getUniformLocation(gl, "u_height");
-    }
-    addTriangle(x1, y1, x2, y2, x3, y3, r = 0, g = 0, b = 0) {
-        this.vertices.push((x1));
-        this.vertices.push((y1));
-        this.vertices.push((r));
-        this.vertices.push((g));
-        this.vertices.push((b));
-        this.vertices.push((x2));
-        this.vertices.push((y2));
-        this.vertices.push((r));
-        this.vertices.push((g));
-        this.vertices.push((b));
-        this.vertices.push((x3));
-        this.vertices.push((y3));
-        this.vertices.push((r));
-        this.vertices.push((g));
-        this.vertices.push((b));
     }
     getProgram() {
         if (this.program == null) {
@@ -104,8 +89,10 @@ export default class CoreTriContainer {
         if (this.buffer == null) {
             throw new Error("buffer is null the comp may not be initialized");
         }
-        GlUtil.bindBuffer(gl, this.buffer, this.vertices);
-        gl.drawArrays(gl.TRIANGLES, 0, (this.vertices.length));
+        GlUtil.bindBuffer(gl, this.buffer, this.bgVertices.getVertices());
+        gl.drawArrays(gl.TRIANGLES, 0, (this.bgVertices.getVertices().length));
+        GlUtil.bindBuffer(gl, this.buffer, this.vertices.getVertices());
+        gl.drawArrays(gl.TRIANGLES, 0, (this.vertices.getVertices().length));
     }
     setAttribute(gl, nameStr, numberOfComps, stride, offset = 0) {
         GlUtil.setAttribute(gl, nameStr, this.getProgram(), numberOfComps, stride, offset);

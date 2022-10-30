@@ -1,4 +1,5 @@
 import GlUtil from "../core/glUtil.js";
+import AVO from "./avo.js";
 ////////////////////////////////////////////////
 const vertexShaderSrc = `
 attribute highp vec2 a_pos;
@@ -34,7 +35,9 @@ void main(void) {
 //////////////////////////////////////////
 export default class CoreTriContainer{
 // private readonly _gl :WebGL2RenderingContext;
-private vertices :number[];
+private vertices  :AVO;
+private bgVertices  :AVO;
+// private bgVertices :number[];
 private buffer :WebGLBuffer | null;
 // private colorLoc : WebGLUniformLocation | null;
 private u_xLoc : WebGLUniformLocation | null;
@@ -68,17 +71,21 @@ this.u_widthLoc = null;
 this.u_heightLoc = null;
 
 ////////////////////////////////
-this.vertices = [];
+this.bgVertices = new AVO(); 
+this.bgVertices.addTriangle(0,0,100,0,100,100,  1,0,0);
+this.bgVertices.addTriangle(100,100,0,100,0,0,  0,1,0);
 
-this.addTriangle(0,0,100,0,100,100,  1,0,0);
-this.addTriangle(100,100,0,100,0,0,  0,1,0);
+// [
+//   0,0,      1.0, 0.0,0.0,
+//   100,0,    1.0, 0.0,0.0,
+//   100,100,  1.0, 0.0,0.0,
+// ];
+this.vertices = new AVO();
 
-this.addTriangle(4,40, 40,10, 50,90,  0,0,0);
-this.addTriangle(20,20, 80,20, 60,80,  0,0,1);
-
-this.r = r;
-this.g = g;
-this.b = b;
+this.vertices.addTriangle(4,40, 40,10, 50,90,  0,0,0);
+this.vertices.addTriangle(20,20, 80,20, 60,80,  0,0,1);
+//-----------------------------
+this.r = r;this.g = g;this.b = b;
 }
 update(gl: WebGL2RenderingContext){
   // this.vertices[0] += 0.001;
@@ -95,7 +102,6 @@ const htForShader = twoDivBy100 * this.height;
 gl.uniform1f(this.u_heightLoc, (htForShader/100) );
 
 if (this.buffer==null){throw new Error("buffer is null the comp may not be initialized");}    
-  // GlUtil.bindBuffer(gl,this.buffer, this.vertices);//-move to draw then update
 }
 //--------------------new - init
 public init (gl :WebGL2RenderingContext){
@@ -105,7 +111,7 @@ const fragmentShader = GlUtil.createShader(gl, fragShaderSrc,gl.FRAGMENT_SHADER)
 
 const program = GlUtil.getProgram(gl,vertexShader,fragmentShader);
 this.buffer = GlUtil.getBuffer(gl);
-GlUtil.bindBuffer(gl,this.buffer, this.vertices);//-move to draw then update
+GlUtil.bindBuffer(gl,this.buffer, this.vertices.getVertices());//-move to draw then update
 GlUtil.linkNuseProgram(gl,program);
 this.program = program;
 
@@ -119,30 +125,6 @@ this.u_widthLoc = this.getUniformLocation(gl, "u_width");
 this.u_heightLoc = this.getUniformLocation(gl, "u_height");
 }
 
-
-addTriangle(x1 :number,y1:number,x2:number,y2:number,x3:number,y3:number,r:number=0,g:number=0,b:number=0){
-
-this.vertices.push((x1));
-this.vertices.push((y1));  
-this.vertices.push((r));  
-this.vertices.push((g));  
-this.vertices.push((b));  
-
-this.vertices.push((x2));
-this.vertices.push((y2));  
-this.vertices.push((r));  
-this.vertices.push((g));  
-this.vertices.push((b));
-
-
-this.vertices.push((x3));
-this.vertices.push((y3));  
-this.vertices.push((r));  
-this.vertices.push((g));  
-this.vertices.push((b));  
-
-}
-
 protected getProgram():WebGLProgram{
 if (this.program==null){throw new Error("program is null, the comp may not be initialized");}
 return this.program;
@@ -154,10 +136,15 @@ draw(gl :WebGL2RenderingContext){
 // this.vertices = this.vertices.splice(0, 17);
 //we need to bind twice
 if (this.buffer == null){throw new Error("buffer is null the comp may not be initialized");
-}   
-GlUtil.bindBuffer(gl,this.buffer,this.vertices);  
+}
 
-gl.drawArrays(gl.TRIANGLES , 0, (this.vertices.length) ); 
+GlUtil.bindBuffer(gl,this.buffer,this.bgVertices.getVertices());  
+gl.drawArrays(gl.TRIANGLES , 0, (this.bgVertices.getVertices().length) ); 
+
+GlUtil.bindBuffer(gl,this.buffer,this.vertices.getVertices());  
+gl.drawArrays(gl.TRIANGLES , 0, (this.vertices.getVertices().length) ); 
+
+
 // gl.drawArrays(gl.TRIANGLES , 0, this.vertices.length); 
 }
 protected setAttribute(gl :WebGL2RenderingContext,nameStr :string,numberOfComps :number,stride:number, offset :number=0){

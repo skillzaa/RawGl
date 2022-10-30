@@ -1,5 +1,4 @@
 import GlUtil from "../core/glUtil.js";
-import VAO from "./vao.js";
 const vertexShaderSrc = `
 attribute highp vec2 a_pos;
 
@@ -42,19 +41,35 @@ export default class CoreTriContainer {
         this.u_yLoc = null;
         this.u_widthLoc = null;
         this.u_heightLoc = null;
-        this.bgVertices = new VAO();
-        this.vertices = new VAO();
-        this.vertices.addTriangle(0, 0, 100, 0, 100, 100);
-        this.vertices.addTriangle(50, 50, 100, 0, 100, 100);
-        this.init(gl);
-        this.update(gl);
+        this.vertices = [];
+        this.addTriangle(0, 0, 100, 0, 100, 100, 1);
+    }
+    addTriangle(x1, y1, x2, y2, x3, y3, r = 1, g = 0, b = 0) {
+        r = 1;
+        g = 0;
+        b = 0;
+        this.vertices.push((x1));
+        this.vertices.push((y1));
+        this.vertices.push((r));
+        this.vertices.push((g));
+        this.vertices.push((b));
+        this.vertices.push((x2));
+        this.vertices.push((y2));
+        this.vertices.push((r));
+        this.vertices.push((g));
+        this.vertices.push((b));
+        this.vertices.push((x3));
+        this.vertices.push((y3));
+        this.vertices.push((r));
+        this.vertices.push((g));
+        this.vertices.push((b));
     }
     init(gl) {
         const vertexShader = GlUtil.createShader(gl, vertexShaderSrc, gl.VERTEX_SHADER);
         const fragmentShader = GlUtil.createShader(gl, fragShaderSrc, gl.FRAGMENT_SHADER);
         this.program = GlUtil.getProgram(gl, vertexShader, fragmentShader);
         this.buffer = GlUtil.getBuffer(gl);
-        GlUtil.bindBuffer(gl, this.buffer, this.vertices.getVertices());
+        GlUtil.bindBuffer(gl, this.buffer, this.vertices);
         GlUtil.linkNuseProgram(gl, this.program);
         GlUtil.setAttribute(gl, "a_pos", this.program, 2, 4 * 5, 0);
         GlUtil.setAttribute(gl, "a_clr", this.program, 3, 4 * 5, 2 * 4);
@@ -79,13 +94,7 @@ export default class CoreTriContainer {
         if (this.buffer == null) {
             throw new Error("buffer is null the comp may not be initialized");
         }
-        GlUtil.bindBuffer(gl, this.buffer, this.vertices.getVertices());
-        gl.drawArrays(gl.TRIANGLES, 0, (this.vertices.getVertices().length));
-    }
-    setVertices(ver) {
-        this.vertices = ver;
-    }
-    setBgVertices(verBg) {
-        this.bgVertices = verBg;
+        GlUtil.bindBuffer(gl, this.buffer, this.vertices);
+        gl.drawArrays(gl.TRIANGLES, 0, (this.vertices.length));
     }
 }

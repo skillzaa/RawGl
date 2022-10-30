@@ -44,8 +44,6 @@ export default class CoreTriContainer {
         this.u_heightLoc = null;
         this.bgVertices = new VAO();
         this.vertices = new VAO();
-        this.init(gl);
-        this.update(gl);
     }
     init(gl) {
         const vertexShader = GlUtil.createShader(gl, vertexShaderSrc, gl.VERTEX_SHADER);

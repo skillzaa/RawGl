@@ -2,7 +2,10 @@ export default class VAO {
     constructor() {
         this.vertices = [];
     }
-    addTriangle(x1, y1, x2, y2, x3, y3, r = 0, g = 0, b = 0) {
+    addTriangle(x1, y1, x2, y2, x3, y3, r = 1, g = 0, b = 0) {
+        r = 1;
+        g = 0;
+        b = 0;
         this.vertices.push((x1));
         this.vertices.push((y1));
         this.vertices.push((r));

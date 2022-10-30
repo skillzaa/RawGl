@@ -1,24 +1,16 @@
-import Engine from "./core/rawGl.js";
-import Assets from "./assets/assets.js";
-import AssetBuilder from "./assets/assetBuilder.js";
-
-// import CoreTriContainer from "./coreComps/coreTriContainer.js";
+import CoreTriContainer from "./coreComps/coreTriContainer.js";
+import engine from "./core/rawGl.js";
+import GlUtil from "./core/glUtil.js";
 ////////////////////////////////////////////////
-const engine = new Engine("bilza");
 
-// const asset = new AssetBuilder(10,10,40,25);
-// asset.vertices.addTriangle(4,40, 40,10, 50,90,  0,0,0);
-// asset.vertices.addTriangle(20,20, 80,20, 60,80,  0,0,1);
-// const comp =  asset.getAsset( engine.gl() );    
-///////////////////////////////////////////////
-const comp = Assets.testComp( engine.gl() );
-  engine.clear(0,0.3);
-  // comp.update(engine.gl());
-  comp.draw(engine.gl());
-  
-  // setInterval(function(){
-  // comp.update(engine.gl());
-//   comp.draw(engine.gl());
-//   engine.clear(0,0.3);
-// },20);
+const gl = GlUtil.getGl("bilza");
 
+const core = new CoreTriContainer( gl,10,10,50,50);
+////////////////////////////////////////////////
+core.vertices.addTriangle(0,0,   100,0,   100,100,   1);
+core.init(gl);
+core.update(gl);
+GlUtil.clear(gl,0,0,1);
+core.draw( gl );
+
+console.log("core", core );

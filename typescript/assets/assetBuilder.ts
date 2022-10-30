@@ -19,7 +19,7 @@ public vertices :VAO;
 public bgVertices :VAO;
 //----------------
 constructor(x:number=0, y:number= 0,width:number= 20,height:number=20){
-    this.showBackground = true;
+    this.showBackground = false;
 this.color = new ColorObj(0.9,0.9,0.9);
 this.colorBackground =  new ColorObj(0.2,0.2,0.2);   
 this.vertices = new VAO();
@@ -30,15 +30,22 @@ this.width = width;
 this.height = height;
 }
 
+setColor(r:number=0,g:number=0,b:number=0){
+this.color = new ColorObj(r,g,b);    
+}
+setColorBackground(r:number=0,g:number=0,b:number=0){
+this.colorBackground = new ColorObj(r,g,b);    
+}
+
 getAsset(gl :WebGL2RenderingContext):CoreTriContainer{
 const  ctc = new CoreTriContainer(gl,this.x,this.y,this.width,this.height);
 if (this.showBackground == true){
-this.bgVertices.addTriangle(0,0,100,0,100,100,  1,0,0);
-this.bgVertices.addTriangle(100,100,0,100,0,0,  0,1,0);    
+this.bgVertices.addTriangle(0,0,100,0,100,100,  this.colorBackground.r(),this.colorBackground.g(),this.colorBackground.b());
+this.bgVertices.addTriangle(100,100,0,100,0,0,  this.colorBackground.r(),this.colorBackground.g(),this.colorBackground.b());    
 }
 //------------
 ctc.setBgVertices(this.bgVertices);
-ctc.setVertices(this.vertices);
+// ctc.setVertices(this.vertices);
 return ctc;
 }
 

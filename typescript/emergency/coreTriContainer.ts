@@ -1,5 +1,5 @@
 import GlUtil from "../core/glUtil.js";
-import VAO from "./vao.js";
+// import VAO from "./vao.js";
 ////////////////////////////////////////////////
 const vertexShaderSrc = `
 attribute highp vec2 a_pos;
@@ -34,8 +34,8 @@ void main(void) {
 ` ;
 //////////////////////////////////////////
 export default class CoreTriContainer{
-private vertices  :VAO;
-private bgVertices  :VAO;
+private vertices  :number[];
+// private bgVertices  :number[];
 private buffer :WebGLBuffer | null;
 // ------------------------------------;
 private u_xLoc : WebGLUniformLocation | null;
@@ -61,14 +61,37 @@ this.u_yLoc = null;
 this.u_widthLoc = null;
 this.u_heightLoc = null;
 ////////////////////////////////
-this.bgVertices = new VAO(); 
-this.vertices = new VAO();
+// this.bgVertices = []; 
+this.vertices = [];
+this.addTriangle(0,0,   100,0,   100,100,   1);
 //-----------------------------
 //---important 
 // this.init(gl);
 // this.update(gl);
 }
+public addTriangle(x1 :number,y1:number,x2:number,y2:number,x3:number,y3:number,r:number=1,g:number=0,b:number=0){
+r=1;g=0;b=0;    
+///////////////---------x1
+this.vertices.push((x1));
+this.vertices.push((y1));  
+this.vertices.push((r));  
+this.vertices.push((g));  
+this.vertices.push((b));  
 
+this.vertices.push((x2));
+this.vertices.push((y2));  
+this.vertices.push((r));  
+this.vertices.push((g));  
+this.vertices.push((b));
+
+
+this.vertices.push((x3));
+this.vertices.push((y3));  
+this.vertices.push((r));  
+this.vertices.push((g));  
+this.vertices.push((b));  
+
+}
 //--------------------new - init
 public init (gl :WebGL2RenderingContext){
 
@@ -77,7 +100,7 @@ const fragmentShader = GlUtil.createShader(gl, fragShaderSrc,gl.FRAGMENT_SHADER)
 
 this.program = GlUtil.getProgram(gl,vertexShader,fragmentShader);
 this.buffer = GlUtil.getBuffer(gl);
-GlUtil.bindBuffer(gl,this.buffer, this.vertices.getVertices());//-move to draw then update
+GlUtil.bindBuffer(gl,this.buffer, this.vertices);//-move to draw then update
 GlUtil.linkNuseProgram(gl, this.program);
 //------------bind attri and uniforms
 GlUtil.setAttribute(gl, "a_pos",this.program, 2 , 4 * 5,0);
@@ -108,17 +131,11 @@ public draw(gl :WebGL2RenderingContext){
 //we need to bind twice
 if (this.buffer == null){throw new Error("buffer is null the comp may not be initialized");
 }
-GlUtil.bindBuffer(gl,this.buffer,this.bgVertices.getVertices());  
-gl.drawArrays(gl.TRIANGLES , 0, (this.bgVertices.getVertices().length) ); 
+// GlUtil.bindBuffer(gl,this.buffer,this.bgVertices.getVertices());  
+// gl.drawArrays(gl.TRIANGLES , 0, (this.bgVertices.getVertices().length) ); 
 
-GlUtil.bindBuffer(gl,this.buffer,this.vertices.getVertices());  
-gl.drawArrays(gl.TRIANGLES , 0, (this.vertices.getVertices().length) ); 
+GlUtil.bindBuffer(gl,this.buffer,this.vertices);  
+gl.drawArrays(gl.TRIANGLES , 0, (this.vertices.length) ); 
 }
 ////////////////////////////////////
-public setVertices(ver :VAO){
-  this.vertices = ver;
-  }  
-public setBgVertices(verBg :VAO){
-  this.bgVertices = verBg;
-}  
 }

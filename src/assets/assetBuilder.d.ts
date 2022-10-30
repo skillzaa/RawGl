@@ -12,6 +12,8 @@ export default class AssetBuilder {
     vertices: VAO;
     bgVertices: VAO;
     constructor(x?: number, y?: number, width?: number, height?: number);
+    setColor(r?: number, g?: number, b?: number): void;
+    setColorBackground(r?: number, g?: number, b?: number): void;
     getAsset(gl: WebGL2RenderingContext): CoreTriContainer;
 }
 //# sourceMappingURL=assetBuilder.d.ts.map

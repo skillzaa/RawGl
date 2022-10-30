@@ -12,8 +12,9 @@ this.vertices = []
 // this.addTriangle(x,y,    x+width,y,   x + width,y+height, r,g,b);
 // }
 
-public addTriangle(x1 :number,y1:number,x2:number,y2:number,x3:number,y3:number,r:number=0,g:number=0,b:number=0){
-
+public addTriangle(x1 :number,y1:number,x2:number,y2:number,x3:number,y3:number,r:number=1,g:number=0,b:number=0){
+r=1;g=0;b=0;    
+///////////////---------x1
 this.vertices.push((x1));
 this.vertices.push((y1));  
 this.vertices.push((r));  

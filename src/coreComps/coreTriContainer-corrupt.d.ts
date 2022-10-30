@@ -1,3 +1,4 @@
+import VAO from "./vao.js";
 export default class CoreTriContainer {
     private vertices;
     private bgVertices;
@@ -11,12 +12,11 @@ export default class CoreTriContainer {
     width: number;
     height: number;
     private program;
-    constructor(x?: number, y?: number, width?: number, height?: number);
+    constructor(gl: WebGL2RenderingContext, x?: number, y?: number, width?: number, height?: number);
+    private init;
     update(gl: WebGL2RenderingContext): void;
-    init(gl: WebGL2RenderingContext): void;
-    private getProgram;
     draw(gl: WebGL2RenderingContext): void;
-    protected setAttribute(gl: WebGL2RenderingContext, nameStr: string, numberOfComps: number, stride: number, offset?: number): void;
-    protected getUniformLocation(gl: WebGL2RenderingContext, uniformName: string): WebGLUniformLocation;
+    setVertices(ver: VAO): void;
+    setBgVertices(verBg: VAO): void;
 }
 //# sourceMappingURL=coreTriContainer-corrupt.d.ts.map

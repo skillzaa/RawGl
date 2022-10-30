@@ -12,16 +12,10 @@ export default class CoreTriContainer {
     width: number;
     height: number;
     private program;
-    r: number;
-    g: number;
-    b: number;
-    constructor(x?: number, y?: number, width?: number, height?: number, r?: number, g?: number, b?: number);
-    update(gl: WebGL2RenderingContext): void;
+    constructor(gl: WebGL2RenderingContext, x?: number, y?: number, width?: number, height?: number);
     init(gl: WebGL2RenderingContext): void;
-    protected getProgram(): WebGLProgram;
+    update(gl: WebGL2RenderingContext): void;
     draw(gl: WebGL2RenderingContext): void;
-    protected setAttribute(gl: WebGL2RenderingContext, nameStr: string, numberOfComps: number, stride: number, offset?: number): void;
-    protected getUniformLocation(gl: WebGL2RenderingContext, uniformName: string): WebGLUniformLocation;
     setVertices(ver: VAO): void;
     setBgVertices(verBg: VAO): void;
 }

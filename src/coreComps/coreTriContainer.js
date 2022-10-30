@@ -31,7 +31,7 @@ void main(void) {
 }
 `;
 export default class CoreTriContainer {
-    constructor(x = 0, y = 0.0, width = 100, height = 100, r = 1, g = 0, b = 0) {
+    constructor(gl, x = 0, y = 0.0, width = 100, height = 100) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -44,9 +44,22 @@ export default class CoreTriContainer {
         this.u_heightLoc = null;
         this.bgVertices = new VAO();
         this.vertices = new VAO();
-        this.r = r;
-        this.g = g;
-        this.b = b;
+        this.init(gl);
+        this.update(gl);
+    }
+    init(gl) {
+        const vertexShader = GlUtil.createShader(gl, vertexShaderSrc, gl.VERTEX_SHADER);
+        const fragmentShader = GlUtil.createShader(gl, fragShaderSrc, gl.FRAGMENT_SHADER);
+        this.program = GlUtil.getProgram(gl, vertexShader, fragmentShader);
+        this.buffer = GlUtil.getBuffer(gl);
+        GlUtil.bindBuffer(gl, this.buffer, this.vertices.getVertices());
+        GlUtil.linkNuseProgram(gl, this.program);
+        GlUtil.setAttribute(gl, "a_pos", 2, 4 * 5, 0);
+        GlUtil.setAttribute(gl, "a_clr", 3, 4 * 5, 2 * 4);
+        this.u_xLoc = GlUtil.getUniformLocation(gl, this.program, "u_x");
+        this.u_yLoc = GlUtil.getUniformLocation(gl, this.program, "u_y");
+        this.u_widthLoc = GlUtil.getUniformLocation(gl, this.program, "u_width");
+        this.u_heightLoc = GlUtil.getUniformLocation(gl, this.program, "u_height");
     }
     update(gl) {
         const twoDivBy100 = 2 / 100;
@@ -60,27 +73,6 @@ export default class CoreTriContainer {
             throw new Error("buffer is null the comp may not be initialized");
         }
     }
-    init(gl) {
-        const vertexShader = GlUtil.createShader(gl, vertexShaderSrc, gl.VERTEX_SHADER);
-        const fragmentShader = GlUtil.createShader(gl, fragShaderSrc, gl.FRAGMENT_SHADER);
-        const program = GlUtil.getProgram(gl, vertexShader, fragmentShader);
-        this.buffer = GlUtil.getBuffer(gl);
-        GlUtil.bindBuffer(gl, this.buffer, this.vertices.getVertices());
-        GlUtil.linkNuseProgram(gl, program);
-        this.program = program;
-        this.setAttribute(gl, "a_pos", 2, 4 * 5, 0);
-        this.setAttribute(gl, "a_clr", 3, 4 * 5, 2 * 4);
-        this.u_xLoc = this.getUniformLocation(gl, "u_x");
-        this.u_yLoc = this.getUniformLocation(gl, "u_y");
-        this.u_widthLoc = this.getUniformLocation(gl, "u_width");
-        this.u_heightLoc = this.getUniformLocation(gl, "u_height");
-    }
-    getProgram() {
-        if (this.program == null) {
-            throw new Error("program is null, the comp may not be initialized");
-        }
-        return this.program;
-    }
     draw(gl) {
         if (this.buffer == null) {
             throw new Error("buffer is null the comp may not be initialized");
@@ -89,12 +81,6 @@ export default class CoreTriContainer {
         gl.drawArrays(gl.TRIANGLES, 0, (this.bgVertices.getVertices().length));
         GlUtil.bindBuffer(gl, this.buffer, this.vertices.getVertices());
         gl.drawArrays(gl.TRIANGLES, 0, (this.vertices.getVertices().length));
-    }
-    setAttribute(gl, nameStr, numberOfComps, stride, offset = 0) {
-        GlUtil.setAttribute(gl, nameStr, this.getProgram(), numberOfComps, stride, offset);
-    }
-    getUniformLocation(gl, uniformName) {
-        return GlUtil.getUniformLocation(gl, this.getProgram(), uniformName);
     }
     setVertices(ver) {
         this.vertices = ver;

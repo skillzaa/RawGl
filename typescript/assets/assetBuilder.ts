@@ -1,6 +1,6 @@
-import CoreTriContainer from "./coreTriContainer.js";
-import ColorObj from "./colorObj.js";
-import VAO from "./vao.js";
+import CoreTriContainer from "../coreComps/coreTriContainer.js";
+import ColorObj from "../coreComps/colorObj.js";
+import VAO from "../coreComps/vao.js";
 /**
  * The AssetBuilder takes in instructions and spits out a CoreTriContainer filled with given shapes
  */
@@ -29,20 +29,14 @@ this.y = y;
 this.width = width;
 this.height = height;
 }
-// setColor(r:number=0,g:number=0,b:number=0,a:number=1){
-// this.color = new ColorObj(r,g,b,a);
-// }
-// setColorBackground(r:number=0,g:number=0,b:number=0,a:number=1){
-// this.colorBackground = new ColorObj(r,g,b,a);
-// }
-getAsset():CoreTriContainer{
-const  ctc = new CoreTriContainer(this.x,this.y,this.width,this.height);
+
+getAsset(gl :WebGL2RenderingContext):CoreTriContainer{
+const  ctc = new CoreTriContainer(gl,this.x,this.y,this.width,this.height);
 if (this.showBackground == true){
 this.bgVertices.addTriangle(0,0,100,0,100,100,  1,0,0);
 this.bgVertices.addTriangle(100,100,0,100,0,0,  0,1,0);    
 }
 //------------
-
 ctc.setBgVertices(this.bgVertices);
 ctc.setVertices(this.vertices);
 return ctc;

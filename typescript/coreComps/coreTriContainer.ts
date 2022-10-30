@@ -47,9 +47,8 @@ public y :number;
 public width :number;
 public height :number;
 private program :WebGLProgram | null;
-public r :number;public g :number;public b :number;
 //---------------------------------
-constructor(x:number= 0,y:number= 0.0,width:number= 100,height:number= 100,r :number=1,g :number=0,b :number=0){
+constructor(gl :WebGL2RenderingContext,x:number= 0,y:number= 0.0,width:number= 100,height:number= 100){
 this.x = x;
 this.y=y;
 this.width = width;
@@ -63,15 +62,33 @@ this.u_widthLoc = null;
 this.u_heightLoc = null;
 ////////////////////////////////
 this.bgVertices = new VAO(); 
-// this.bgVertices.addTriangle(0,0,100,0,100,100,  1,0,0);
-// this.bgVertices.addTriangle(100,100,0,100,0,0,  0,1,0);
-//----
 this.vertices = new VAO();
-// this.vertices.addTriangle(4,40, 40,10, 50,90,  0,0,0);
-// this.vertices.addTriangle(20,20, 80,20, 60,80,  0,0,1);
 //-----------------------------
-this.r = r;this.g = g;this.b = b;
+//---important 
+this.init(gl);
+this.update(gl);
 }
+
+//--------------------new - init
+public init (gl :WebGL2RenderingContext){
+
+const vertexShader = GlUtil.createShader(gl,vertexShaderSrc,gl.VERTEX_SHADER);
+const fragmentShader = GlUtil.createShader(gl, fragShaderSrc,gl.FRAGMENT_SHADER);
+
+this.program = GlUtil.getProgram(gl,vertexShader,fragmentShader);
+this.buffer = GlUtil.getBuffer(gl);
+GlUtil.bindBuffer(gl,this.buffer, this.vertices.getVertices());//-move to draw then update
+GlUtil.linkNuseProgram(gl, this.program);
+//------------bind attri and uniforms
+GlUtil.setAttribute(gl, "a_pos", 2 , 4 * 5,0);
+GlUtil.setAttribute(gl, "a_clr", 3 , 4 * 5, 2 * 4);
+//--------------------------------
+this.u_xLoc = GlUtil.getUniformLocation(gl,this.program, "u_x");
+this.u_yLoc = GlUtil.getUniformLocation(gl,this.program, "u_y");
+this.u_widthLoc = GlUtil.getUniformLocation(gl,this.program, "u_width");
+this.u_heightLoc = GlUtil.getUniformLocation(gl,this.program, "u_height");
+}
+/////////////////////////////////////////////////
 update(gl: WebGL2RenderingContext){
 const twoDivBy100 = 2/100;
 
@@ -86,31 +103,6 @@ gl.uniform1f(this.u_heightLoc, (htForShader/100) );
 
 if (this.buffer==null){throw new Error("buffer is null the comp may not be initialized");}    
 }
-//--------------------new - init
-public init (gl :WebGL2RenderingContext){
-
-const vertexShader = GlUtil.createShader(gl,vertexShaderSrc,gl.VERTEX_SHADER);
-const fragmentShader = GlUtil.createShader(gl, fragShaderSrc,gl.FRAGMENT_SHADER);
-
-const program = GlUtil.getProgram(gl,vertexShader,fragmentShader);
-this.buffer = GlUtil.getBuffer(gl);
-GlUtil.bindBuffer(gl,this.buffer, this.vertices.getVertices());//-move to draw then update
-GlUtil.linkNuseProgram(gl,program);
-this.program = program;
-
-//------------bind attri and uniforms
-this.setAttribute(gl, "a_pos", 2 , 4 * 5,0);
-this.setAttribute(gl, "a_clr", 3 , 4 * 5, 2 * 4);
-// this.colorLoc = this.getUniformLocation(gl, "u_Color");
-this.u_xLoc = this.getUniformLocation(gl, "u_x");
-this.u_yLoc = this.getUniformLocation(gl, "u_y");
-this.u_widthLoc = this.getUniformLocation(gl, "u_width");
-this.u_heightLoc = this.getUniformLocation(gl, "u_height");
-}
-protected getProgram():WebGLProgram{
-if (this.program==null){throw new Error("program is null, the comp may not be initialized");}
-return this.program;
-}
 ///////////////////
 draw(gl :WebGL2RenderingContext){
 //we need to bind twice
@@ -122,16 +114,11 @@ gl.drawArrays(gl.TRIANGLES , 0, (this.bgVertices.getVertices().length) );
 GlUtil.bindBuffer(gl,this.buffer,this.vertices.getVertices());  
 gl.drawArrays(gl.TRIANGLES , 0, (this.vertices.getVertices().length) ); 
 }
-protected setAttribute(gl :WebGL2RenderingContext,nameStr :string,numberOfComps :number,stride:number, offset :number=0){
-GlUtil.setAttribute(gl,nameStr,this.getProgram() ,numberOfComps,stride, offset);
-}
-protected  getUniformLocation(gl :WebGL2RenderingContext,uniformName :string):WebGLUniformLocation{
-  return GlUtil.getUniformLocation(gl,this.getProgram(), uniformName); 
-}   
+////////////////////////////////////
 public setVertices(ver :VAO){
   this.vertices = ver;
   }  
-  public setBgVertices(verBg :VAO){
+public setBgVertices(verBg :VAO){
   this.bgVertices = verBg;
 }  
 }

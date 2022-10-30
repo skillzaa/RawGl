@@ -1,6 +1,7 @@
 import GlUtil from "../core/glUtil.js";
 import perc2glCoord from "../functions/perc2glCoord.js";
 import WhObj from "./whObj.js";
+import TriShapes from "../triShapes.js";
 //////////////////////////////////////////
 ////////////////////////////////////////////////
 const vertexShaderSrc = `
@@ -66,11 +67,25 @@ this.u_widthLoc = null;
 this.u_heightLoc = null;
 
 ////////////////////////////////
-this.vertices = [
-  0.0, 0.0,
-  100.0, 0.0,
-  100.0, 100.0,
-];
+this.vertices = [];
+// TriShapes.rectangle(this.vertices);
+
+this.vertices.push(0.0);
+this.vertices.push(0.0);
+
+this.vertices.push(50.0);
+this.vertices.push(0.0);
+
+this.vertices.push(50.0);
+this.vertices.push(50.0);
+// this.vertices = [
+//   0.0, 0.0,
+//   100.0, 0.0,
+//   100.0, 100.0,
+//   100.0, 100.0,
+//   0.0,   100.0,
+//   0.0, 0.0,
+// ];
 this.r = r;
 this.g = g;
 this.b = b;
@@ -116,12 +131,12 @@ this.u_heightLoc = this.getUniformLocation(gl, "u_height");
 
 addTriangle(x1 :number,y1:number,x2:number,y2:number,x3:number,y3:number){
 
-this.vertices.push(perc2glCoord (this.x - x1));
-this.vertices.push(perc2glCoord (this.y - y1));  
-this.vertices.push(perc2glCoord (this.x - x2));
-this.vertices.push(perc2glCoord (this.y - y2));  
-this.vertices.push(perc2glCoord (this.x - x3));
-this.vertices.push(perc2glCoord (this.y - y3));
+this.vertices.push((this.x - x1));
+this.vertices.push((this.y - y1));  
+this.vertices.push((this.x - x2));
+this.vertices.push((this.y - y2));  
+this.vertices.push((this.x - x3));
+this.vertices.push((this.y - y3));
 
 }
 

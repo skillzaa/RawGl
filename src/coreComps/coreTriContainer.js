@@ -1,5 +1,4 @@
 import GlUtil from "../core/glUtil.js";
-import perc2glCoord from "../functions/perc2glCoord.js";
 const vertexShaderSrc = `
 attribute highp vec2 a_pos;
 uniform float u_width;
@@ -36,11 +35,13 @@ export default class CoreTriContainer {
         this.u_yLoc = null;
         this.u_widthLoc = null;
         this.u_heightLoc = null;
-        this.vertices = [
-            0.0, 0.0,
-            100.0, 0.0,
-            100.0, 100.0,
-        ];
+        this.vertices = [];
+        this.vertices.push(0.0);
+        this.vertices.push(0.0);
+        this.vertices.push(50.0);
+        this.vertices.push(0.0);
+        this.vertices.push(50.0);
+        this.vertices.push(50.0);
         this.r = r;
         this.g = g;
         this.b = b;
@@ -74,12 +75,12 @@ export default class CoreTriContainer {
         this.u_heightLoc = this.getUniformLocation(gl, "u_height");
     }
     addTriangle(x1, y1, x2, y2, x3, y3) {
-        this.vertices.push(perc2glCoord(this.x - x1));
-        this.vertices.push(perc2glCoord(this.y - y1));
-        this.vertices.push(perc2glCoord(this.x - x2));
-        this.vertices.push(perc2glCoord(this.y - y2));
-        this.vertices.push(perc2glCoord(this.x - x3));
-        this.vertices.push(perc2glCoord(this.y - y3));
+        this.vertices.push((this.x - x1));
+        this.vertices.push((this.y - y1));
+        this.vertices.push((this.x - x2));
+        this.vertices.push((this.y - y2));
+        this.vertices.push((this.x - x3));
+        this.vertices.push((this.y - y3));
     }
     getProgram() {
         if (this.program == null) {

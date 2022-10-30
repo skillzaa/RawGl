@@ -70,7 +70,7 @@ this.update(gl);
 }
 
 //--------------------new - init
-public init (gl :WebGL2RenderingContext){
+private init (gl :WebGL2RenderingContext){
 
 const vertexShader = GlUtil.createShader(gl,vertexShaderSrc,gl.VERTEX_SHADER);
 const fragmentShader = GlUtil.createShader(gl, fragShaderSrc,gl.FRAGMENT_SHADER);
@@ -80,8 +80,8 @@ this.buffer = GlUtil.getBuffer(gl);
 GlUtil.bindBuffer(gl,this.buffer, this.vertices.getVertices());//-move to draw then update
 GlUtil.linkNuseProgram(gl, this.program);
 //------------bind attri and uniforms
-GlUtil.setAttribute(gl, "a_pos", 2 , 4 * 5,0);
-GlUtil.setAttribute(gl, "a_clr", 3 , 4 * 5, 2 * 4);
+GlUtil.setAttribute(gl, "a_pos",this.program, 2 , 4 * 5,0);
+GlUtil.setAttribute(gl, "a_clr",this.program, 3 , 4 * 5, 2 * 4);
 //--------------------------------
 this.u_xLoc = GlUtil.getUniformLocation(gl,this.program, "u_x");
 this.u_yLoc = GlUtil.getUniformLocation(gl,this.program, "u_y");
@@ -89,7 +89,7 @@ this.u_widthLoc = GlUtil.getUniformLocation(gl,this.program, "u_width");
 this.u_heightLoc = GlUtil.getUniformLocation(gl,this.program, "u_height");
 }
 /////////////////////////////////////////////////
-update(gl: WebGL2RenderingContext){
+public update(gl: WebGL2RenderingContext){
 const twoDivBy100 = 2/100;
 
 gl.uniform1f(this.u_xLoc, (twoDivBy100 * this.x));
@@ -104,7 +104,7 @@ gl.uniform1f(this.u_heightLoc, (htForShader/100) );
 if (this.buffer==null){throw new Error("buffer is null the comp may not be initialized");}    
 }
 ///////////////////
-draw(gl :WebGL2RenderingContext){
+public draw(gl :WebGL2RenderingContext){
 //we need to bind twice
 if (this.buffer == null){throw new Error("buffer is null the comp may not be initialized");
 }

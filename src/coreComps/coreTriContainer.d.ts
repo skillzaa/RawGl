@@ -13,7 +13,7 @@ export default class CoreTriContainer {
     height: number;
     private program;
     constructor(gl: WebGL2RenderingContext, x?: number, y?: number, width?: number, height?: number);
-    init(gl: WebGL2RenderingContext): void;
+    private init;
     update(gl: WebGL2RenderingContext): void;
     draw(gl: WebGL2RenderingContext): void;
     setVertices(ver: VAO): void;

@@ -54,8 +54,8 @@ export default class CoreTriContainer {
         this.buffer = GlUtil.getBuffer(gl);
         GlUtil.bindBuffer(gl, this.buffer, this.vertices.getVertices());
         GlUtil.linkNuseProgram(gl, this.program);
-        GlUtil.setAttribute(gl, "a_pos", 2, 4 * 5, 0);
-        GlUtil.setAttribute(gl, "a_clr", 3, 4 * 5, 2 * 4);
+        GlUtil.setAttribute(gl, "a_pos", this.program, 2, 4 * 5, 0);
+        GlUtil.setAttribute(gl, "a_clr", this.program, 3, 4 * 5, 2 * 4);
         this.u_xLoc = GlUtil.getUniformLocation(gl, this.program, "u_x");
         this.u_yLoc = GlUtil.getUniformLocation(gl, this.program, "u_y");
         this.u_widthLoc = GlUtil.getUniformLocation(gl, this.program, "u_width");

@@ -1,7 +1,7 @@
-import Engine from "./core/rawGl.js";
-import CoreTriContainer from "./coreComps/coreTriContainer.js";
+import FillRect from "../coreTriAssetComps/fillRect.js";
+import Engine from "../core/rawGl.js";
 const engine = new Engine("bilza");
-const comp = new CoreTriContainer();
+const comp = new FillRect(20, 20, 30, 30, 1);
 comp.init(engine.gl());
 setInterval(function () {
     comp.update(engine.gl());

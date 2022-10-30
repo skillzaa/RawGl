@@ -14,12 +14,12 @@ this.width = width;
 this.height = height;
 }
 
-rightEdge():number{
-return this.x + this.width;
-}
-topEdge():number{
-return this.y + this.height;
-}
+// rightEdge():number{
+// return this.x + this.width;
+// }
+// topEdge():number{
+// return this.y + this.height;
+// }
 
 xPerc(perc :number):number{
 const a = (this.width/100) * perc;

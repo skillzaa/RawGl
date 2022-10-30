@@ -13,7 +13,7 @@ this.vertices = []
 // }
 
 public addTriangle(x1 :number,y1:number,x2:number,y2:number,x3:number,y3:number,r:number=1,g:number=0,b:number=0){
-r=1;g=0;b=0;    
+// r=1;g=0;b=0;    ///was placed for testing
 ///////////////---------x1
 this.vertices.push((x1));
 this.vertices.push((y1));  

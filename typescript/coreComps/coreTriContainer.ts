@@ -87,6 +87,8 @@ this.u_xLoc = GlUtil.getUniformLocation(gl,this.program, "u_x");
 this.u_yLoc = GlUtil.getUniformLocation(gl,this.program, "u_y");
 this.u_widthLoc = GlUtil.getUniformLocation(gl,this.program, "u_width");
 this.u_heightLoc = GlUtil.getUniformLocation(gl,this.program, "u_height");
+//------------>>>check following line
+this.update(gl); // so the new item just need init and not init n update
 }
 /////////////////////////////////////////////////
 public update(gl: WebGL2RenderingContext){

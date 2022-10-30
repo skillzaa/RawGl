@@ -58,6 +58,7 @@ export default class CoreTriContainer {
         this.u_yLoc = GlUtil.getUniformLocation(gl, this.program, "u_y");
         this.u_widthLoc = GlUtil.getUniformLocation(gl, this.program, "u_width");
         this.u_heightLoc = GlUtil.getUniformLocation(gl, this.program, "u_height");
+        this.update(gl);
     }
     update(gl) {
         const twoDivBy100 = 2 / 100;

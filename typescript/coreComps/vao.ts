@@ -2,15 +2,15 @@
 
 
 
-export default class AVO {
+export default class VAO {
 private vertices :number[];
 constructor(){
 this.vertices = []
 }
 
-public addRectangle(x :number,y :number,width :number,height :number,r:number=0,g:number=0,b:number=0){
-this.addTriangle(x,y,    x+width,y,   x + width,y+height, r,g,b);
-}
+// public addRectangle(x :number,y :number,width :number,height :number,r:number=0,g:number=0,b:number=0){
+// this.addTriangle(x,y,    x+width,y,   x + width,y+height, r,g,b);
+// }
 
 public addTriangle(x1 :number,y1:number,x2:number,y2:number,x3:number,y3:number,r:number=0,g:number=0,b:number=0){
 

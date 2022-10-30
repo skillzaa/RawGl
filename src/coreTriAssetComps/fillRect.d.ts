@@ -1,4 +1,4 @@
-import CoreTri from "../coreComps/coreTri.js";
+import CoreTri from "../core/coreComps/coreTri.js";
 export default class FillRect extends CoreTri {
     constructor(x: number, y: number, width?: number, height?: number, r?: number, g?: number, b?: number);
 }

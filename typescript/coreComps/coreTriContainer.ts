@@ -1,5 +1,5 @@
 import GlUtil from "../core/glUtil.js";
-import AVO from "./avo.js";
+import VAO from "./vao.js";
 ////////////////////////////////////////////////
 const vertexShaderSrc = `
 attribute highp vec2 a_pos;
@@ -34,8 +34,8 @@ void main(void) {
 ` ;
 //////////////////////////////////////////
 export default class CoreTriContainer{
-private vertices  :AVO;
-private bgVertices  :AVO;
+private vertices  :VAO;
+private bgVertices  :VAO;
 private buffer :WebGLBuffer | null;
 // ------------------------------------;
 private u_xLoc : WebGLUniformLocation | null;
@@ -62,11 +62,11 @@ this.u_yLoc = null;
 this.u_widthLoc = null;
 this.u_heightLoc = null;
 ////////////////////////////////
-this.bgVertices = new AVO(); 
-this.bgVertices.addTriangle(0,0,100,0,100,100,  1,0,0);
-this.bgVertices.addTriangle(100,100,0,100,0,0,  0,1,0);
+this.bgVertices = new VAO(); 
+// this.bgVertices.addTriangle(0,0,100,0,100,100,  1,0,0);
+// this.bgVertices.addTriangle(100,100,0,100,0,0,  0,1,0);
 //----
-this.vertices = new AVO();
+this.vertices = new VAO();
 this.vertices.addTriangle(4,40, 40,10, 50,90,  0,0,0);
 this.vertices.addTriangle(20,20, 80,20, 60,80,  0,0,1);
 //-----------------------------
@@ -113,7 +113,6 @@ return this.program;
 }
 ///////////////////
 draw(gl :WebGL2RenderingContext){
-// this.vertices = this.vertices.splice(0, 17);
 //we need to bind twice
 if (this.buffer == null){throw new Error("buffer is null the comp may not be initialized");
 }
@@ -127,8 +126,12 @@ protected setAttribute(gl :WebGL2RenderingContext,nameStr :string,numberOfComps 
 GlUtil.setAttribute(gl,nameStr,this.getProgram() ,numberOfComps,stride, offset);
 }
 protected  getUniformLocation(gl :WebGL2RenderingContext,uniformName :string):WebGLUniformLocation{
-  return GlUtil.getUniformLocation(gl,this.getProgram(), uniformName);
-
-  
+  return GlUtil.getUniformLocation(gl,this.getProgram(), uniformName); 
 }   
+public setVertices(ver :VAO){
+  this.vertices = ver;
+  }  
+  public setBgVertices(verBg :VAO){
+  this.bgVertices = verBg;
+}  
 }

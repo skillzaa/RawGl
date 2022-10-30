@@ -1,5 +1,5 @@
-import CoreTri from "../coreComps/coreTri.js";
-import WhObj from "../coreComps/whObj.js";
+import CoreTri from "../core/coreComps/coreTri.js";
+import WhObj from "../core/coreComps/whObj.js.js";
 export default class FillRect extends CoreTri {
     constructor(x, y, width = 20, height = 20, r = 0, g = 0, b = 0) {
         super(r, g, b);

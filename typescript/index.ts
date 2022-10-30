@@ -1,18 +1,22 @@
-import FillRect from "./coreTriAssetComps/fillRect.js";
 import Engine from "./core/rawGl.js";
 import CoreTriContainer from "./coreComps/coreTriContainer.js";
+import AssetBuilder from "./coreComps/assetBuilder.js";
 ////////////////////////////////////////////////
 const engine = new Engine("bilza");
-const comp = new CoreTriContainer();
+const asset = new AssetBuilder(10,10,40,25);
+const comp = asset.getAsset();
+// const comp = new CoreTriContainer();
 
 comp.init(engine.gl());
 
 
-setInterval(function(){
-
-  comp.update(engine.gl());
   engine.clear(0,0.3);
+  comp.update(engine.gl());
   comp.draw(engine.gl());
-},20);
-
+  
+  // setInterval(function(){
+  // comp.update(engine.gl());
+//   comp.draw(engine.gl());
+//   engine.clear(0,0.3);
+// },20);
 

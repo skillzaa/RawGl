@@ -1,5 +1,5 @@
 import GlUtil from "../core/glUtil.js";
-import AVO from "./avo.js";
+import VAO from "./vao.js";
 const vertexShaderSrc = `
 attribute highp vec2 a_pos;
 
@@ -42,10 +42,8 @@ export default class CoreTriContainer {
         this.u_yLoc = null;
         this.u_widthLoc = null;
         this.u_heightLoc = null;
-        this.bgVertices = new AVO();
-        this.bgVertices.addTriangle(0, 0, 100, 0, 100, 100, 1, 0, 0);
-        this.bgVertices.addTriangle(100, 100, 0, 100, 0, 0, 0, 1, 0);
-        this.vertices = new AVO();
+        this.bgVertices = new VAO();
+        this.vertices = new VAO();
         this.vertices.addTriangle(4, 40, 40, 10, 50, 90, 0, 0, 0);
         this.vertices.addTriangle(20, 20, 80, 20, 60, 80, 0, 0, 1);
         this.r = r;
@@ -99,5 +97,11 @@ export default class CoreTriContainer {
     }
     getUniformLocation(gl, uniformName) {
         return GlUtil.getUniformLocation(gl, this.getProgram(), uniformName);
+    }
+    setVertices(ver) {
+        this.vertices = ver;
+    }
+    setBgVertices(verBg) {
+        this.bgVertices = verBg;
     }
 }

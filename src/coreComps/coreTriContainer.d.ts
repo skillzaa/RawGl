@@ -10,10 +10,10 @@ export default class CoreTriContainer {
     y: number;
     width: number;
     height: number;
+    private program;
     r: number;
     g: number;
     b: number;
-    private program;
     constructor(x?: number, y?: number, width?: number, height?: number, r?: number, g?: number, b?: number);
     update(gl: WebGL2RenderingContext): void;
     init(gl: WebGL2RenderingContext): void;

@@ -1,4 +1,4 @@
-import GlUtil from "./core/glUtil.js";
+import GlUtil from "./glUtil.js";
 
 /**
  * TriContainer is among the 2 most important objects of this module.
@@ -74,7 +74,7 @@ this.vertices = [];
  * Array index 0-14
  * Private so that I can only use it with expect-error
  */
-private addTri(x1 :number,y1:number,x2:number,y2:number,x3:number,y3:number,r:number=1,g:number=0,b:number=0){
+public addTri(x1 :number,y1:number,x2:number,y2:number,x3:number,y3:number,r:number=1,g:number=0,b:number=0){
 ///Following is placed for testing to cut off RGB    
 // r=1;g=0;b=0;    
 ///////////////---------vertex 1
@@ -138,7 +138,6 @@ public draw(gl :WebGL2RenderingContext){
 //we need to bind twice
 if (this.buffer == null){throw new Error("buffer is null the comp may not be initialized");
 }
-
 /////-->>>>>>>>>>>> draw <<<<<<<<<<<<<<-----
 GlUtil.bindBuffer(gl,this.buffer,this.vertices);  
 gl.drawArrays(gl.TRIANGLES , 0, (this.vertices.length) ); 

@@ -1,7 +1,7 @@
-import TriContainer from "./core/triContainer.js";
-import ClrObj from "./core/clrObj.js";
-import { getClrObj } from "./assets.js";
-import FiveFifteenDb from "./fiveFifteen/fiveFifteenDb.js";
+import TriContainer from "../core/triContainer.js";
+import ClrObj from "./clrObj.js";
+import { getClrObj } from "../assets.js";
+import FiveFifteenDb from "../fiveFifteen/fiveFifteenDb.js";
 export default class AssetBuilder {
     constructor(x = 0, y = 0, width = 100, height = 100, clrBg = null, clrMain = null) {
         if (clrMain == null) {

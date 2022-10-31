@@ -1,8 +1,14 @@
-import { AssetBuilder, GlUtil } from "./moduleAssets/assets.js";
+import { AssetBuilder, GlUtil, getClrObj } from "./moduleAssets/assets.js";
 const gl = GlUtil.getGl("bilza");
-const assetBld = new AssetBuilder();
-assetBld.add.addTri(0, 0, 100, 100, 60, 60, assetBld.clrMain);
-const comp = assetBld.getAsset();
+const bldr = new AssetBuilder(25, 25, 50, 50, getClrObj(0.3, 0.3, 0.3));
+const chq = getClrObj(1);
+bldr.add.addTri(0, 0, 100, 0, 50, 50, chq);
+chq.set(0, 1);
+bldr.width = 100;
+bldr.height = 100;
+bldr.x = 0;
+bldr.y = 0;
+const comp = bldr.getAsset();
 comp.init(gl);
 GlUtil.clear(gl, 0, 0, 0.3);
 comp.draw(gl);

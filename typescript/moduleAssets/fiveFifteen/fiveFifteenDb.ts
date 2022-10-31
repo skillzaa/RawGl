@@ -31,10 +31,11 @@ public  addDiagonal(y1 :number = 0, y2 :number =100,lineWidth :number=4,clr :Clr
     this.addTri( 0,y1 - lineWidth,  0,y1,   100,y2, clr);
     this.addTri( 100,y2,  100,y2 - lineWidth,   0,y1 - lineWidth, clr);
 }
+///////////////////////////////////////////////////
 private uploadData(ctc :TriContainer):TriContainer{
 for (let i = 0; i < this.triangles.length; i++) {
     const t = this.triangles[i];
-//@ts-expect-error
+/////////////////////////////
 ctc.addTri(t.x1(),t.y1(),t.x2(),t.y2(),
 t.x3(),t.y3(),t.r(),t.g(),t.b());   
 }    

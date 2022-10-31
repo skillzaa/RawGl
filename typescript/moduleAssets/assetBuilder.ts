@@ -1,8 +1,7 @@
 import TriContainer from "./triContainer.js";
-import VAO from "./core/vao.js";
 import ClrObj from "./core/clrObj.js";
 import { getClrObj } from "./assets.js";
-
+import FiveFifteenDb from "./fiveFifteen/fiveFifteenDb.js";
 /**
  * The AssetBuilder takes in instructions and spits out a CoreTriContainer filled with given shapes
 */
@@ -17,7 +16,7 @@ public palette :ClrObj[];
 public clrMain :ClrObj;
 public clrBg :ClrObj;
 //----------------
-public vertices :VAO;
+public add :FiveFifteenDb;
 //////////////////////////////////////////////////
 constructor(x:number=0,y:number=0,width:number=100,height:number=100,clrBg :ClrObj| null=null,clrMain:ClrObj| null=null){
 
@@ -31,32 +30,33 @@ this.clrBg = clrBg;
 this.palette = this.initPalette();
 //--------------------------------------------------
 this.showBackground = true;
-this.vertices = new VAO();
+this.add = new FiveFifteenDb();
 //--------------------------------------------------
 this.x = x;
 this.y = y;
 this.width = width;
 this.height = height;
+//----------
 }
 
-
-setClrBg(r:number=0,g:number=0,b:number=0){
+setColorBg(r:number=0,g:number=0,b:number=0){
 this.clrBg = new ClrObj(r,g,b);    
 }
 
 getAsset():TriContainer{
-    
+//-------Bg
 const  ctc = new TriContainer(this.x,this.y,this.width,this.height);
-if (this.showBackground == true){
-
-const bgVertices = new VAO();
-bgVertices.addRect(0,0,100,100,  this.clrBg.r(),this.clrBg.g(),this.clrBg.b());
-
-//-----------Add back gr vertices
-ctc.vertices.concat(bgVertices);
-}
-//------------
-ctc.vertices.concat(this.vertices);
+            if (this.showBackground == true){
+            const newDb = new FiveFifteenDb();
+            newDb.addRect(0,0,100,100,this.clrBg);
+            //-----------Add back gr vertices
+            //@ts-expect-error
+            newDb.uploadData(ctc);
+            }
+/////////////////////////////////
+//@ts-expect-error
+this.add.uploadData(ctc);
+// ctc.vertices.concat(this.vertices);
 // ctc.setVAO(this.vertices);
 return ctc;
 }

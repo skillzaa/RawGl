@@ -1,5 +1,4 @@
 import GlUtil from "./core/glUtil.js";
-import VAO from "./core/vao.js";
 const vertexShaderSrc = `
 attribute highp vec2 a_pos;
 
@@ -42,14 +41,31 @@ export default class TriContainer {
         this.u_yLoc = null;
         this.u_widthLoc = null;
         this.u_heightLoc = null;
-        this.vertices = new VAO();
+        this.vertices = [];
+    }
+    addTri(x1, y1, x2, y2, x3, y3, r = 1, g = 0, b = 0) {
+        this.vertices.push((x1));
+        this.vertices.push((y1));
+        this.vertices.push((r));
+        this.vertices.push((g));
+        this.vertices.push((b));
+        this.vertices.push((x2));
+        this.vertices.push((y2));
+        this.vertices.push((r));
+        this.vertices.push((g));
+        this.vertices.push((b));
+        this.vertices.push((x3));
+        this.vertices.push((y3));
+        this.vertices.push((r));
+        this.vertices.push((g));
+        this.vertices.push((b));
     }
     init(gl) {
         const vertexShader = GlUtil.createShader(gl, vertexShaderSrc, gl.VERTEX_SHADER);
         const fragmentShader = GlUtil.createShader(gl, fragShaderSrc, gl.FRAGMENT_SHADER);
         this.program = GlUtil.getProgram(gl, vertexShader, fragmentShader);
         this.buffer = GlUtil.getBuffer(gl);
-        GlUtil.bindBuffer(gl, this.buffer, this.vertices.getVertices());
+        GlUtil.bindBuffer(gl, this.buffer, this.vertices);
         GlUtil.linkNuseProgram(gl, this.program);
         GlUtil.setAttribute(gl, "a_pos", this.program, 2, 4 * 5, 0);
         GlUtil.setAttribute(gl, "a_clr", this.program, 3, 4 * 5, 2 * 4);
@@ -75,13 +91,7 @@ export default class TriContainer {
         if (this.buffer == null) {
             throw new Error("buffer is null the comp may not be initialized");
         }
-        GlUtil.bindBuffer(gl, this.buffer, this.vertices.getVertices());
-        gl.drawArrays(gl.TRIANGLES, 0, (this.vertices.getVertices().length));
-    }
-    setVAO(vao) {
-        this.vertices = vao;
-    }
-    concatVAO(vao) {
-        this.vertices.concat(vao);
+        GlUtil.bindBuffer(gl, this.buffer, this.vertices);
+        gl.drawArrays(gl.TRIANGLES, 0, (this.vertices.length));
     }
 }

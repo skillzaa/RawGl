@@ -1,5 +1,4 @@
 import GlUtil from "./core/glUtil.js";
-import VAO from "./core/vao.js";
 
 /**
  * TriContainer is among the 2 most important objects of this module.
@@ -39,7 +38,7 @@ void main(void) {
 ` ;
 //////////////////////////////////////////
 export default class TriContainer {
-public vertices  :VAO;
+public vertices  :number[];
 private buffer :WebGLBuffer | null;
 // ------------------------------------;
 private u_xLoc : WebGLUniformLocation | null;
@@ -67,7 +66,35 @@ this.u_yLoc = null;
 this.u_widthLoc = null;
 this.u_heightLoc = null;
 ////////////////////////////////
-this.vertices = new VAO(); 
+this.vertices = []; 
+}
+/**
+ * addTriangle is the main method which insert data into table. Each and every other method (addRectangle, addCircle, addPlus) must call this method (internally).
+ * Every Triangle has 15 data points 5 for each vertex.
+ * Array index 0-14
+ * Private so that I can only use it with expect-error
+ */
+private addTri(x1 :number,y1:number,x2:number,y2:number,x3:number,y3:number,r:number=1,g:number=0,b:number=0){
+///Following is placed for testing to cut off RGB    
+// r=1;g=0;b=0;    
+///////////////---------vertex 1
+this.vertices.push((x1));
+this.vertices.push((y1));  
+this.vertices.push((r));  
+this.vertices.push((g));  
+this.vertices.push((b));  
+///////////////---------vertex 2
+this.vertices.push((x2));
+this.vertices.push((y2));  
+this.vertices.push((r));  
+this.vertices.push((g));  
+this.vertices.push((b));
+///////////////---------vertex 3
+this.vertices.push((x3));
+this.vertices.push((y3));  
+this.vertices.push((r));  
+this.vertices.push((g));  
+this.vertices.push((b));  
 }
 
 //--------------------new - init
@@ -78,7 +105,7 @@ const fragmentShader = GlUtil.createShader(gl, fragShaderSrc,gl.FRAGMENT_SHADER)
 
 this.program = GlUtil.getProgram(gl,vertexShader,fragmentShader);
 this.buffer = GlUtil.getBuffer(gl);
-GlUtil.bindBuffer(gl,this.buffer, this.vertices.getVertices());//-move to draw then update
+GlUtil.bindBuffer(gl,this.buffer, this.vertices);//-move to draw then update
 GlUtil.linkNuseProgram(gl, this.program);
 //------------bind attri and uniforms
 GlUtil.setAttribute(gl, "a_pos",this.program, 2 , 4 * 5,0);
@@ -113,15 +140,10 @@ if (this.buffer == null){throw new Error("buffer is null the comp may not be ini
 }
 
 /////-->>>>>>>>>>>> draw <<<<<<<<<<<<<<-----
-GlUtil.bindBuffer(gl,this.buffer,this.vertices.getVertices());  
-gl.drawArrays(gl.TRIANGLES , 0, (this.vertices.getVertices().length) ); 
+GlUtil.bindBuffer(gl,this.buffer,this.vertices);  
+gl.drawArrays(gl.TRIANGLES , 0, (this.vertices.length) ); 
 }
 
-setVAO(vao :VAO){
-this.vertices = vao;
-}
-concatVAO(vao :VAO){
-this.vertices.concat(vao);
-}
+
 ////////////////////////////////////
 }

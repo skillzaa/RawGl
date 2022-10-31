@@ -1,8 +1,10 @@
-import ClrObj from "./clrObj.js";
+import ClrObj from "../core/clrObj.js";
 
-
-
-export default class VertexRecord{
+/**
+ * TriangleFifteen object will hold 15 points of a single triangle and the reference to ClrObj. 
+ * This can hold the data so that the color can be changed and once the data is takes out the changed color will reflect.
+ */
+export default class TriangleFifteen{
 private readonly _x1:number;
 private readonly _y1:number;
 private readonly _x2:number;
@@ -34,4 +36,11 @@ r():number{return this.clr.r()}
 g():number{return this.clr.g()}
 b():number{return this.clr.b()}
 
+setClr(r:number=1,g:number=0,b:number=0){
+this.clr = new ClrObj(r,g,b);
+}
+getClr():ClrObj{
+return this.clr;
+}
+/////////////////////////////
 }

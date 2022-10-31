@@ -37,9 +37,9 @@ getAsset(gl :WebGL2RenderingContext):CoreTriContainer{
 const  ctc = new CoreTriContainer(this.x,this.y,this.width,this.height);
 if (this.showBackground == true){
 
-this.bgVertices.addTriangle(0,0,100,0,100,100,  this.colorBackground.r(),this.colorBackground.g(),this.colorBackground.b());
+this.bgVertices.addRectangle(0,0,100,100,  this.colorBackground.r(),this.colorBackground.g(),this.colorBackground.b());
 
-this.bgVertices.addTriangle(100,100,0,100,0,0,  this.colorBackground.r(),this.colorBackground.g(),this.colorBackground.b());    
+// this.bgVertices.addTriangle(100,100,0,100,0,0,  this.colorBackground.r(),this.colorBackground.g(),this.colorBackground.b());    
 //-----------
 ctc.vertices.concat(this.bgVertices);
 }

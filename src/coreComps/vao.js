@@ -19,6 +19,10 @@ export default class VAO {
         this.vertices.push((g));
         this.vertices.push((b));
     }
+    addRectangle(x, y, width = 30, height = 20, r = 1, g = 0, b = 0) {
+        this.addTriangle(x, y, x + width, y, x + width, y + height, r, g, b);
+        this.addTriangle(x + width, y + height, x, y + height, x, y, r, g, b);
+    }
     getVertices() {
         return this.vertices;
     }

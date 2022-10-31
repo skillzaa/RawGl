@@ -22,4 +22,7 @@ export default class VAO {
     getVertices() {
         return this.vertices;
     }
+    concat(vao) {
+        this.vertices = this.vertices.concat(vao.getVertices());
+    }
 }

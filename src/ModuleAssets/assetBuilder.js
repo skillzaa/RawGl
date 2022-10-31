@@ -2,7 +2,7 @@ import TriContainer from "./triContainer.js";
 import VAO from "./core/vao.js";
 import ClrObj from "./core/clrObj.js";
 export default class AssetBuilder {
-    constructor(x = 0, y = 0, width = 100, height = 100, clrMain = null, clrBg = null) {
+    constructor(x = 0, y = 0, width = 100, height = 100, clrBg = null, clrMain = null) {
         if (clrMain == null) {
             clrMain = new ClrObj(1, 1, 1);
         }
@@ -30,5 +30,11 @@ export default class AssetBuilder {
         }
         ctc.vertices.concat(this.vertices);
         return ctc;
+    }
+    setClrIfNull(clrobj, r, g, b) {
+        if (clrobj == null) {
+            clrobj = new ClrObj(r, g, b);
+        }
+        return clrobj;
     }
 }

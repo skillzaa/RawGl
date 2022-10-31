@@ -11,8 +11,9 @@ export default class AssetBuilder {
     clrBg: ClrObj;
     vertices: VAO;
     bgVertices: VAO;
-    constructor(x?: number, y?: number, width?: number, height?: number, clrMain?: ClrObj | null, clrBg?: ClrObj | null);
+    constructor(x?: number, y?: number, width?: number, height?: number, clrBg?: ClrObj | null, clrMain?: ClrObj | null);
     setClrBg(r?: number, g?: number, b?: number): void;
     getAsset(): TriContainer;
+    setClrIfNull(clrobj: ClrObj | null, r: number, g: number, b: number): ClrObj;
 }
 //# sourceMappingURL=assetBuilder.d.ts.map

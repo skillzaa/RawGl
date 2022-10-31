@@ -1,5 +1,10 @@
 import GlUtil from "./core/glUtil.js";
 import VAO from "./core/vao.js";
+
+/**
+ * TriContainer is among the 2 most important objects of this module.
+ * It does not need to know the colors and just concern with the VOA
+ */
 ////////////////////////////////////////////////
 const vertexShaderSrc = `
 attribute highp vec2 a_pos;
@@ -33,7 +38,7 @@ void main(void) {
 }
 ` ;
 //////////////////////////////////////////
-export default class TriContainer{
+export default class TriContainer {
 public vertices  :VAO;
 private buffer :WebGLBuffer | null;
 // ------------------------------------;
@@ -41,13 +46,15 @@ private u_xLoc : WebGLUniformLocation | null;
 private u_yLoc : WebGLUniformLocation | null;
 private u_widthLoc : WebGLUniformLocation | null;
 private u_heightLoc : WebGLUniformLocation | null;
-public x :number;
-public y :number;
+public x  :number;
+public y  :number;
 public width :number;
 public height :number;
 private program :WebGLProgram | null;
 //---------------------------------
 constructor(x:number= 0,y:number= 0.0,width:number= 100,height:number= 100){
+
+//--------------------------------------------------  
 this.x = x;
 this.y=y;
 this.width = width;
@@ -61,11 +68,6 @@ this.u_widthLoc = null;
 this.u_heightLoc = null;
 ////////////////////////////////
 this.vertices = new VAO(); 
-
-//-----------------------------
-//---important 
-// this.init(gl);
-// this.update(gl);
 }
 
 //--------------------new - init
@@ -114,6 +116,7 @@ if (this.buffer == null){throw new Error("buffer is null the comp may not be ini
 GlUtil.bindBuffer(gl,this.buffer,this.vertices.getVertices());  
 gl.drawArrays(gl.TRIANGLES , 0, (this.vertices.getVertices().length) ); 
 }
+
 setVAO(vao :VAO){
 this.vertices = vao;
 }

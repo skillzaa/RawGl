@@ -18,7 +18,7 @@ public clrBg :ClrObj;
 public vertices :VAO;
 public bgVertices :VAO;
 //////////////////////////////////////////////////
-constructor(x:number=0,y:number=0,width:number=100,height:number=100,clrMain:ClrObj| null=null, clrBg :ClrObj| null=null){
+constructor(x:number=0,y:number=0,width:number=100,height:number=100,clrBg :ClrObj| null=null,clrMain:ClrObj| null=null){
 
 //white-default main
 if (clrMain == null){clrMain = new ClrObj(1,1,1);}
@@ -57,5 +57,10 @@ ctc.vertices.concat(this.vertices);
 // ctc.setVAO(this.vertices);
 return ctc;
 }
-
+setClrIfNull(clrobj :ClrObj | null,r:number,g:number,b:number):ClrObj{
+if (clrobj == null){
+    clrobj = new ClrObj(r,g,b);
+}
+return clrobj;
+}
 }

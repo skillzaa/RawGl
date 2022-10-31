@@ -1,4 +1,4 @@
-import GlUtil from "../core/glUtil.js";
+import { GlUtil } from "../moduleAssets/assets.js";
 import perc2glCoord from "../functions/perc2glCoord.js";
 const vertexShaderSrc = `
 attribute highp vec2 a_pos;

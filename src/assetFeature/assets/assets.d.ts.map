@@ -1,0 +1,1 @@
+{"version":3,"file":"assets.d.ts","sourceRoot":"","sources":["../../../typescript/assetFeature/assets/assets.ts"],"names":[],"mappings":"AAAA,OAAO,gBAAgB,MAAM,qCAAqC,CAAC;AAGnE,MAAM,CAAC,OAAO,OAAO,MAAM;IAI3B,MAAM,CAAC,QAAQ,CAAC,EAAE,EAAE,sBAAsB,EAAC,CAAC,GAAC,MAAS,EAAC,CAAC,GAAC,MAAW,EAAC,KAAK,GAAC,MAAW,EAAC,MAAM,GAAC,MAAW,GAAE,gBAAgB;CAW1H"}

@@ -1,5 +1,30 @@
 {
+
+  "name": "rawgl",
+  "version": "0.0.1",
+  "description": "An ultra easy WebGl2 Consumer Framework ",
+  "main": "./src/index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
-    "gl-matrix": "^3.4.3"
-  }
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skillzaa/gl.git"
+  },
+  "keywords": [
+    "webgl",
+    "webgl2",
+    "computer",
+    "graphics"
+  ],
+  "author": "Bilal Tariq",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skillzaa/gl/issues"
+  },
+  "homepage": "https://github.com/skillzaa/gl#readme"
 }

@@ -15,5 +15,6 @@ export default class AssetBuilder {
     setClrBg(r?: number, g?: number, b?: number): void;
     getAsset(): TriContainer;
     setClrIfNull(clrobj: ClrObj | null, r: number, g: number, b: number): ClrObj;
+    private initPalette;
 }
 //# sourceMappingURL=assetBuilder.d.ts.map

@@ -1,11 +1,11 @@
-
+import VertexRecord from "./vertexRecord.js";
 /**
  * VAO Vertex Array Object :
  */
 export default class VAO {
 private vertices :number[];
 constructor(){
-this.vertices = []
+this.vertices = [];
 }
 
 /**

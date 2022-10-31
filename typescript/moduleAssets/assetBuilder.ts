@@ -1,6 +1,7 @@
 import TriContainer from "./triContainer.js";
 import VAO from "./core/vao.js";
 import ClrObj from "./core/clrObj.js";
+import { getClrObj } from "./assets.js";
 
 /**
  * The AssetBuilder takes in instructions and spits out a CoreTriContainer filled with given shapes
@@ -27,7 +28,7 @@ if (clrBg == null){clrBg = new ClrObj(1,1,1);}
 //--------------------------------------------------
 this.clrMain = clrMain;
 this.clrBg = clrBg;
-this.palette = [];
+this.palette = this.initPalette();
 //--------------------------------------------------
 this.showBackground = true;
 this.vertices = new VAO();
@@ -59,10 +60,25 @@ ctc.vertices.concat(this.vertices);
 // ctc.setVAO(this.vertices);
 return ctc;
 }
+////////////////////////////////////////
 setClrIfNull(clrobj :ClrObj | null,r:number,g:number,b:number):ClrObj{
 if (clrobj == null){
     clrobj = new ClrObj(r,g,b);
 }
 return clrobj;
+}
+private initPalette():ClrObj[]{
+const ar = [];
+    ar[0] = getClrObj(1,0,0); 
+    ar[1] = getClrObj(0,1,0); 
+    ar[2] = getClrObj(0,0,1); 
+    ar[3] = getClrObj(1,1,0); 
+    ar[4] = getClrObj(0,1,1); 
+    ar[5] = getClrObj(1,0,1); 
+    ar[6] = getClrObj(0.3,0.5,0.8); 
+    ar[7] = getClrObj(0.3,0.5,0.8); 
+    ar[8] = getClrObj(0.3,0.5,0.8); 
+    ar[9] = getClrObj(0.3,0.5,0.8);
+    return ar; 
 }
 }

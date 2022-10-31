@@ -3,12 +3,23 @@ import {AssetBuilder,AssetsCollection,TriContainer,GlUtil,ClrObj,getClrObj } fro
 ////////////////////////////////////////////////
 const gl = GlUtil.getGl("bilza");
 
-// const asset = new AssetBuilder(25,25,5,10,getClrObj(0,0,1),getClrObj(1,0,0));
-const asset = AssetsCollection.multiply(0,0,100,100,getClrObj(0,0,1),getClrObj(1,1,0));
+GlUtil.clear(gl,0,0,0.3);
 
-const comp = asset.getAsset();
+const multiply = AssetsCollection.multiply(0,80,20,20,getClrObj(0,0,1),getClrObj(1,1,0));
+const multiplycomp = multiply.getAsset();
+multiplycomp.init(gl);
+multiplycomp.draw(gl);
 //////////////////////---draw section
-GlUtil.clear(gl,0.2,0.2,0.2);
+const plus = AssetsCollection.plus(20,80,20,20,getClrObj(0,0,1),getClrObj(1,1,0));
+const pluscomp = plus.getAsset();
+pluscomp.init(gl);
+pluscomp.draw(gl);
+//////////////////////---draw section
+//////////////////////---draw section
+const sq2X2 = AssetsCollection.sq2X2 (40,80,20,20,getClrObj(0,0,1),getClrObj(1,1,0));
+sq2X2.palette[1] = getClrObj(0,0,0);
+const sq2X2comp = sq2X2.getAsset();
+      sq2X2comp.init(gl);
+      sq2X2comp.draw(gl);
+//////////////////////---draw section
 
-comp.init(gl);
-comp.draw( gl );

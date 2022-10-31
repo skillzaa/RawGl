@@ -10,7 +10,6 @@ export default class AssetBuilder {
     clrMain: ClrObj;
     clrBg: ClrObj;
     vertices: VAO;
-    bgVertices: VAO;
     constructor(x?: number, y?: number, width?: number, height?: number, clrBg?: ClrObj | null, clrMain?: ClrObj | null);
     setClrBg(r?: number, g?: number, b?: number): void;
     getAsset(): TriContainer;

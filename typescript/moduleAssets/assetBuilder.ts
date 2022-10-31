@@ -16,7 +16,6 @@ public clrMain :ClrObj;
 public clrBg :ClrObj;
 //----------------
 public vertices :VAO;
-public bgVertices :VAO;
 //////////////////////////////////////////////////
 constructor(x:number=0,y:number=0,width:number=100,height:number=100,clrBg :ClrObj| null=null,clrMain:ClrObj| null=null){
 
@@ -30,7 +29,6 @@ this.clrBg = clrBg;
 //--------------------------------------------------
 this.showBackground = true;
 this.vertices = new VAO();
-this.bgVertices = new VAO();
 //--------------------------------------------------
 this.x = x;
 this.y = y;
@@ -47,10 +45,11 @@ getAsset():TriContainer{
 const  ctc = new TriContainer(this.x,this.y,this.width,this.height);
 if (this.showBackground == true){
 
-this.bgVertices.addRectangle(0,0,100,100,  this.clrBg.r(),this.clrBg.g(),this.clrBg.b());
+const bgVertices = new VAO();
+bgVertices.addRect(0,0,100,100,  this.clrBg.r(),this.clrBg.g(),this.clrBg.b());
 
 //-----------Add back gr vertices
-ctc.vertices.concat(this.bgVertices);
+ctc.vertices.concat(bgVertices);
 }
 //------------
 ctc.vertices.concat(this.vertices);

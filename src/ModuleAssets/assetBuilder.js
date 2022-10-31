@@ -13,7 +13,6 @@ export default class AssetBuilder {
         this.clrBg = clrBg;
         this.showBackground = true;
         this.vertices = new VAO();
-        this.bgVertices = new VAO();
         this.x = x;
         this.y = y;
         this.width = width;
@@ -25,8 +24,9 @@ export default class AssetBuilder {
     getAsset() {
         const ctc = new TriContainer(this.x, this.y, this.width, this.height);
         if (this.showBackground == true) {
-            this.bgVertices.addRectangle(0, 0, 100, 100, this.clrBg.r(), this.clrBg.g(), this.clrBg.b());
-            ctc.vertices.concat(this.bgVertices);
+            const bgVertices = new VAO();
+            bgVertices.addRect(0, 0, 100, 100, this.clrBg.r(), this.clrBg.g(), this.clrBg.b());
+            ctc.vertices.concat(bgVertices);
         }
         ctc.vertices.concat(this.vertices);
         return ctc;

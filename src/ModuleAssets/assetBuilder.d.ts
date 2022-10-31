@@ -7,6 +7,7 @@ export default class AssetBuilder {
     y: number;
     width: number;
     height: number;
+    palette: ClrObj[];
     clrMain: ClrObj;
     clrBg: ClrObj;
     vertices: VAO;

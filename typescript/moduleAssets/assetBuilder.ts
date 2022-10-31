@@ -12,6 +12,7 @@ public x :number;
 public y :number;
 public width :number;
 public height :number;
+public palette :ClrObj[];
 public clrMain :ClrObj;
 public clrBg :ClrObj;
 //----------------
@@ -19,13 +20,14 @@ public vertices :VAO;
 //////////////////////////////////////////////////
 constructor(x:number=0,y:number=0,width:number=100,height:number=100,clrBg :ClrObj| null=null,clrMain:ClrObj| null=null){
 
-//white-default main
-if (clrMain == null){clrMain = new ClrObj(1,1,1);}
 //black-default main
-if (clrBg == null){clrBg = new ClrObj(0,0,0);}
+if (clrMain == null){clrMain = new ClrObj(0,0,0);}
+//white-default main
+if (clrBg == null){clrBg = new ClrObj(1,1,1);}
 //--------------------------------------------------
 this.clrMain = clrMain;
 this.clrBg = clrBg;
+this.palette = [];
 //--------------------------------------------------
 this.showBackground = true;
 this.vertices = new VAO();
@@ -42,6 +44,7 @@ this.clrBg = new ClrObj(r,g,b);
 }
 
 getAsset():TriContainer{
+    
 const  ctc = new TriContainer(this.x,this.y,this.width,this.height);
 if (this.showBackground == true){
 

@@ -1,11 +1,10 @@
-import { GlUtil, getClrObj } from "./moduleAssets/assets.js";
-import Sq2x2 from "./moduleAssets/assets/sq2X2.js";
+import { AssetsCollection as ACol, GlUtil } from "./moduleAssets/assets.js";
 const gl = GlUtil.getGl("bilza");
-const asset = new Sq2x2();
-asset.clrMain = getClrObj(0, 0, 0.4);
-asset.clrSq2 = getClrObj(0.4, 0);
+const asset = new ACol.plus(25, 25, 50, 50);
+asset.sizes[0] = 5;
+asset.sizes[1] = 10;
 const assetcomp = asset.getAsset();
 assetcomp.init(gl);
-GlUtil.clear(gl, 0.3, 0.3, 0.3);
 assetcomp.update(gl);
+GlUtil.clear(gl, 0.1, 0.1, 0.6);
 assetcomp.draw(gl);

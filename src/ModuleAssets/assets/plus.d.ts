@@ -1,3 +1,6 @@
-import { AssetBuilder, ClrObj } from "../assets.js";
-export default function plus(x?: number, y?: number, width?: number, height?: number, clrBg?: ClrObj | null, clrMain?: ClrObj | null): AssetBuilder;
+import { TriContainer, AssetBuilder } from "../assets.js";
+export default class Plus extends AssetBuilder {
+    constructor(x?: number, y?: number, width?: number, height?: number);
+    getAsset(): TriContainer;
+}
 //# sourceMappingURL=plus.d.ts.map

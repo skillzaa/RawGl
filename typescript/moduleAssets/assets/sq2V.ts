@@ -1,19 +1,18 @@
-import {AssetBuilder,ClrObj} from "../assets.js";
+import {TriContainer,AssetBuilder,ClrObj, getClrObj} from "../assets.js";
 
-export default function sq2V(x:number,y:number,width :number,height:number,
-clrRect1:ClrObj|null=null,
-clrRect2:ClrObj|null=null ):AssetBuilder{
-////////////////////////////////////////////////
-const asset = new AssetBuilder(x,y,width,height);
-//--localColor
-
-if (clrRect1 == null){clrRect1 = new ClrObj(1);}
-if (clrRect2 == null){clrRect2 = new ClrObj(0,1);}
-//-------------------
-asset.vertices.addRectangle(0,0,  50,100,  clrRect1.r(),clrRect1.g(),clrRect1.b());
-
-
-asset.vertices.addRectangle(50,0, 50,100, clrRect2.r(),clrRect2.g(),clrRect2.b());
-///----------------------
-return asset;
+export default class SqV extends AssetBuilder {
+public clrSq2 :ClrObj;
+constructor(x:number=0,y:number=0,width:number=100,height:number=100){
+super(x,y,width,height);
+this.clrSq2 = getClrObj(0,0,0);
+}
+/////////////////////////////////////////////
+getAsset():TriContainer{
+//--------------------------
+this.add.rectWH(0,0,50,100,  this.palette.color[1]);
+this.add.rectWH(50,0,50,100, this.palette.color[2]);
+//-------------------------------------
+return super.getAsset();    
+}
+/////////////////////////////////////////////
 }

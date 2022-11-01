@@ -2,6 +2,7 @@ import TriContainer from "../triContainer/triContainer.js";
 import ClrObj from "./clrObj.js";
 import { getClrObj } from "../assets.js";
 import FiveFifteenDb from "../fiveFifteen/fiveFifteenDb.js";
+import Palette from "./palette.js";
 /**
  * The AssetBuilder takes in instructions and spits out a CoreTriContainer filled with given shapes.
  * This is the base class for inheriting AssetBuilder Objects. We can have 1 object for each asset (if that asset adds some variables etc)
@@ -13,21 +14,17 @@ public x :number;
 public y :number;
 public width :number;
 public height :number;
-public clrMain :ClrObj;
-public clrBg :ClrObj;
+public palette :Palette;
+public sizes :number[];
+public switches :boolean[];
 //----------------
 public add :FiveFifteenDb; //add is a database here
 //////////////////////////////////////////////////
-constructor(x:number=0,y:number=0,width:number=100,height:number=100,clrBg :ClrObj| null=null,clrMain:ClrObj| null=null){
+constructor(x:number=0,y:number=0,width:number=100,height:number=100){
 
-//black-default main
-if (clrMain == null){clrMain = new ClrObj(0,0,0);}
-//white-default main
-if (clrBg == null){clrBg = new ClrObj(1,1,1);}
-//--------------------------------------------------
-this.clrMain = clrMain;
-this.clrBg = clrBg;
-//--------------------------------------------------
+this.palette = new Palette();
+this.sizes = [];
+this.switches = [];
 this.showBackground = true;
 this.add = new FiveFifteenDb();
 //--------------------------------------------------
@@ -38,16 +35,13 @@ this.height = height;
 //----------
 }
 
-setColorBg(r:number=0,g:number=0,b:number=0){
-this.clrBg = new ClrObj(r,g,b);    
-}
-
 getAsset():TriContainer{
 //-------Bg
 const  ctc = new TriContainer(this.x,this.y,this.width,this.height);
             if (this.showBackground == true){
             const newDb = new FiveFifteenDb();
-            newDb.rectWH(0,0,100,100,this.clrBg);
+            //--This is where we use index 0 for background
+            newDb.rectWH(0,0,100,100,this.palette.color[0]);
             //-----------Add back gr vertices
             //@ts-expect-error
             newDb.uploadData(ctc);

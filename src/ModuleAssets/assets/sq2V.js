@@ -1,13 +1,12 @@
-import { AssetBuilder, ClrObj } from "../assets.js";
-export default function sq2V(x, y, width, height, clrRect1 = null, clrRect2 = null) {
-    const asset = new AssetBuilder(x, y, width, height);
-    if (clrRect1 == null) {
-        clrRect1 = new ClrObj(1);
+import { AssetBuilder, getClrObj } from "../assets.js";
+export default class SqV extends AssetBuilder {
+    constructor(x = 0, y = 0, width = 100, height = 100) {
+        super(x, y, width, height);
+        this.clrSq2 = getClrObj(0, 0, 0);
     }
-    if (clrRect2 == null) {
-        clrRect2 = new ClrObj(0, 1);
+    getAsset() {
+        this.add.rectWH(0, 0, 50, 100, this.palette.color[1]);
+        this.add.rectWH(50, 0, 50, 100, this.palette.color[2]);
+        return super.getAsset();
     }
-    asset.vertices.addRectangle(0, 0, 50, 100, clrRect1.r(), clrRect1.g(), clrRect1.b());
-    asset.vertices.addRectangle(50, 0, 50, 100, clrRect2.r(), clrRect2.g(), clrRect2.b());
-    return asset;
 }

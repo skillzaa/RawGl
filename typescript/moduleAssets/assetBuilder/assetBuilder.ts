@@ -3,7 +3,8 @@ import ClrObj from "./clrObj.js";
 import { getClrObj } from "../assets.js";
 import FiveFifteenDb from "../fiveFifteen/fiveFifteenDb.js";
 /**
- * The AssetBuilder takes in instructions and spits out a CoreTriContainer filled with given shapes
+ * The AssetBuilder takes in instructions and spits out a CoreTriContainer filled with given shapes.
+ * This is the base class for inheriting AssetBuilder Objects. We can have 1 object for each asset (if that asset adds some variables etc)
 */
 
 export default class AssetBuilder {
@@ -16,7 +17,7 @@ public palette :ClrObj[];
 public clrMain :ClrObj;
 public clrBg :ClrObj;
 //----------------
-public add :FiveFifteenDb;
+public add :FiveFifteenDb; //add is a database here
 //////////////////////////////////////////////////
 constructor(x:number=0,y:number=0,width:number=100,height:number=100,clrBg :ClrObj| null=null,clrMain:ClrObj| null=null){
 
@@ -56,8 +57,6 @@ const  ctc = new TriContainer(this.x,this.y,this.width,this.height);
 /////////////////////////////////
 //@ts-expect-error
 this.add.uploadData(ctc);
-// ctc.vertices.concat(this.vertices);
-// ctc.setVAO(this.vertices);
 return ctc;
 }
 ////////////////////////////////////////

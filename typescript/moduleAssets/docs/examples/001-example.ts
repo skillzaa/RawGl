@@ -1,4 +1,4 @@
-import {AssetBuilder,AssetsCollection,TriContainer,GlUtil,ClrObj,getClrObj } from "../assets.js";
+import {AssetBuilder,AssetsCollection,TriContainer,GlUtil,ClrObj,getClrObj } from "../../assets.js";
 
 ////////////////////////////////////////////////
 const gl = GlUtil.getGl("bilza");

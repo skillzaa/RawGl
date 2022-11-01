@@ -1,8 +1,8 @@
-import ClrObj from "../triContainer/clrObj.js.js";
+import ClrObj from "../assetBuilder/clrObj.js";
 
 /**
  * TriangleFifteen object will hold 15 points of a single triangle and the reference to ClrObj. 
- * This can hold the data so that the color can be changed and once the data is takes out the changed color will reflect.
+ * This can hold the data so that the COLOR can be changed and once the data is takes out the changed color will reflect.
  */
 export default class TriangleFifteen{
 private readonly _x1:number;

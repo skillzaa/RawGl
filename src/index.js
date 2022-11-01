@@ -1,8 +1,10 @@
-import { AssetsCollection as ACol, GlUtil } from "./moduleAssets/assets.js";
+import { AssetsCollection as ACol, GlUtil, getClrObj } from "./moduleAssets/assets.js";
 const gl = GlUtil.getGl("bilza");
-const asset = new ACol.plus(25, 25, 50, 50);
-asset.sizes[0] = 5;
-asset.sizes[1] = 10;
+const asset = new ACol.multiply(25, 25, 50, 50);
+asset.sizes[0] = 80;
+asset.sizes[1] = 70;
+asset.palette.color[1] = getClrObj(1);
+asset.palette.color[2] = getClrObj(0, 1);
 const assetcomp = asset.getAsset();
 assetcomp.init(gl);
 assetcomp.update(gl);

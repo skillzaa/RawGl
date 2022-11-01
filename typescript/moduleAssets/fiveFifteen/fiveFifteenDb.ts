@@ -13,24 +13,24 @@ constructor(){
 this.triangles = [];    
 }
 /**This is very important function-Entries from this fn will go to triContainer addTri method */
-public addTri(x1 :number,y1:number,x2:number,y2:number,x3:number,y3:number,clr: ClrObj){
+public tri(x1 :number,y1:number,x2:number,y2:number,x3:number,y3:number,clr: ClrObj){
 ///////////////---------vertex 1
 const tri = new TriangleFifteen(x1,y1,x2,y2,x3,y3,clr);
 this.triangles.push(tri);
 }
     
 ///////////////////////////////////////////    
-public  addRect(x :number,y:number,width:number=30,height:number=20,clr :ClrObj){
-this.addTri(x,y, x+width,y, x+width,y+height,clr);    
-this.addTri(x+width,y+height, x,y+height, x,y,clr);
+public  rectWH(x :number,y:number,width:number=30,height:number=20,clr :ClrObj){
+this.tri(x,y, x+width,y, x+width,y+height,clr);    
+this.tri(x+width,y+height, x,y+height, x,y,clr);
 }
-public  addRectVer(x1 :number,y1:number,x2 :number,y2:number,x3 :number,y3:number,x4 :number,y4:number,clr :ClrObj){
-    this.addTri( x1,y1, x2,y2, x3,y3, clr);
-    this.addTri( x3,y3, x2,y2, x1,y1, clr);
+public  rect(x1 :number,y1:number,x2 :number,y2:number,x3 :number,y3:number,x4 :number,y4:number,clr :ClrObj){
+    this.tri( x1,y1, x2,y2, x3,y3, clr);
+    this.tri( x3,y3, x2,y2, x1,y1, clr);
 }
-public  addDiagonal(y1 :number = 0, y2 :number =100,lineWidth :number=4,clr :ClrObj ){
-    this.addTri( 0,y1 - lineWidth,  0,y1,   100,y2, clr);
-    this.addTri( 100,y2,  100,y2 - lineWidth,   0,y1 - lineWidth, clr);
+public  diagonal(y1 :number = 0, y2 :number =100,lineWidth :number=4,clr :ClrObj ){
+    this.tri( 0,y1 - lineWidth,  0,y1,   100,y2, clr);
+    this.tri( 100,y2,  100,y2 - lineWidth,   0,y1 - lineWidth, clr);
 }
 ///////////////////////////////////////////////////
 private uploadData(ctc :TriContainer):TriContainer{

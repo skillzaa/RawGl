@@ -13,7 +13,6 @@ public x :number;
 public y :number;
 public width :number;
 public height :number;
-public palette :ClrObj[];
 public clrMain :ClrObj;
 public clrBg :ClrObj;
 //----------------
@@ -28,7 +27,6 @@ if (clrBg == null){clrBg = new ClrObj(1,1,1);}
 //--------------------------------------------------
 this.clrMain = clrMain;
 this.clrBg = clrBg;
-this.palette = this.initPalette();
 //--------------------------------------------------
 this.showBackground = true;
 this.add = new FiveFifteenDb();
@@ -49,7 +47,7 @@ getAsset():TriContainer{
 const  ctc = new TriContainer(this.x,this.y,this.width,this.height);
             if (this.showBackground == true){
             const newDb = new FiveFifteenDb();
-            newDb.addRect(0,0,100,100,this.clrBg);
+            newDb.rectWH(0,0,100,100,this.clrBg);
             //-----------Add back gr vertices
             //@ts-expect-error
             newDb.uploadData(ctc);
@@ -66,18 +64,5 @@ if (clrobj == null){
 }
 return clrobj;
 }
-private initPalette():ClrObj[]{
-const ar = [];
-    ar[0] = getClrObj(1,0,0); 
-    ar[1] = getClrObj(0,1,0); 
-    ar[2] = getClrObj(0,0,1); 
-    ar[3] = getClrObj(1,1,0); 
-    ar[4] = getClrObj(0,1,1); 
-    ar[5] = getClrObj(1,0,1); 
-    ar[6] = getClrObj(0.3,0.5,0.8); 
-    ar[7] = getClrObj(0.3,0.5,0.8); 
-    ar[8] = getClrObj(0.3,0.5,0.8); 
-    ar[9] = getClrObj(0.3,0.5,0.8);
-    return ar; 
-}
+/////////////////////////
 }

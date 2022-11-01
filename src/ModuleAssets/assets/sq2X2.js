@@ -1,9 +1,12 @@
-import { AssetBuilder } from "../assets.js";
-export default function sq2X2(x, y, width, height, clrBg = null, clrMain = null) {
-    const asset = new AssetBuilder(x, y, width, height, clrBg, clrMain);
-    asset.vertices.addRect(50, 50, 50, 50, asset.clrMain.r(), asset.clrMain.g(), asset.clrMain.b());
-    asset.vertices.addRect(0, 50, 50, 50, asset.palette[0].r(), asset.palette[0].g(), asset.palette[0].b());
-    asset.vertices.addRect(0, 0, 50, 50, asset.palette[1].r(), asset.palette[1].g(), asset.palette[1].b());
-    asset.vertices.addRect(50, 0, 50, 50, asset.palette[2].r(), asset.palette[2].g(), asset.palette[2].b());
-    return asset;
+import { AssetBuilder, getClrObj } from "../assets.js";
+export default class Sq2x2 extends AssetBuilder {
+    constructor(x = 0, y = 0, width = 100, height = 100, clrBg = null, clrMain = null) {
+        super(x, y, width, height, clrBg, clrMain);
+        this.clrSq2 = getClrObj(0, 0, 0);
+    }
+    getAsset() {
+        this.add.rectWH(0, 0, 50, 100, this.clrMain);
+        this.add.rectWH(50, 0, 50, 100, this.clrSq2);
+        return super.getAsset();
+    }
 }

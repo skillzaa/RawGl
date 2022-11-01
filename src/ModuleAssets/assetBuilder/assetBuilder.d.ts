@@ -7,7 +7,6 @@ export default class AssetBuilder {
     y: number;
     width: number;
     height: number;
-    palette: ClrObj[];
     clrMain: ClrObj;
     clrBg: ClrObj;
     add: FiveFifteenDb;
@@ -15,6 +14,5 @@ export default class AssetBuilder {
     setColorBg(r?: number, g?: number, b?: number): void;
     getAsset(): TriContainer;
     setClrIfNull(clrobj: ClrObj | null, r: number, g: number, b: number): ClrObj;
-    private initPalette;
 }
 //# sourceMappingURL=assetBuilder.d.ts.map

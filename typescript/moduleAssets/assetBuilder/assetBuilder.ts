@@ -1,4 +1,4 @@
-import TriContainer from "../core/triContainer.js";
+import TriContainer from "../triContainer/triContainer.js";
 import ClrObj from "./clrObj.js";
 import { getClrObj } from "../assets.js";
 import FiveFifteenDb from "../fiveFifteen/fiveFifteenDb.js";

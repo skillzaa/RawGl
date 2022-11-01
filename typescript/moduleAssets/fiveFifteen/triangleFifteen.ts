@@ -1,4 +1,4 @@
-import ClrObj from "../core/clrObj.js";
+import ClrObj from "../triContainer/clrObj.js.js";
 
 /**
  * TriangleFifteen object will hold 15 points of a single triangle and the reference to ClrObj. 

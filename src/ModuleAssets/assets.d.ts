@@ -1,8 +1,8 @@
 import AssetBuilder from "./assetBuilder/assetBuilder.js";
 import AssetsCollection from "./assetsCollection.js";
-import TriContainer from "./core/triContainer.js";
-import GlUtil from "./core/glUtil.js";
-import ClrObj from "./core/clrObj.js";
+import TriContainer from "./triContainer/triContainer.js";
+import GlUtil from "./triContainer/glUtil.js";
+import ClrObj from "./triContainer/clrObj.js.js";
 import getClrObj from "./assetBuilder/getClrObj.js";
 export { AssetBuilder, AssetsCollection, TriContainer, ClrObj, GlUtil, getClrObj };
 //# sourceMappingURL=assets.d.ts.map

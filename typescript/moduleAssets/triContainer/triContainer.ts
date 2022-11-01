@@ -51,7 +51,7 @@ public width :number;
 public height :number;
 private program :WebGLProgram | null;
 //---------------------------------
-constructor(x:number= 0,y:number= 0.0,width:number= 100,height:number= 100){
+constructor(x:number= 0,y:number= 0,width:number= 100,height:number= 100){
 
 //--------------------------------------------------  
 this.x = x;

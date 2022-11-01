@@ -1,4 +1,4 @@
-import ClrObj from "../core/clrObj.js";
+import ClrObj from "../triContainer/clrObj.js.js";
 export default class TriangleFifteen {
     constructor(x1, y1, x2, y2, x3, y3, clr) {
         this._x1 = x1;

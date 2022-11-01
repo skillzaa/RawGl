@@ -1,4 +1,4 @@
-import ClrObj from "../core/clrObj.js";
+import ClrObj from "../triContainer/clrObj.js.js";
 export default class TriangleFifteen {
     private readonly _x1;
     private readonly _y1;

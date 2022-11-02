@@ -1,5 +1,5 @@
-import TriContainer from "../triContainer.js";
-import GlUtil from "../glUtil.js";
+import TriContainer from "../../../core/triContComp.js";
+import GlUtil from "../../../core/glUtil.js";
 const gl = GlUtil.getGl("bilza");
 const first = new TriContainer(0, 80, 40, 40);
 first.addTri(0, 100, 50, 100, 0, 50);

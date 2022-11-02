@@ -1,6 +1,6 @@
-import TriContainer from "../triContainer/triContainer.js";
+import TriContainer from "../../core/triContComp.js";
 import ClrObj from "./clrObj.js";
-import FiveFifteenDb from "../fiveFifteen/fiveFifteenDb.js";
+import FiveFifteenDb from "../../primtives/fiveFifteenDb-canab.js";
 import Palette from "./palette.js";
 export default class AssetBuilder {
     showBackground: boolean;

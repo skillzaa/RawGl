@@ -1,4 +1,4 @@
-import GlUtil from "./glUtil.js";
+import GlUtil from "../../core/glUtil.js";
 const vertexShaderSrc = `
 attribute highp vec2 a_pos;
 
@@ -30,7 +30,7 @@ void main(void) {
 }
 `;
 export default class TriContainer {
-    constructor(x = 0, y = 0, width = 100, height = 100) {
+    constructor(x = 25, y = 25, width = 50, height = 50) {
         this.x = x;
         this.y = y;
         this.width = width;

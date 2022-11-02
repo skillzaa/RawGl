@@ -1,5 +1,5 @@
 import { TriContainer, AssetBuilder } from "../assets.js";
-export default class SqH extends AssetBuilder {
+export default class Sq2H extends AssetBuilder {
     constructor(x?: number, y?: number, width?: number, height?: number);
     getAsset(): TriContainer;
 }

@@ -1,7 +1,7 @@
-import TriContainer from "../triContainer/triContainer.js";
+import TriContainer from "../../core/triContComp.js";
 import ClrObj from "./clrObj.js";
 import { getClrObj } from "../assets.js";
-import FiveFifteenDb from "../fiveFifteen/fiveFifteenDb.js";
+import FiveFifteenDb from "../../primtives/fiveFifteenDb-canab.js";
 import Palette from "./palette.js";
 /**
  * The AssetBuilder takes in instructions and spits out a CoreTriContainer filled with given shapes.

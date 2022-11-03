@@ -1,15 +1,15 @@
 import { getClrObj } from "./moduleAssets/assets.js";
 import GlUtil from "./core/glUtil.js";
 import upload515ToTriCont from "./primtives/upload515ToTriCont.js";
-import BaseTriComp from "./core/baseTriComp.js";
-import diagonal from "./primtives/col/diagonal.js";
+import TriComp from "./core/triComp.js";
+import tri from "./primtives/col/tri.js";
 const gl = GlUtil.getGl("bilza");
-const clr = getClrObj(1);
-const clr2 = getClrObj(1, 0, 1);
-const triangles2 = diagonal(-0.5, -0.5, 0.5, 0.5, 0.5, clr2);
-const comp = new BaseTriComp();
-const comp2 = new BaseTriComp();
-upload515ToTriCont(triangles2, comp2);
 GlUtil.clear(gl, 0.2, 0.2, 0.2);
-comp2.init(gl);
-comp2.draw(gl);
+let triangles = tri(0, 0, 50, 0, 50, 50, getClrObj(1));
+draw(triangles);
+function draw(triangles) {
+    const comp = new TriComp();
+    upload515ToTriCont(triangles, comp);
+    comp.init(gl);
+    comp.draw(gl);
+}

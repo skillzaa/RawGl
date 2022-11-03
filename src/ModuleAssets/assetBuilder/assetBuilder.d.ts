@@ -1,7 +1,7 @@
 import TriContainer from "../../core/triContComp.js";
 import ClrObj from "./clrObj.js";
-import FiveFifteenDb from "../../primtives/fiveFifteenDb-canab.js";
 import Palette from "./palette.js";
+import Add from "./add.js";
 export default class AssetBuilder {
     showBackground: boolean;
     x: number;
@@ -11,7 +11,7 @@ export default class AssetBuilder {
     palette: Palette;
     sizes: number[];
     switches: boolean[];
-    add: FiveFifteenDb;
+    add: Add;
     constructor(x?: number, y?: number, width?: number, height?: number);
     getAsset(): TriContainer;
     setClrIfNull(clrobj: ClrObj | null, r: number, g: number, b: number): ClrObj;

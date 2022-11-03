@@ -1,22 +1,26 @@
-import { ClrObj } from "../moduleAssets/assets.js";
-import TriangleFifteen from "./triangleFifteen.js";
+import tri from "./col/tri";
 
+
+
+
+//----------------------------------------------------------
 /**
  * Primtives just exports all the primtives via static functions.
+ * - These are THE ONE AND ONLY "tri" (core primtive the place from which all triangle originate and end at addTri of BaseTriComp)
+ * - diagonal, rect, rectWH, polygon (4 almost core).
+ * - There there are as many "extended" primtive as possible. Extended Primtive must be just one item and thing more than that should be asset.
  * 
  */
 
 
 export default class Primtives {
 
-// rect(x1 :number,y1:number,x2 :number,y2:number,x3 :number,y3:number,x4 :number,y4:number,clr :ClrObj):TriangleFifteen[]{
-// const ret:TriangleFifteen[] = [];    
-// const tri1 = new TriangleFifteen(x1,y1, x2,y2, x3,y3, clr);    
-// const tri2 = new TriangleFifteen(x3,y3, x2,y2, x1,y1, clr);    
-//   ret.push(tri1);  
-//   ret.push(tri2);  
-// return ret;    
-// }
+static tri = tri;
+
+/*
+ *  The most important primtive is kept at the end.  
+*/    
 
 
+///////////////////////////////////////////////////////
 }

@@ -4,8 +4,12 @@ import rectWH from "./col/rectWH.js";
 import diagonal from "./col/diagonal.js";
 import polygon from "./col/polygon.js";
 import triRtR from "./extended/triRtR.js";
+import triRtL from "./extended/triRtL.js";
+import triRtLInv from "./extended/triRtLInv.js";
 export default class Primtive {
     static triRtR: typeof triRtR;
+    static triRtL: typeof triRtL;
+    static triRtLInv: typeof triRtLInv;
     static rect: typeof rect;
     static rectWH: typeof rectWH;
     static diagonal: typeof diagonal;

@@ -1,7 +1,7 @@
 import TriangleFifteen from "../triangleFifteen.js";
-export default function triRtR(x1, y1, width, heigth, clr) {
+export default function triRtL(x, y, width, height, clr) {
     const ret = [];
-    const tri1 = new TriangleFifteen(x1, y1, x1 + width, y16, x1 + width, y3, clr);
+    const tri1 = new TriangleFifteen(x, y, x - width, y, x - width, y + height, clr);
     ret.push(tri1);
     return ret;
 }

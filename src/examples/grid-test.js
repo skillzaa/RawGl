@@ -1,8 +1,8 @@
-import { getClrObj } from "./moduleAssets/assets.js";
-import GlUtil from "./core/glUtil.js";
-import TriComp from "./core/triComp.js";
-import upload515ToTriCont from "./primtives/upload515ToTriCont.js";
-import Primtive from "./primtives/primitive.js";
+import { getClrObj } from "../moduleAssets/assets.js";
+import GlUtil from "../core/glUtil.js";
+import TriComp from "../core/triComp.js";
+import upload515ToTriCont from "../primtives/upload515ToTriCont.js";
+import Primtive from "../primtives/primitive.js";
 const gl = GlUtil.getGl("bilza");
 GlUtil.clear(gl, 0.2, 0.2, 0.2);
 function grid(r, g, b) {

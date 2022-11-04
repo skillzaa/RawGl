@@ -5,6 +5,8 @@ import rectWH from "./col/rectWH.js";
 import diagonal from "./col/diagonal.js";
 import polygon from "./col/polygon.js";
 import triRtR from "./extended/triRtR.js";
+import triRtL from "./extended/triRtL.js";
+import triRtLInv from "./extended/triRtLInv.js";
 
 //----------------------------------------------------------
 /**
@@ -18,6 +20,8 @@ import triRtR from "./extended/triRtR.js";
 export default class Primtive {
 
 static triRtR = triRtR;
+static triRtL = triRtL;
+static triRtLInv = triRtLInv;
 
 
 

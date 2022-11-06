@@ -1,4 +1,4 @@
-import {getClrObj } from "../moduleAssets/assets.js";
+import getClrObj  from "../color/getClrObj.js";
 import GlUtil from "../core/glUtil.js";
 ////////////////////////////////////////////////
 import TriComp from "../core/triComp.js";

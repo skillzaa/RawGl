@@ -1,4 +1,4 @@
-import ClrObj from "../moduleAssets/assetBuilder/clrObj.js";
+import ClrObj from "../color/clrObj.js";
 export default class TriangleFifteen {
     private readonly _x1;
     private readonly _y1;

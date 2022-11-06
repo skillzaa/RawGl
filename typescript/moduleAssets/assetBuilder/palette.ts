@@ -1,5 +1,5 @@
-import ClrObj from "./clrObj.js";
-import getClrObj from "./getClrObj.js";
+import ClrObj from "../../color/clrObj.js";
+import getClrObj from "../../color/getClrObj.js";
 
 //-----------------------------------------
 export default class Palette{

@@ -1,4 +1,4 @@
-import ClrObj from "./clrObj.js";
+import ClrObj from "../../color/clrObj.js";
 import TriangleFifteen from "../../primtives/triangleFifteen.js";
 export default class Add {
     private triangles;

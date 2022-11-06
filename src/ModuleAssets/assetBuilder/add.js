@@ -1,4 +1,4 @@
-import Primitive from "../../primtives/primitive.js";
+import Primitive from "../../primtives/primitives_list.js";
 export default class Add {
     constructor() {
         this.triangles = [];

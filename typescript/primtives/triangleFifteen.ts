@@ -1,4 +1,4 @@
-import ClrObj from "../moduleAssets/assetBuilder/clrObj.js";
+import ClrObj from "../color/clrObj.js";
 
 /**
  * TriangleFifteen object will hold 15 points of a single triangle and the reference to ClrObj. 

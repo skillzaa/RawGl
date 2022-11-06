@@ -1,4 +1,4 @@
-import getClrObj from "./getClrObj.js";
+import getClrObj from "../../color/getClrObj.js";
 export default class Palette {
     constructor() {
         this.color = [];

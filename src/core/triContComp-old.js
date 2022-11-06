@@ -42,38 +42,6 @@ export default class TriContComp extends BaseTriComp {
         this.u_widthLoc = null;
         this.u_heightLoc = null;
     }
-    addTri(x1, y1, x2, y2, x3, y3, r = 1, g = 0, b = 0) {
-        this.vertices.push((x1));
-        this.vertices.push((y1));
-        this.vertices.push((r));
-        this.vertices.push((g));
-        this.vertices.push((b));
-        this.vertices.push((x2));
-        this.vertices.push((y2));
-        this.vertices.push((r));
-        this.vertices.push((g));
-        this.vertices.push((b));
-        this.vertices.push((x3));
-        this.vertices.push((y3));
-        this.vertices.push((r));
-        this.vertices.push((g));
-        this.vertices.push((b));
-    }
-    init(gl) {
-        const vertexShader = GlUtil.createShader(gl, vertexShaderSrc, gl.VERTEX_SHADER);
-        const fragmentShader = GlUtil.createShader(gl, fragShaderSrc, gl.FRAGMENT_SHADER);
-        this.program = GlUtil.getProgram(gl, vertexShader, fragmentShader);
-        this.buffer = GlUtil.getBuffer(gl);
-        GlUtil.bindBuffer(gl, this.buffer, this.vertices);
-        GlUtil.linkNuseProgram(gl, this.program);
-        GlUtil.setAttribute(gl, "a_pos", this.program, 2, 4 * 5, 0);
-        GlUtil.setAttribute(gl, "a_clr", this.program, 3, 4 * 5, 2 * 4);
-        this.u_xLoc = GlUtil.getUniformLocation(gl, this.program, "u_x");
-        this.u_yLoc = GlUtil.getUniformLocation(gl, this.program, "u_y");
-        this.u_widthLoc = GlUtil.getUniformLocation(gl, this.program, "u_width");
-        this.u_heightLoc = GlUtil.getUniformLocation(gl, this.program, "u_height");
-        this.update(gl);
-    }
     update(gl) {
         const twoDivBy100 = 2 / 100;
         gl.uniform1f(this.u_xLoc, (twoDivBy100 * this.x));
@@ -85,5 +53,15 @@ export default class TriContComp extends BaseTriComp {
         if (this.buffer == null) {
             throw new Error("buffer is null the comp may not be initialized");
         }
+    }
+    init(gl) {
+        const vertexShader = GlUtil.createShader(gl, vertexShaderSrc, gl.VERTEX_SHADER);
+        const fragmentShader = GlUtil.createShader(gl, fragShaderSrc, gl.FRAGMENT_SHADER);
+        this.program = GlUtil.getProgram(gl, vertexShader, fragmentShader);
+        this.buffer = GlUtil.getBuffer(gl);
+        GlUtil.bindBuffer(gl, this.buffer, this.vertices);
+        GlUtil.linkNuseProgram(gl, this.program);
+        GlUtil.setAttribute(gl, "a_pos", this.program, 2, 4 * 5, 0);
+        GlUtil.setAttribute(gl, "a_clr", this.program, 3, 4 * 5, 2 * 4);
     }
 }

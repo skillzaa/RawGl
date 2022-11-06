@@ -1,7 +1,7 @@
 import Primitive from "../../primtives/primitives_list.js";
 ///////////////////////////////////////////////
-import ClrObj from "./clrObj.js";
-import getClrObj from "./getClrObj.js";
+import ClrObj from "../../color/clrObj.js";
+import getClrObj from "../../color/getClrObj.js";
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
 import TriangleFifteen from "../../primtives/triangleFifteen.js";

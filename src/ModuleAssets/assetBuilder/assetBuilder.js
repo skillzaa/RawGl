@@ -1,6 +1,6 @@
-import TriContainer from "../../core/triContComp.js";
-import ClrObj from "./clrObj.js";
-import Primtive from "../../primtives/primitive.js";
+import TriContComp from "../../core/triContComp.js";
+import ClrObj from "../../color/clrObj.js";
+import Primtive from "../../primtives/primitives_list.js";
 import upload515ToTriCont from "../../primtives/upload515ToTriCont.js";
 import Palette from "./palette.js";
 import Add from "./add.js";
@@ -17,7 +17,7 @@ export default class AssetBuilder {
         this.height = height;
     }
     getAsset() {
-        const ctc = new TriContainer(this.x, this.y, this.width, this.height);
+        const ctc = new TriContComp(this.x, this.y, this.width, this.height);
         if (this.showBackground == true) {
             const newDb = Primtive.rectWH(0, 0, 100, 100, this.palette.color[0]);
             upload515ToTriCont(newDb, ctc);

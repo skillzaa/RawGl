@@ -1,5 +1,5 @@
-import TriContainer from "../../core/triContComp.js";
-import ClrObj from "./clrObj.js";
+import TriContComp from "../../core/triContComp.js";
+import ClrObj from "../../color/clrObj.js";
 import { getClrObj } from "../assets.js";
 import Primtive from "../../primtives/primitives_list.js";
 import upload515ToTriCont from "../../primtives/upload515ToTriCont.js";
@@ -37,9 +37,9 @@ this.height = height;
 //----------
 }
 
-getAsset():TriContainer{
+getAsset():TriContComp{
 //-------Bg
-const  ctc = new TriContainer(this.x,this.y,this.width,this.height);
+const  ctc = new TriContComp(this.x,this.y,this.width,this.height);
             if (this.showBackground == true){
             // const newDb = new FiveFifteenDb();
             //--This is where we use index 0 for background

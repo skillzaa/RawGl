@@ -1,5 +1,5 @@
-import TriContainer from "../../core/triContComp.js";
-import ClrObj from "./clrObj.js";
+import TriContComp from "../../core/triContComp.js";
+import ClrObj from "../../color/clrObj.js";
 import Palette from "./palette.js";
 import Add from "./add.js";
 export default class AssetBuilder {
@@ -13,7 +13,7 @@ export default class AssetBuilder {
     switches: boolean[];
     add: Add;
     constructor(x?: number, y?: number, width?: number, height?: number);
-    getAsset(): TriContainer;
+    getAsset(): TriContComp;
     setClrIfNull(clrobj: ClrObj | null, r: number, g: number, b: number): ClrObj;
 }
 //# sourceMappingURL=assetBuilder.d.ts.map

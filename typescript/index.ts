@@ -1,31 +1,24 @@
-import {AssetBuilder,AssetsCollection as ACol,TriContainer,GlUtil,ClrObj,getClrObj } from "./moduleAssets/assets.js";
-import Grid from "./moduleAssets/assets/grid.js";
-import firve15To26 from "./functions/firve15To26.js";
+// import {getClrObj, TriContainer } from "./moduleAssets/assets.js";
+import GlUtil from "./core/glUtil.js";
+import {Primtives,upload515ToTriCont,TriangleFifteen} from "./primtives/primtives.js";
+import getClrObj from "./color/getClrObj.js"
+////////////////////////////////////////////////
+
+import TriContComp from "./core/triContComp.js";
+//----primtives
 
 ////////////////////////////////////////////////
 const gl = GlUtil.getGl("bilza");
-const asset = new Grid(0,0,100,100);
-//////////////////////////////////////////////////
-//-----------change properties
-//////////////////////////////////////////////////
-//---Extract the asset
- 
-const assetcomp = asset.getAsset();
+GlUtil.clear(gl,0.2,0.2,0.2);
 
-//--get 
-const five15 = asset.add.getDb()
-const two6 = firve15To26(five15);
-console.log("two6",two6);
+//////////////////////////////////////
+const container = new TriContComp(0,0,50,50);
+container.addTri(0,0,    50,0,      50,50,     1,0,0);
 
-
-//////////////////////////////////////////////////
-//--- init and draw
-assetcomp.init(gl);
-//---Update so that the changes take effect
-assetcomp.update(gl);
-//////////////////////////////////////////////////
-//--- draw
 GlUtil.clear(gl,0.3,0.3,0.3);
-assetcomp.draw(gl);
+container.init(gl);
+container.update(gl);
+container.draw(gl);
 
-console.log("assetcomp",assetcomp);
+console.log("container",container);
+///////////////////

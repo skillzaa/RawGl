@@ -1,0 +1,21 @@
+import {TriContainer,AssetBuilder, getClrObj} from "../moduleAssets/assets.js";
+
+export default class Sq2x2 extends AssetBuilder {
+constructor(x:number=0,y:number=0,width:number=100,height:number=100){
+super(x,y,width,height);
+}
+/////////////////////////////////////////////
+getAsset():TriContainer{
+//--------------------------
+this.add.rectWH(0,0, 100,5, getClrObj(1));
+
+// this.add.tri(0,0, 100,0, 100,100,  getClrObj(1));
+
+// this.add.rectWH(0,50,50,50,         this.palette.color[2]);
+// this.add.rectWH(0,0,50,50,          this.palette.color[3]);
+// this.add.rectWH(50,0,50,50,         this.palette.color[4]);
+//-------------------------------------
+return super.getAsset();    
+}
+/////////////////////////////////////////////
+}

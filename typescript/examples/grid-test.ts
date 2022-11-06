@@ -1,10 +1,10 @@
 import {getClrObj } from "../moduleAssets/assets.js";
 import GlUtil from "../core/glUtil.js";
 ////////////////////////////////////////////////
-import TriangleFifteen from "../primtives/triangleFifteen.js";
+import TriangleFifteen from "../formats/triangleFifteen.js";
 import TriComp from "../core/triComp.js";
-import upload515ToTriCont from "../primtives/upload515ToTriCont.js";
-import Primtive from "../primtives/primitives_list.js";
+import upload515ToTriCont from "../formats/upload515ToTriCont.js";
+import Primtive from "../primtives/primitives.js";
 
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////

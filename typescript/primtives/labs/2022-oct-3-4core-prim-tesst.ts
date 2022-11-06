@@ -1,8 +1,8 @@
 import {getClrObj } from "../../moduleAssets/assets.js";
 import GlUtil from "../../core/glUtil.js";
-import TriangleFifteen from "../triangleFifteen.js";
+import TriangleFifteen from "../../formats/triangleFifteen.js";
 ////////////////////////////////////////////////
-import upload515ToTriCont from "../upload515ToTriCont.js";
+import upload515ToTriCont from "../../formats/upload515ToTriCont.js";
 import TriComp from "../../core/triComp.js";
 //----primtives
 import tri from "../col/tri.js";

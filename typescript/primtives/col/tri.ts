@@ -1,5 +1,5 @@
 import { ClrObj } from "../../moduleAssets/assets.js";
-import TriangleFifteen from "../triangleFifteen.js";
+import TriangleFifteen from "../../formats/triangleFifteen.js";
 
  
 

@@ -1,4 +1,5 @@
-import { AssetBuilder, getClrObj } from "../moduleAssets/assets.js";
+import AssetBuilder from "../assetBuilder/assetBuilder.js";
+import getClrObj from "../color/getClrObj.js";
 export default class Sq2x2 extends AssetBuilder {
     constructor(x = 0, y = 0, width = 100, height = 100) {
         super(x, y, width, height);

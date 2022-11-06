@@ -1,4 +1,8 @@
-import {TriContainer,AssetBuilder,ClrObj, getClrObj} from "../moduleAssets/assets.js";
+import AssetBuilder from "../assetBuilder/assetBuilder.js";
+import ClrObj from "../color/clrObj.js";
+import getClrObj from "../color/getClrObj.js";
+import TriContComp from "../core/triContComp.js";
+
 
 export default class Plus extends AssetBuilder {
 constructor(x:number=10,y:number=40,width:number= 30,height:number=50){
@@ -7,7 +11,7 @@ this.sizes[0] = 4;
 this.sizes[1] = 4;
 }
 /////////////////////////////////////////////
-getAsset():TriContainer{
+getAsset():TriContComp{
 const lineWdX = this.sizes[0];    
 const lineWdY = this.sizes[1];    
 const stPtX = (100 - lineWdX)/2;

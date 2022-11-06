@@ -1,6 +1,6 @@
 import getClrObj from "../../color/getClrObj.js";
 import GlUtil from "../../core/glUtil.js";
-import upload515ToTriCont from "../upload515ToTriCont.js";
+import upload515ToTriCont from "../../formats/upload515ToTriCont.js";
 import BaseTriComp from "../../core/baseTriComp.js";
 import polygon from "../col/polygon.js";
 const gl = GlUtil.getGl("bilza");

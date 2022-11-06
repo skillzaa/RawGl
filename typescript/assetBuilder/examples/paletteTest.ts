@@ -1,4 +1,4 @@
-import Palette from "../assetBuilder/palette.js";
+import Palette from "../palette.js";
 
 const pal = new Palette();
 

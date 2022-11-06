@@ -1,4 +1,6 @@
-import {getClrObj } from "../moduleAssets/assets.js";
+import ClrObj  from "../color/clrObj.js";
+import getClrObj  from "../color/getClrObj.js";
+
 import GlUtil from "../core/glUtil.js";
 ////////////////////////////////////////////////
 import TriangleFifteen from "../formats/triangleFifteen.js";

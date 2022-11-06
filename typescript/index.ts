@@ -1,6 +1,6 @@
 // import {getClrObj, TriContainer } from "./moduleAssets/assets.js";
 import GlUtil from "./core/glUtil.js";
-import {Primtives,upload515ToTriCont,TriangleFifteen} from "./primtives/primtives.js";
+import Primtives from "./primtives/primitives.js";
 import getClrObj from "./color/getClrObj.js"
 ////////////////////////////////////////////////
 import TriContComp from "./core/triContComp.js";

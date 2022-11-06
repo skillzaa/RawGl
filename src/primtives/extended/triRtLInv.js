@@ -1,4 +1,4 @@
-import TriangleFifteen from "../triangleFifteen.js";
+import TriangleFifteen from "../../formats/triangleFifteen.js";
 export default function triRtLInv(x, y, width, height, clr) {
     const ret = [];
     const tri1 = new TriangleFifteen(x, y, x, y + height, x + width, y + height, clr);

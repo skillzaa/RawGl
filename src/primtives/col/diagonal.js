@@ -1,4 +1,4 @@
-import TriangleFifteen from "../triangleFifteen.js";
+import TriangleFifteen from "../../formats/triangleFifteen.js";
 export default function diagonal(x1, y1, x2, y2, lineWidth, clr) {
     const ret = [];
     const tri1 = new TriangleFifteen(x1, (y1 + lineWidth), x1, (y1 - lineWidth), x2, (y2 - lineWidth), clr);

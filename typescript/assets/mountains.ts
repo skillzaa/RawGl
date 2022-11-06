@@ -1,4 +1,8 @@
-import {TriContainer,AssetBuilder,ClrObj, getClrObj} from "../moduleAssets/assets.js";
+import AssetBuilder from "../assetBuilder/assetBuilder.js";
+import ClrObj from "../color/clrObj.js";
+import getClrObj from "../color/getClrObj.js";
+import TriContComp from "../core/triContComp.js";
+
 
 export default class Mountains extends AssetBuilder {
 constructor(x:number=10,y:number=40,width:number= 30,height:number=50){
@@ -12,7 +16,7 @@ this.palette.color[2] = getClrObj(0.4,0.9,0.4);
 this.palette.color[3] = getClrObj(0.5,0.5,0.9);
 }
 /////////////////////////////////////////////
-getAsset():TriContainer{
+getAsset():TriContComp{
 //-------------------------------------------------------|
 this.add.tri(0,0,  50,0,  25, this.sizes[0], this.palette.color[1]);      
 this.add.tri(50,0,100,0, 75, this.sizes[1], this.palette.color[2]);      

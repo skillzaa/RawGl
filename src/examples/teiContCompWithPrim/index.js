@@ -1,6 +1,7 @@
 import GlUtil from "../../core/glUtil.js";
-import { Primtives, upload515ToTriCont } from "../../primtives/primtives.js";
+import upload515ToTriCont from "../../formats/upload515ToTriCont.js";
 import getClrObj from "../../color/getClrObj.js";
+import Primtives from "../../primtives/primitives.js";
 import TriContComp from "../../core/triContComp.js";
 const gl = GlUtil.getGl("bilza");
 GlUtil.clear(gl, 0.2, 0.2, 0.2);

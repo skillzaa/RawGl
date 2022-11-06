@@ -1,4 +1,4 @@
-import { AssetBuilder } from "../moduleAssets/assets.js";
+import AssetBuilder from "../assetBuilder/assetBuilder.js";
 export default class Plus extends AssetBuilder {
     constructor(x = 10, y = 40, width = 30, height = 50) {
         super(x, y, width, height);

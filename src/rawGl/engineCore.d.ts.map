@@ -1,1 +1,0 @@
-{"version":3,"file":"engineCore.d.ts","sourceRoot":"","sources":["../../typescript/rawGl/engineCore.ts"],"names":[],"mappings":"AACA,OAAO,OAAO,MAAM,yBAAyB,CAAC;AAI9C,MAAM,CAAC,OAAO,OAAO,UAAU;IAC/B,OAAO,CAAC,EAAE,CAAwB;IAC3B,eAAe,EAAE,OAAO,CAAC;gBAEpB,QAAQ,GAAE,MAAe,EAAC,KAAK,GAAE,OAAqB;IAe3D,KAAK;IAKZ,KAAK,IAAG,qBAAqB;IAG7B,kBAAkB,CAAC,IAAI,EAAE,OAAO;CAK/B"}

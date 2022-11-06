@@ -1,1 +1,0 @@
-{"version":3,"file":"fillRect.d.ts","sourceRoot":"","sources":["../../typescript/coreTriAssetComps/fillRect.ts"],"names":[],"mappings":"AAAA,OAAO,OAAO,MAAM,8BAA8B,CAAC;AAGnD,MAAM,CAAC,OAAO,OAAO,QAAS,SAAQ,OAAO;gBAEjC,CAAC,EAAC,MAAM,EAAC,CAAC,EAAC,MAAM,EAAC,KAAK,GAAC,MAAS,EAAC,MAAM,GAAC,MAAS,EAAC,CAAC,GAAE,MAAQ,EAAC,CAAC,GAAE,MAAQ,EAAC,CAAC,GAAE,MAAQ;CAajG"}

@@ -1,4 +1,5 @@
-import { AssetBuilder, getClrObj } from "../moduleAssets/assets.js";
+import AssetBuilder from "../assetBuilder/assetBuilder.js";
+import getClrObj from "../color/getClrObj.js";
 export default class Multiply extends AssetBuilder {
     constructor(x = 10, y = 40, width = 30, height = 50) {
         super(x, y, width, height);

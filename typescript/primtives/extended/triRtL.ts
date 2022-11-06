@@ -1,4 +1,5 @@
-import { ClrObj } from "../../moduleAssets/assets.js";
+import ClrObj  from "../../color/clrObj.js";
+
 import TriangleFifteen from "../../formats/triangleFifteen.js";
 
  

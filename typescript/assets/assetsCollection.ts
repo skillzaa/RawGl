@@ -1,4 +1,3 @@
-import AssetBuilder from "../moduleAssets/assetBuilder/assetBuilder.js";
 import sq2X2 from "./sq2X2.js";
 import sq2H from "./sq2H.js";
 import sq2V from "./sq2V.js";

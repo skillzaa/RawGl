@@ -1,4 +1,4 @@
-import TriangleFifteen from "../triangleFifteen.js";
+import TriangleFifteen from "../../formats/triangleFifteen.js";
 export default function polygon(x = 50, y = 50, width = 10, height = 20, steps = 60, clr) {
     if (steps < 3) {
         throw new Error("steps can not be less than 3");

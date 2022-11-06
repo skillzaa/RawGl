@@ -1,6 +1,6 @@
-import { getClrObj } from "../../moduleAssets/assets.js";
+import getClrObj from "../../color/getClrObj.js";
 import GlUtil from "../../core/glUtil.js";
-import upload515ToTriCont from "../upload515ToTriCont.js";
+import upload515ToTriCont from "../../formats/upload515ToTriCont.js";
 import TriComp from "../../core/triComp.js";
 import tri from "../col/tri.js";
 import rect from "../col/rect.js";

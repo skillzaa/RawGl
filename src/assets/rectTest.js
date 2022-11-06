@@ -1,4 +1,4 @@
-import { AssetBuilder } from "../moduleAssets/assets.js";
+import AssetBuilder from "../assetBuilder/assetBuilder.js";
 export default class RectTest extends AssetBuilder {
     constructor(x = 0, y = 0, width = 100, height = 100) {
         super(x, y, width, height);

@@ -1,11 +1,14 @@
-import {TriContainer,AssetBuilder, getClrObj} from "../moduleAssets/assets.js";
+import AssetBuilder from "../assetBuilder/assetBuilder.js";
+import ClrObj from "../color/clrObj.js";
+import getClrObj from "../color/getClrObj.js";
+import TriContComp from "../core/triContComp.js";
 
 export default class Sq2x2 extends AssetBuilder {
 constructor(x:number=0,y:number=0,width:number=100,height:number=100){
 super(x,y,width,height);
 }
 /////////////////////////////////////////////
-getAsset():TriContainer{
+getAsset():TriContComp{
 //--------------------------
 this.add.rectWH(0,0, 100,5, getClrObj(1));
 

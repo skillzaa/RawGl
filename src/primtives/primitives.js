@@ -1,16 +1,18 @@
-import TriangleFifteen from "./triangleFifteen.js";
 import tri from "./col/tri.js";
-import rect from "./col//rect.js";
-import rectWH from "./col//rectWH.js";
-import diagonal from "./col//diagonal.js";
-import polygon from "./col//polygon.js";
+import rect from "./col/rect.js";
+import rectWH from "./col/rectWH.js";
+import diagonal from "./col/diagonal.js";
+import polygon from "./col/polygon.js";
 import triRtR from "./extended/triRtR.js";
-export default class Primtives {
+import triRtL from "./extended/triRtL.js";
+import triRtLInv from "./extended/triRtLInv.js";
+export default class Primtive {
 }
-Primtives.triRtR = triRtR;
-Primtives.rect = rect;
-Primtives.rectWH = rectWH;
-Primtives.diagonal = diagonal;
-Primtives.polygon = polygon;
-Primtives.tri = tri;
-export { TriangleFifteen };
+Primtive.triRtR = triRtR;
+Primtive.triRtL = triRtL;
+Primtive.triRtLInv = triRtLInv;
+Primtive.rect = rect;
+Primtive.rectWH = rectWH;
+Primtive.diagonal = diagonal;
+Primtive.polygon = polygon;
+Primtive.tri = tri;

@@ -1,10 +1,12 @@
-import {AssetBuilder,AssetsCollection as ACol,TriContainer,GlUtil,ClrObj,getClrObj } from "../assets.js";
+import GlUtil from "../../core/glUtil.js";
+import AC  from "../../assets/assetsCollection.js";
+
 import Sq2x2 from "../../assets/sq2X2.js";
 ////////////////////////////////////////////////
 const gl = GlUtil.getGl("bilza");
 
 
-const asset = new ACol.sq2X2(0);
+const asset = new AC.sq2X2(0);
 //////////////////////////////////////////////////
 //-----------change properties
 //////////////////////////////////////////////////

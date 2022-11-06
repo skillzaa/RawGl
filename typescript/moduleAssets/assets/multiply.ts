@@ -11,9 +11,9 @@ this.palette.color[2] = getClrObj(0,0,0);
 /////////////////////////////////////////////
 getAsset():TriContainer{
 //-------------------------------------------------------|
-this.add.diagonal(
-    0+ this.sizes[0] ,100,this.sizes[0],this.palette.color[1]) ;
-this.add.diagonal(100  , 5 , this.sizes[0],this.palette.color[2]) ;
+// this.add.diagonal(
+//     0+ this.sizes[0] ,100,this.sizes[0],this.palette.color[1]) ;
+// this.add.diagonal(100  , 5 , this.sizes[0],this.palette.color[2]) ;
 //-------------------------------------------------------
 return super.getAsset();    
 }

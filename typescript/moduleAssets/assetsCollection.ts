@@ -5,6 +5,7 @@ import sq2V from "./assets/sq2V.js";
 import plus from "./assets/plus.js";
 import multiply from "./assets/multiply.js";
 import mountains from "./assets/mountains.js";
+import grid from "./assets/grid.js";
 
 ///////////////---import stataments above-/////////////////////
 export default class AssetsCollection {
@@ -14,6 +15,7 @@ static sq2V = sq2V; //chq
 static plus = plus;
 static mountains = mountains;
 static multiply = multiply;
+static grid = grid;
 
 
 

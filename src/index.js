@@ -1,27 +1,14 @@
-import { getClrObj } from "./moduleAssets/assets.js";
-import GlUtil from "./core/glUtil.js";
-import TriComp from "./core/triComp.js";
-import upload515ToTriCont from "./primtives/upload515ToTriCont.js";
-import Primtive from "./primtives/primitive.js";
+import { GlUtil } from "./moduleAssets/assets.js";
+import Grid from "./moduleAssets/assets/grid.js";
+import firve15To26 from "./functions/firve15To26.js";
 const gl = GlUtil.getGl("bilza");
-GlUtil.clear(gl, 0.2, 0.2, 0.2);
-function grid(r, g, b) {
-    const comp = new TriComp();
-    for (let i = 0; i < 10; i++) {
-        const triangles = Primtive.rectWH(i * 10, 0, 0.25, 100, getClrObj(r, g, b));
-        upload515ToTriCont(triangles, comp);
-    }
-    for (let i = 0; i < 10; i++) {
-        const triangles = Primtive.rectWH(0, i * 10, 100, 0.25, getClrObj(r, g, b));
-        upload515ToTriCont(triangles, comp);
-    }
-    comp.init(gl);
-    comp.draw(gl);
-}
-grid(1, 1, 0);
-function draw(tri) {
-    const comp = new TriComp();
-    upload515ToTriCont(tri, comp);
-    comp.init(gl);
-    comp.draw(gl);
-}
+const asset = new Grid(0, 0, 100, 100);
+const assetcomp = asset.getAsset();
+const five15 = asset.add.getDb();
+const two6 = firve15To26(five15);
+console.log("two6", two6);
+assetcomp.init(gl);
+assetcomp.update(gl);
+GlUtil.clear(gl, 0.3, 0.3, 0.3);
+assetcomp.draw(gl);
+console.log("assetcomp", assetcomp);

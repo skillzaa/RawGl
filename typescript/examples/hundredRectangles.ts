@@ -3,7 +3,7 @@ import GlUtil from "../core/glUtil.js";
 ////////////////////////////////////////////////
 import TriComp from "../core/triComp.js";
 import upload515ToTriCont from "../primtives/upload515ToTriCont.js";
-import Primtive from "../primtives/primitive.js";
+import Primtive from "../primtives/primitives_list.js";
 
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////

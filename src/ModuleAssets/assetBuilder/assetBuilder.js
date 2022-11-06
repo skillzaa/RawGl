@@ -9,7 +9,7 @@ export default class AssetBuilder {
         this.palette = new Palette();
         this.sizes = [];
         this.switches = [];
-        this.showBackground = true;
+        this.showBackground = false;
         this.add = new Add();
         this.x = x;
         this.y = y;

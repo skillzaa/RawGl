@@ -1,7 +1,7 @@
 import TriContainer from "../../core/triContComp.js";
 import ClrObj from "./clrObj.js";
 import { getClrObj } from "../assets.js";
-import Primtive from "../../primtives/primitive.js";
+import Primtive from "../../primtives/primitives_list.js";
 import upload515ToTriCont from "../../primtives/upload515ToTriCont.js";
 import Palette from "./palette.js";
 import Add from "./add.js";
@@ -27,7 +27,7 @@ constructor(x:number=0,y:number=0,width:number=100,height:number=100){
 this.palette = new Palette();
 this.sizes = [];
 this.switches = [];
-this.showBackground = true;
+this.showBackground = false;
 this.add = new Add();
 //--------------------------------------------------
 this.x = x;

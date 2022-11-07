@@ -1,7 +1,7 @@
 import AssetBuilder from "../assetBuilder/assetBuilder.js";
 import ClrObj from "../color/clrObj.js";
 import getClrObj from "../color/getClrObj.js";
-import TriContComp from "../core/triContComp.js";
+import TriContComp from "../facade/triContComp.js";
 
 export default class Sq2H extends AssetBuilder {
 constructor(x:number=0,y:number=0,width:number=100,height:number=100){

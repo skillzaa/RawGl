@@ -1,4 +1,4 @@
-import { TriContComp } from "../index.js";
+import TriContComp from "../facade/triContComp.js";
 import ClrObj from "../color/clrObj.js";
 import Palette from "./palette.js";
 import Add from "./add.js";

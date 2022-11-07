@@ -1,21 +1,20 @@
-import getClrObj from "./color/getClrObj.js";
+import getClrObj  from "./color/getClrObj.js";
 import GlUtil from "./core/glUtil.js";
-import { TriContComp } from "./index.js";
-import AssetBuilder from "./assetBuilder/assetBuilder.js";
+////////////////////////////////////////////////
+import TriComp from "./core/triComp.js";
+import upload515ToTriCont from "./formats/upload515ToTriCont.js";
+import Primtive from "./primtives/primitives.js";
+import AssetsCollection from "./assets/assetsCollection.js";
+////////////////////////////////////////////////
 ////////////////////////////////////////////////
 
 const gl = GlUtil.getGl("bilza");
-GlUtil.clear(gl,0.2,0.2,0.2);
-GlUtil.setCanvasToScreen(gl);
-/////////////////////////////////////////////
-const asset = new AssetBuilder(25,25,50,50);
-asset.add.rectWH(20,20,40,40,getClrObj(1));
-asset.add.polygon( 40,40, 10,10,120  , getClrObj(1,1) );
+//////////////////////////////////////
+
+const asset = new AssetsCollection.Sq2X2( 5 , 50 , 40, 40);
+
 const comp = asset.getAsset();
 
-////////////////////////////////////////
+GlUtil.clear(gl,0.2,0.2,0.2);
 comp.init(gl);
-////////////////////////////////////////
-GlUtil.clear(gl,0.9,0.9,0.9);
-comp.update(gl);
 comp.draw(gl);

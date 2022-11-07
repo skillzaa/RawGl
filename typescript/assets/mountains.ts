@@ -1,7 +1,7 @@
 import AssetBuilder from "../assetBuilder/assetBuilder.js";
 import ClrObj from "../color/clrObj.js";
 import getClrObj from "../color/getClrObj.js";
-import TriContComp from "../core/triContComp.js";
+import TriContComp from "../facade/triContComp.js";
 
 
 export default class Mountains extends AssetBuilder {

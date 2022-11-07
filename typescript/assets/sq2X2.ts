@@ -1,5 +1,6 @@
 import AssetBuilder from "../assetBuilder/assetBuilder.js";
-import TriContComp from "../core/triContComp.js";
+import TriContComp from "../facade/triContComp.js";
+
 export default class Sq2x2 extends AssetBuilder {
 constructor(x:number=0,y:number=0,width:number=100,height:number=100){
 super(x,y,width,height);

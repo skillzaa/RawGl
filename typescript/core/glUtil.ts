@@ -15,7 +15,7 @@ static getGl(canvasId :string ="bilza"):WebGL2RenderingContext{
 //---Got gl    
 return gl;
 }
-
+////////////////////////////////////////////
 static getProgram(gl :WebGL2RenderingContext,vshader:WebGLShader, fshader :WebGLShader) :WebGLProgram {
     const pgm = gl.createProgram();
      
@@ -28,13 +28,13 @@ static getProgram(gl :WebGL2RenderingContext,vshader:WebGLShader, fshader :WebGL
  // this.gl.useProgram(this.program);  
  return pgm; 
  }
-
+/////////////////////////////////////////////////////////
 static getBuffer(gl :WebGL2RenderingContext):WebGLBuffer{
     let b  =  gl.createBuffer();
     if (b == null){throw("failed to create buffer");}
     return b;
 }
-
+//////////////////////////////////////////////////////
 static createShader(gl :WebGL2RenderingContext, shaderSource :string, shaderType:number):WebGLShader {
     var shader = gl.createShader(shaderType);
 if (shader == null){
@@ -51,6 +51,7 @@ if (shader == null){
     }
 return shader;
 }
+/////////////////////////////////////////
 static bindBuffer(gl :WebGL2RenderingContext,buff :WebGLBuffer,buffData :number[]){
 gl.bindBuffer(gl.ARRAY_BUFFER, buff);
 gl.bufferData( gl.ARRAY_BUFFER, new Float32Array(buffData), 
@@ -61,6 +62,7 @@ static linkNuseProgram(gl :WebGL2RenderingContext,prgrm :WebGLProgram){
     gl.linkProgram(prgrm);
     gl.useProgram(prgrm);
 }
+////////////////////////////////
 static clear(gl :WebGL2RenderingContext,r:number=0,g:number=0,b:number=0,a:number=1){
     gl.clearColor(r,g,b,a);
     gl.clear(gl.COLOR_BUFFER_BIT);
@@ -85,6 +87,23 @@ const x =    gl.getUniformLocation(programe, uniformName);
 if (x==null){throw new Error("uniform not found");}
 return x;
 }
-
+static setCanvasToScreen(gl :WebGL2RenderingContext) {
+const canvas = gl.canvas as HTMLCanvasElement;    
+  // Lookup the size the browser is displaying the canvas in CSS pixels.
+  const displayWidth  = canvas.clientWidth;
+  const displayHeight = canvas.clientHeight;
+ 
+  // Check if the canvas is not the same size.
+  const needResize = canvas.width  !== displayWidth ||
+                     canvas.height !== displayHeight;
+ 
+  if (needResize) {
+    // Make the canvas the same size
+    canvas.width  = displayWidth;
+    canvas.height = displayHeight;
+  }
+ 
+  return needResize;
+}
 ///////////////////////////////////////////////
 }

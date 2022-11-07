@@ -64,4 +64,16 @@ export default class GlUtil {
         }
         return x;
     }
+    static setCanvasToScreen(gl) {
+        const canvas = gl.canvas;
+        const displayWidth = canvas.clientWidth;
+        const displayHeight = canvas.clientHeight;
+        const needResize = canvas.width !== displayWidth ||
+            canvas.height !== displayHeight;
+        if (needResize) {
+            canvas.width = displayWidth;
+            canvas.height = displayHeight;
+        }
+        return needResize;
+    }
 }

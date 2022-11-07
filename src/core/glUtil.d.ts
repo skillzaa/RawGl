@@ -8,5 +8,6 @@ export default class GlUtil {
     static clear(gl: WebGL2RenderingContext, r?: number, g?: number, b?: number, a?: number): void;
     static setAttribute(gl: WebGL2RenderingContext, nameStr: string, programe: WebGLProgram, numberOfComps: number, stride: number, offset?: number): void;
     static getUniformLocation(gl: WebGL2RenderingContext, programe: WebGLProgram, uniformName: string): WebGLUniformLocation;
+    static setCanvasToScreen(gl: WebGL2RenderingContext): boolean;
 }
 //# sourceMappingURL=glUtil.d.ts.map

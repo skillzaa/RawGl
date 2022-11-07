@@ -5,12 +5,16 @@ import plus from "./plus.js";
 import multiply from "./multiply.js";
 import mountains from "./mountains.js";
 import grid from "./grid.js";
+import questionMark from "./questionMark.js";
+import ExclamationMark from "./exclamationMark.js";
 export default class AssetsCollection {
 }
-AssetsCollection.sq2X2 = sq2X2;
-AssetsCollection.sq2H = sq2H;
-AssetsCollection.sq2V = sq2V;
-AssetsCollection.plus = plus;
-AssetsCollection.mountains = mountains;
-AssetsCollection.multiply = multiply;
-AssetsCollection.grid = grid;
+AssetsCollection.Sq2X2 = sq2X2;
+AssetsCollection.Sq2H = sq2H;
+AssetsCollection.Sq2V = sq2V;
+AssetsCollection.Plus = plus;
+AssetsCollection.Mountains = mountains;
+AssetsCollection.Multiply = multiply;
+AssetsCollection.Grid = grid;
+AssetsCollection.QuestionMark = questionMark;
+AssetsCollection.ExclamationMark = ExclamationMark;

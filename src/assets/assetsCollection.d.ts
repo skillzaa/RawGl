@@ -5,13 +5,17 @@ import plus from "./plus.js";
 import multiply from "./multiply.js";
 import mountains from "./mountains.js";
 import grid from "./grid.js";
+import questionMark from "./questionMark.js";
+import ExclamationMark from "./exclamationMark.js";
 export default class AssetsCollection {
-    static sq2X2: typeof sq2X2;
-    static sq2H: typeof sq2H;
-    static sq2V: typeof sq2V;
-    static plus: typeof plus;
-    static mountains: typeof mountains;
-    static multiply: typeof multiply;
-    static grid: typeof grid;
+    static Sq2X2: typeof sq2X2;
+    static Sq2H: typeof sq2H;
+    static Sq2V: typeof sq2V;
+    static Plus: typeof plus;
+    static Mountains: typeof mountains;
+    static Multiply: typeof multiply;
+    static Grid: typeof grid;
+    static QuestionMark: typeof questionMark;
+    static ExclamationMark: typeof ExclamationMark;
 }
 //# sourceMappingURL=assetsCollection.d.ts.map

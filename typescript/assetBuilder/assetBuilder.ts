@@ -50,11 +50,11 @@ const  ctc = new TriContComp(this.x,this.y,this.width,this.height);
             const newDb = Primtive.rectWH(0,0,100,100,this.palette.color[0]);
             //-----------Add back gr vertices
             // TriContComp.load()
-                upload515ToTriCont(newDb,ctc.getComp());
+                upload515ToTriCont(newDb,ctc);
             }
 /////////////////////////////////
 const remainingTriangle = this.add.getDb()
-upload515ToTriCont( remainingTriangle ,ctc.getComp());
+upload515ToTriCont( remainingTriangle ,ctc);
 return ctc;
 }
 ////////////////////////////////////////

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel='stylesheet' href='./misc/dark.css'>
+    <script src="./misc/prism.js"></script>
+    <link rel="stylesheet" href="./misc/prism.css">   
+  
+    <link rel="stylesheet" href="./misc/custom.css">   
+
+<title>Core Components</title>
+
+</head>
+<body>
+<h6>started at version 0.0.1</h6>
+
+<h1>Core Components</h1>
+
+RawGL provides you with 3 core components which shall do all the drawing.
+These components are:
+
+- BaseComp (Base Component).
+- TriComp  (Tri Component)
+- TriContComp (Tri Container Component)
+
+<p>All the above three components has just one purpose and that is to draw Triangles on the canvas (which is the main objective of webgl).</p>
+
+<p>All of the above Components (component is called comp in these documents) implements <a href="./IGPUComp.html">IGPUComp</a> interface. It is called GPU comp since (in WebGl) the code runs in GPU and not on CPU.</p>
+
+<h3>Common features of All 3 Comps</h3>
+
+<p>All the components at the time of creation does not hold any data to draw.</p>
+<p>All these comps gets input data through "addTri" method using which we feed it one triangle at a time.</p>
+
+<p>After creation draw each component needs to be initialized.</p>
+
+
+
+
+
+</body>
+</html>

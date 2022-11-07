@@ -1,0 +1,12 @@
+body {
+  font-size: 1.2em;
+  line-height: 1.6em;
+}
+table, th, td {
+    border: 1px solid silver;
+  }
+
+.red{color:red;}
+.green{color:green;}
+.blue{color:rgb(220, 220, 244);}
+.magenta{color:magenta;}

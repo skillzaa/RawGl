@@ -5,7 +5,7 @@ import AC from "../../assets/assetsCollection.js";
 const gl = GlUtil.getGl("bilza");
 GlUtil.clear(gl,0.2,0.2,0.2);
 
-const container = new AC.sq2X2(0,0,25,25);
+const container = new AC.Sq2X2(0,0,25,25);
 // container.palette.color[0].set(1);
 container.palette.color[1].set(1,1);
 

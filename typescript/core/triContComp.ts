@@ -65,28 +65,28 @@ this.u_heightLoc = null;
 ////////////////////////////////
 }
 /////////////////////////////////////////
-public addTri(x1 :number,y1:number,x2:number,y2:number,x3:number,y3:number,r:number=1,g:number=0,b:number=0){
-///Following is placed for testing to cut off RGB    
-// r=1;g=0;b=0;    
-///////////////---------vertex 1
-this.vertices.push((x1));
-this.vertices.push((y1));  
-this.vertices.push((r));  
-this.vertices.push((g));  
-this.vertices.push((b));  
-///////////////---------vertex 2
-this.vertices.push((x2));
-this.vertices.push((y2));  
-this.vertices.push((r));  
-this.vertices.push((g));  
-this.vertices.push((b));
-///////////////---------vertex 3
-this.vertices.push((x3));
-this.vertices.push((y3));  
-this.vertices.push((r));  
-this.vertices.push((g));  
-this.vertices.push((b));  
-}
+// public addTri(x1 :number,y1:number,x2:number,y2:number,x3:number,y3:number,r:number=1,g:number=0,b:number=0){
+// ///Following is placed for testing to cut off RGB    
+// // r=1;g=0;b=0;    
+// ///////////////---------vertex 1
+// this.vertices.push((x1));
+// this.vertices.push((y1));  
+// this.vertices.push((r));  
+// this.vertices.push((g));  
+// this.vertices.push((b));  
+// ///////////////---------vertex 2
+// this.vertices.push((x2));
+// this.vertices.push((y2));  
+// this.vertices.push((r));  
+// this.vertices.push((g));  
+// this.vertices.push((b));
+// ///////////////---------vertex 3
+// this.vertices.push((x3));
+// this.vertices.push((y3));  
+// this.vertices.push((r));  
+// this.vertices.push((g));  
+// this.vertices.push((b));  
+// }
 
 //--------------------new - init
 public init (gl :WebGL2RenderingContext){

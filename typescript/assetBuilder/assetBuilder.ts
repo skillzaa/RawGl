@@ -1,4 +1,7 @@
-import TriContComp from "../core/triContComp.js";
+//do not use core/triContComp.js since this is to be presented to the user
+// import TriContComp from "../core/triContComp.js";
+import { TriContComp } from "../index.js";
+
 import ClrObj from "../color/clrObj.js";
 // import { getClrObj } from "../assets.js";
 import Primtive from "../primtives/primitives.js";
@@ -7,8 +10,8 @@ import Palette from "./palette.js";
 import Add from "./add.js";
 
 /**  
- * The AssetBuilder takes in instructions and spits out a CoreTriContainer filled with given shapes.
- * This is the base class for inheriting AssetBuilder Objects. We can have 1 object for each asset (if that asset adds some variables etc)
+    *   The AssetBuilder takes in instructions and spits out a CoreTriContainer filled with given shapes.
+    *   This is the base class for inheriting AssetBuilder Objects. We can have 1 object for each asset (if that asset adds some variables etc)
 */
 
 export default class AssetBuilder {
@@ -46,11 +49,12 @@ const  ctc = new TriContComp(this.x,this.y,this.width,this.height);
             //--This is where we use index 0 for background
             const newDb = Primtive.rectWH(0,0,100,100,this.palette.color[0]);
             //-----------Add back gr vertices
-                upload515ToTriCont(newDb,ctc);
+            // TriContComp.load()
+                upload515ToTriCont(newDb,ctc.getComp());
             }
 /////////////////////////////////
 const remainingTriangle = this.add.getDb()
-upload515ToTriCont( remainingTriangle ,ctc);
+upload515ToTriCont( remainingTriangle ,ctc.getComp());
 return ctc;
 }
 ////////////////////////////////////////

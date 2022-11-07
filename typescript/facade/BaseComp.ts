@@ -1,15 +1,15 @@
-import BaseTriComp from "../core/baseTriComp.js";
-import Primtive from "../primtives/primitives.js";
+// import BaseTriComp from "../core/baseTriComp.js";
+// import Add from "./add.js";
 
 
-export default class BaseComp extends BaseTriComp {
+// export default class BaseComp extends BaseTriComp {
 
-public add :Primtive;
-constructor(){
-super();
-this.add = Primtive;
-}
+// public add :Add;
+// constructor(){
+// super();
+// this.add = new Add(this.vertices);
+// }
 
 
 
-}
+// }

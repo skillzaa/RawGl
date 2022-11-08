@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel='stylesheet' href='./misc/dark.css'>
-    <script src="./misc/prism.js"></script>
-    <link rel="stylesheet" href="./misc/prism.css">   
+<link rel='stylesheet' href='../misc/dark.css'>
+    <script src="../misc/prism.js"></script>
+    <link rel="stylesheet" href="../misc/prism.css">   
   
-    <link rel="stylesheet" href="./misc/custom.css">   
+    <link rel="stylesheet" href="../misc/custom.css">   
 
 <title>Core Components</title>
 
@@ -22,14 +22,14 @@ RawGL provides you with 3 core components which shall do all the drawing.
 These components are:
 
 <ol>
-<li>BaseComp (Base Component).</li>
-<li>TriComp  (Tri Component).</li>    
-<li>TriContComp (Tri Container Component).</li>    
+<li>BaseTri (Base Component).</li>
+<li>Tri  (Tri Component).</li>    
+<li>TriCont (Tri Container Component).</li>    
 </ol>
 
 <p>All the above three components has just one purpose and that is to draw Triangles on the canvas (which is the main objective of webGl).</p>
 
-<p>All of the above Components (component is called comp in these documents) implements <a href="./IGPUComp.html">IGPUComp</a> interface. It is called GPU comp since (in WebGl) the code runs in GPU and not on CPU.</p>
+<p>All of the above Components implements <a href="./IGPUComp.html">IGPUComp</a> interface ( a component is called comp in these documents). It is called GPU comp since (in WebGl) the code runs in GPU and not on CPU.</p>
 
 <h3>Common features of All 3 Comps</h3>
 
@@ -44,32 +44,32 @@ These components are:
 
 <p>Lets look at each component in detail</p>
 
-<h3>BaseComp:</h3>
+<h3>BaseTri:</h3>
 <p>This is the base component for rest of the two components.</p>
-<p>The main difference that BaseComp has from rest of the two comps (TriComp and TriContComp) is that the BaseComp use WebGl coordinate system (which is from -1 to 1) where as the TriComp and TriContComp uses coordinate system from zero to hundred (0 percent to 100 percent).</p>
+<p>The main difference that BaseTri has from rest of the two comps (Tri and TriCont) is that the BaseTri use WebGl coordinate system (which is from -1 to 1) where as the Tri and TriCont uses coordinate system from zero to hundred (0 percent to 100 percent and we can go negative as well).</p>
 
-<h3>TriComp</h3>
-<p>As stated above the only difference between this comp and BaseComp is that this comp takes screen coordinates in percentages from 0 to 100 (we can also go negative). This is much easy since calculation from -1 to 1 as is a norm in webGl are difficult.</p>
+<h3>Tri</h3>
+<p>As stated above the only difference between Tri comp and BaseTri is that this comp takes screen coordinates in percentages from 0 to 100 (we can also go negative). This is much easy since calculation from -1 to 1 as is a norm in webGl are difficult.</p>
 
-<h3>TriContComp</h3>
+<h3>TriCont</h3>
 
-<p>TriContComp introduces the concept of x, y, width and height.</p>
+<p>TriCont introduces the concept of x, y, width and height.</p>
 
-<p>The "Tri Container Comp" is the main comp that we will use in this framework. Unlike BaseComp and TriComp the TriContComp just do not draw triangles onto the screen but contain them inside a box defined by the x, y, width and height properties. </p>
+<p>The "Tri Container Comp" is the main comp that we will use in this framework. Unlike BaseTri and Tri the TriCont just do not draw triangles onto the screen but contain them inside a box defined by the x, y, width and height properties. </p>
 
 <p>We can move all the contents of this container by changing its x or y and we can all change the sizes by changing width and height properties (properties are called props)</p>
 
-<p>We can make TriContComp stretch and cover the whole screen / canvas and we can also layer them on top of each other.</p>
+<p>We can make TriCont stretch and cover the whole screen / canvas and we can also layer them on top of each other.</p>
 
-<p>I foresee that TriContComp will be the main comp used for display and managing content.</p>
+<p>I foresee that TriCont will be the main comp used for display and managing content.</p>
 
 <h3>Final Comps Comparison</h3>
 
-<p> Shapes drawn using BaseComp and TriComp are drawn on the main canvas and not inside a container. The shapes draw by TriContComp are restricted to the width and height of TriContComp.</p>
+<p> Shapes drawn using BaseTri and Tri are drawn on the main canvas and not inside a container. The shapes draw by TriCont are restricted to the width and height of TriCont.</p>
 
-<p>To move shapes created by BaseComp and TriComp we have to move each vertex individually however incase of shapes drawn by TriContComp we can simply change the x and y value of the comp and all the shapes will move. </p>
+<p>To move shapes created by BaseTri and Tri we have to move each vertex individually however incase of shapes drawn by TriCont we can simply change the x and y value of the comp and all the shapes will move. </p>
 
-<p>To change shapes width and height created by BaseComp and TriComp we have to move each vertex individually however incase of shapes drawn by TriContComp we can simply change the width and height value of the comp and all the shapes will widen/shorten etc.</p>
+<p>To change shapes width and height created by BaseTri and Tri we have to move each vertex individually however incase of shapes drawn by TriCont we can simply change the width and height value of the comp and all the shapes will widen/shorten etc.</p>
 
 ---
 <h3>How to add Shapes to these Comps</h3>
@@ -78,6 +78,9 @@ These components are:
 
 <p>A easy method is to use the "comp.add" object which has some basic Primtive shapes that can be added to each comp.</p>
 
-
+<br/>
+<br/>
+<hr/>
+<p>2022-Nov-08 version 0.0.1</p>
 </body>
 </html>

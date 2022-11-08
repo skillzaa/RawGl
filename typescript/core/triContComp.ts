@@ -1,11 +1,11 @@
 import GlUtil from "./glUtil.js";
-import IGPUComp from "./IGPUComp.js";  
 import BaseTriComp from "./baseTriComp.js";
 /**
- * Base class for all GPU Components. 
- * Base Class works on 5-15 format - this format is baked in.
- * It has a_pos and a_clr attributes but NO uniforms.
- * It accepts webgl coordinated from -1 to 1. If the child classes use 1-100 % they have to provide its implementation (probably in vertex-shader)
+ * TriContComp extneds BaseTriComp
+ * TriContComp Class also works on 5-15 format - this format is baked in.
+ * TriContComp add uniforms for x, y , width and height.
+ * It accepts coordinates from 0 to 100.
+ * It has its own vertex and frag shader 
  */
 ////////////////////////////////////////////////
 const vertexShaderSrc = `
@@ -41,14 +41,18 @@ void main(void) {
 ` ;
 //////////////////////////////////////////
 export default class TriContComp extends BaseTriComp{
-  private u_xLoc : WebGLUniformLocation | null;
+  public x  :number;
+  public y  :number;
+  public width :number;
+  public height :number;
+
+//---Private members to hold the pointers  
+//--x , y
+private u_xLoc : WebGLUniformLocation | null;
 private u_yLoc : WebGLUniformLocation | null;
+//-- width , height
 private u_widthLoc : WebGLUniformLocation | null;
 private u_heightLoc : WebGLUniformLocation | null; 
-public x  :number;
-public y  :number;
-public width :number;
-public height :number;
 //---------------------------------
 constructor(x:number= 25,y:number= 25,width:number= 50,height:number= 50){
 super();  
@@ -64,7 +68,10 @@ this.u_widthLoc = null;
 this.u_heightLoc = null;
 ////////////////////////////////
 }
-//--------------------new - init
+
+/**
+ * Init method load the uniforms
+ */
 public init (gl :WebGL2RenderingContext){
 
 const vertexShader = GlUtil.createShader(gl,vertexShaderSrc,gl.VERTEX_SHADER);
@@ -93,18 +100,17 @@ const twoDivBy100 = 2/100;
 
 gl.uniform1f(this.u_xLoc, (twoDivBy100 * this.x));
 gl.uniform1f(this.u_yLoc,(twoDivBy100 * this.y));
-// this.x += 0.001;
-// this.y += 0.001;
+
+// this.x += 0.001;// this.y += 0.001; //--dont delete
+
 const wdForShader = twoDivBy100 * this.width;
 gl.uniform1f(this.u_widthLoc, (wdForShader /100) );
+
 const htForShader = twoDivBy100 * this.height;
 gl.uniform1f(this.u_heightLoc, (htForShader/100) );
-
+//----final check
 if (this.buffer==null){throw new Error("buffer is null the comp may not be initialized");}    
 }
 
-///////////////////
-
-
-////////////////////////////////////
+//////////////////////--class ends------------------
 }

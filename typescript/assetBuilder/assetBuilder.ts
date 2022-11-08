@@ -1,6 +1,6 @@
 //do not use core/triContComp.js since this is to be presented to the user
 // import TriContComp from "../core/triContComp.js";
-import TriContComp  from "../facade/triContComp.js";
+import TriContComp  from "../facade/triCont.js";
 
 import ClrObj from "../color/clrObj.js";
 // import { getClrObj } from "../assets.js";

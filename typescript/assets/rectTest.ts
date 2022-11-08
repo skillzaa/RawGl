@@ -1,7 +1,7 @@
 import AssetBuilder from "../assetBuilder/assetBuilder.js";
 import ClrObj from "../color/clrObj.js";
 import getClrObj from "../color/getClrObj.js";
-import TriContComp from "../facade/triContComp.js";
+import TriContComp from "../facade/triCont.js";
 
 export default class  RectTest extends AssetBuilder {
 constructor(x:number=0,y:number=0,width:number=100,height:number=100){

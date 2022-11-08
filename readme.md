@@ -1,7 +1,6 @@
 <blockquote> RawGl is an Ultra Simple WebGl2 frameWork designed to hide as much of webGl boiler plate as possible and yet keep it low level.
 </blockquote>
 
-
 <h1> What Version 0.0.1 Achieved </h1>
 
 <h4>Provide Components For Drawing Triangles</h4>
@@ -19,15 +18,23 @@
 <p>We will also need a way to change these stored assets a little bit the next time we want to use a previously stored asset. This is achieved by the "Asset Builder" object.</p>
 
 <hr>
+<h3><a href="https://skillzaa.github.io/RawGl/samples/helloWorld.html">
+Hello World Example</a></h3>
+<img src="./images/helloWorld.png">    
 
-<h4><a href="/docs/triCont.html">The Components</a></h4>
+<hr>
+<hr>
+
+<h3>The following docs are being written..please (2022-Nov-08)</h3>
+
+<h4><a href="https://skillzaa.github.io/RawGl/docs/coreComps.html">The Components</a></h4>
 <p>Overview of the RawGl framework components.</p>
 
-<h4><a href="/docs/triCont.html">TriCont Component</a></h4>
+<h4><a href="https://skillzaa.github.io/RawGl/docs/triContExamples.html"> Using TriCont Component</a></h4>
 <p>Build basic Shapes with TriCont Component.</p>
 
 
-<h4><a href="./docs/triCont.html">Using Existing Assets</a></h4>
+<h4><a href="https://skillzaa.github.io/RawGl/docs/coreComps.html">Using Existing Assets</a></h4>
 <p>There are some demo assets created for explanation.</p>
 
 <h4><a href="./docs/triCont.html">Creating Assets</a></h4>
@@ -45,3 +52,4 @@
 ---
 
 <p>2022-Noc-08  (version 0.0.1)</p>
+

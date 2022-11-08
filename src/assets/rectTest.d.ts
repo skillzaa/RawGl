@@ -1,5 +1,5 @@
 import AssetBuilder from "../assetBuilder/assetBuilder.js";
-import TriContComp from "../facade/triContComp.js";
+import TriContComp from "../facade/triCont.js";
 export default class RectTest extends AssetBuilder {
     constructor(x?: number, y?: number, width?: number, height?: number);
     getAsset(): TriContComp;

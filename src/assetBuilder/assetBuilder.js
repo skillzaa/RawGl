@@ -1,4 +1,4 @@
-import TriContComp from "../facade/triContComp.js";
+import TriContComp from "../facade/triCont.js";
 import ClrObj from "../color/clrObj.js";
 import Primtive from "../primtives/primitives.js";
 import upload515ToTriCont from "../formats/upload515ToTriCont.js";

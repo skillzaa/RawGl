@@ -1,9 +1,9 @@
 {
 
   "name": "rawgl",
-  "version": "0.0.1",
-  "description": "An ultra easy WebGl2 Consumer Framework ",
-  "main": "./src/index.js",
+  "version": "0.0.2",
+  "description": "RawGl is an Ultra Simple WebGl2 frameWork designed to hide as much of webGl boiler plate as possible and yet keep it low level",
+  "main": "./src/rawGl.js",
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/skillzaa/gl.git"
+    "url": "https://github.com/skillzaa/RawGl"
   },
   "keywords": [
     "webgl",
@@ -24,7 +24,7 @@
   "author": "Bilal Tariq",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/skillzaa/gl/issues"
+    "url": "https://github.com/skillzaa/RawGl/issues"
   },
-  "homepage": "https://github.com/skillzaa/gl#readme"
+  "homepage": "https://skillzaa.github.io/RawGl/index.html"
 }

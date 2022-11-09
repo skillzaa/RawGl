@@ -1,5 +1,5 @@
 import TriContCompBase from "../core/triContComp.js";
-import Add from "./add.js";
+import Add from "../addObj/add.js";
 
 /**
  * 2022-Nov-08
@@ -17,7 +17,7 @@ export default class TriCont  extends TriContCompBase{
 
 constructor(x:number= 25,y:number= 25,width:number= 50,height:number= 50){
     super(x,y,width,height);
-    this.add = new Add(this);
+    this.add = new Add();
 }
 ///////----class ends-------------//////
 }

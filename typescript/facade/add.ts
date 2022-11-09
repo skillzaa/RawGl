@@ -2,7 +2,7 @@ import Primitive from "../primtives/primitives.js";
 import TriContCompBase from "../core/triContComp.js";
 import TriangleFifteen from "../primtives/triangleData.js";
 ///////////////////////////////////////////////
-
+ 
 ///////////////////////////////////////////////
 export default class Add {
 private theComp :TriContCompBase;

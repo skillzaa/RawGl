@@ -1,4 +1,5 @@
 import Primitive from "../primtives/primitives.js";
+// Primtives return data in TriangleData
 import TriangleData from "../primtives/triangleData.js";
 import TriangleDataWColor from "./triangleDataWColor.js";
 ///////////////////////////////////////////////

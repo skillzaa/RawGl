@@ -1,4 +1,4 @@
-import TriContComp from "../core/contComp.js";
+import TriContComp from "../core/coreContainerComp.js";
 import Add from "../addObj/add.js";
 export default class TriCont extends TriContComp {
     constructor(x = 25, y = 25, width = 50, height = 50) {

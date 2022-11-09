@@ -1,13 +1,14 @@
 import AssetBuilder from "../assetBuilder/assetBuilder.js";
-import getClrObj from "../color/getClrObj.js";
-export default class SqV extends AssetBuilder {
+import ClrObj from "../color/clrObj.js";
+export default class Sq2V extends AssetBuilder {
     constructor(x = 0, y = 0, width = 100, height = 100) {
         super(x, y, width, height);
-        this.clrSq2 = getClrObj(0, 0, 0);
+        this.sq1Color = new ClrObj(1, 0, 0);
+        this.sq2Color = new ClrObj(0, 1, 0);
     }
     getAsset() {
-        this.add.rectWH(0, 0, 50, 100, this.palette.color[1]);
-        this.add.rectWH(50, 0, 50, 100, this.palette.color[2]);
+        this.add.rectWH(0, 0, 50, 100, this.sq1Color.r(), this.sq1Color.g(), this.sq1Color.b());
+        this.add.rectWH(50, 0, 50, 100, this.sq2Color.r(), this.sq2Color.g(), this.sq2Color.b());
         return super.getAsset();
     }
 }

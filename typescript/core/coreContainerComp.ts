@@ -40,7 +40,7 @@ void main(void) {
 }
 ` ;
 //////////////////////////////////////////
-export default class TriContComp extends BaseTriComp{
+export default class CoreContainerComp extends BaseTriComp{
   public x  :number;
   public y  :number;
   public width :number;

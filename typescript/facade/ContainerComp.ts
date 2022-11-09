@@ -1,4 +1,4 @@
-import TriContComp from "../core/contComp.js";
+import TriContComp from "../core/coreContainerComp.js";
 import Add from "../addObj/add.js";
 
 /**

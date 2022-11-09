@@ -1,4 +1,3 @@
-import ClrObj from "../../color/clrObj.js";
-import TriangleFifteen from "../../formats/triangleFifteen.js";
-export default function triRtL(x: number, y: number, width: number, height: number, clr: ClrObj): TriangleFifteen[];
+import TriangleData from "../triangleData.js";
+export default function triRtL(x: number, y: number, width: number, height: number): TriangleData[];
 //# sourceMappingURL=triRtL.d.ts.map

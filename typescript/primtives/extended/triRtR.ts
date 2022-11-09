@@ -1,15 +1,14 @@
-import ClrObj  from "../../color/clrObj.js";
-import TriangleFifteen from "../../formats/triangleFifteen.js";
 
+import TriangleData from "../triangleData.js";
+
+/////////////////////////////////////////////////////
  
+export default function triRtR(x1 :number,y1:number,width :number,height:number):TriangleData[]{
 
-export default function triRtR(x1 :number,y1:number,width :number,height:number,clr :ClrObj):TriangleFifteen[]{
+const ret:TriangleData[] = [];    
 
-const ret:TriangleFifteen[] = [];    
-
-const tri1 = new TriangleFifteen(x1,y1, x1+width,y1, x1+width,y1+height, clr);    
+const tri1 = new TriangleData(x1,y1, x1+width,y1, x1+width,y1+height);    
 ret.push(tri1);  
 return ret;    
-        
-        
+                
 }

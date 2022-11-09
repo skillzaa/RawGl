@@ -1,30 +1,25 @@
-import ClrObj  from "../../color/clrObj.js";
-import TriangleFifteen from "../../formats/triangleFifteen.js";
+import TriangleData from "../triangleData.js";
 
- 
+///////////////////////////////////////////////////////////////
+export default function diagonal(x1 :number, y1:number, x2 :number,y2:number,lineWidth:number):TriangleData[]{
 
-export default function diagonal(x1 :number, y1:number, x2 :number,y2:number,lineWidth:number,clr :ClrObj):TriangleFifteen[]{
+const ret:TriangleData[] = [];    
 
-const ret:TriangleFifteen[] = [];    
-
-const tri1 = new TriangleFifteen(
+const tri1 = new TriangleData(
     x1,(y1 + lineWidth), 
     x1,(y1 - lineWidth), 
 
-    x2,(y2 - lineWidth), 
-    clr);    
+    x2,(y2 - lineWidth) 
+    );    
 
-const tri2 = new TriangleFifteen(
+const tri2 = new TriangleData(
     x2,(y2 - lineWidth), 
     x2,(y2 + lineWidth), 
 
-    x1,(y1 + lineWidth), 
-    clr);    
+    x1,(y1 + lineWidth)
+    );    
     
 ret.push(tri1);  
 ret.push(tri2);  
 return ret;    
-// this.tri( 0,y1,     0,y1 - lineWidth,       100,y2,     clr);
-// this.tri( 100,y2,  100,y2-lineWidth,   0,y1-lineWidth , clr);
-        
 }

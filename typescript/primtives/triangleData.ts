@@ -1,14 +1,13 @@
 /**
- * TriangleSix object will hold 6 points of a single triangle. 
+ * TriangleData object holds just 3 vertices of a tirangle.
  */
-export default class TriangleFifteen{
+export default class TriangleData{
 private readonly _x1:number;
 private readonly _y1:number;
 private readonly _x2:number;
 private readonly _y2:number;
 private readonly _x3:number;
 private readonly _y3:number;
-//-------------------------
 
 constructor(x1 :number,y1:number,x2:number,y2:number,x3:number,y3:number){
 
@@ -27,6 +26,16 @@ y2():number{ return this._y2;}
 x3():number{ return this._x3;}
 y3():number{ return this._y3;}
 
-
+/////////////////////////////
+getNumberArr():number[]{
+return [
+            this.x1(),
+            this.y1(),
+            this.x2(),
+            this.y2(),
+            this.x3(),
+            this.y3(),
+        ];
+}
 /////////////////////////////
 }

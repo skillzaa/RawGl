@@ -1,13 +1,18 @@
 import { ContainerComp, GlUtil } from "../src/rawGl.js";
 const gl = GlUtil.getGl("bilza");
-const comp = new ContainerComp(10, 10, 80, 80);
-comp.add.rectWH(0, 0, 100, 100, 0, 0, 1);
-comp.add.tri(0, 0, 50, 0, 50, 50, 1);
-comp.add.tri(0, 100, 0, 50, 50, 50, 1, 1);
-comp.add.polygon(80, 80, 10, 10, 120, 1, 0, 0);
-comp.add.polygon(80, 60, 10, 10, 6, 1, 1, 0);
-comp.add.polygon(80, 40, 10, 10, 4, 0, 1, 0);
-comp.add.polygon(80, 20, 10, 10, 3, 0, 1, 1);
-comp.init(gl);
-GlUtil.clear(gl, 0.2, 0.1, 0.1);
-comp.draw(gl);
+function grid() {
+    const comp = new ContainerComp(10, 10, 80, 80);
+    let y = 0;
+    for (let outer = 0; outer < 10; outer++) {
+        for (let inner = 0; inner < 10; inner++) {
+            comp.add.rectWH(inner * 10, y, 10, 10, Math.random(), Math.random(), Math.random());
+        }
+        y += 10;
+    }
+    GlUtil.clear(gl, 0.3, 0.2, 0.2);
+    comp.init(gl);
+    comp.draw(gl);
+}
+setInterval(function () {
+    grid();
+}, 1000);

@@ -33,11 +33,11 @@
 
 <!-- <a href="../src/bilza.js"></a> -->
 <script  type="module">
-import { TriCont,GlUtil } from "../src/rawGl.js";
+import { ContainerComp,GlUtil } from "../src/rawGl.js";
 ////////////////////////////////////////////////
 const gl = GlUtil.getGl("bilza");
 //////////////////////////////////////
-const comp = new TriCont( 10 , 10 , 80, 80);
+const comp = new ContainerComp( 10 , 10 , 80, 80);
 //---Mark the Background
 comp.add.rectWH(0,0,100,100,0,0,1);
 
@@ -53,17 +53,15 @@ comp.init(gl);
 /////////////////////////////////////
 GlUtil.clear(gl,0.2,0.1,0.1);
 comp.draw(gl);
-
-
 </script>
 
 <pre class="language-javascript">
 <code>
-import { TriCont,GlUtil } from "../src/rawGl.js";
+import { ContainerComp,GlUtil } from "../src/rawGl.js";
 ////////////////////////////////////////////////
 const gl = GlUtil.getGl("bilza");
 //////////////////////////////////////
-const comp = new TriCont( 10 , 10 , 80, 80);
+const comp = new ContainerComp( 10 , 10 , 80, 80);
 //---Mark the Background
 comp.add.rectWH(0,0,100,100,0,0,1);
 

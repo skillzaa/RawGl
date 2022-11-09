@@ -33,7 +33,7 @@
 
 <!-- <a href="../src/bilza.js"></a> -->
 <script  type="module">
-import {GlUtil,TriCont} from "../src/rawGl.js";
+import { ContainerComp,GlUtil } from "../src/rawGl.js";
 ////////////////////////////////////////////////
 
 const gl = GlUtil.getGl("bilza");
@@ -46,7 +46,7 @@ function grid(){
 /**
  * Try changing the x,y, width and height of TriCont
  */    
-const comp = new TriCont(10,10,80,80);
+const comp = new ContainerComp(10,10,80,80);
 //-------------------
 let y = 0;
 for (let outer = 0; outer < 10; outer++) {
@@ -71,7 +71,7 @@ setInterval(function(){
 
 <pre class="language-javascript">
 <code>
-import {GlUtil,TriCont} from "../src/rawGl.js";
+import { ContainerComp,GlUtil } from "../src/rawGl.js";
 ////////////////////////////////////////////////
 
 const gl = GlUtil.getGl("bilza");
@@ -84,7 +84,7 @@ function grid(){
 /**
  * Try changing the x,y, width and height of TriCont
  */    
-const comp = new TriCont(10,10,80,80);
+const comp = new ContainerComp(10,10,80,80);
 //-------------------
 let y = 0;
 for (let outer = 0; outer < 10; outer++) {

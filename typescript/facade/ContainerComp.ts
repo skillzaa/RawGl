@@ -1,4 +1,4 @@
-import TriContCompBase from "../core/triContComp.js";
+import TriContComp from "../core/contComp.js";
 import Add from "../addObj/add.js";
 
 /**
@@ -11,7 +11,7 @@ import Add from "../addObj/add.js";
  *  - In future if there are changes the base class is not touched
  */
 ////////////////////////////////////////////////////////////
-export default class TriCont  extends TriContCompBase{
+export default class TriCont  extends TriContComp{
 
     public add :Add;
 
@@ -19,7 +19,7 @@ constructor(x:number= 25,y:number= 25,width:number= 50,height:number= 50){
     super(x,y,width,height);
     this.add = new Add();
 }
-
+ 
 public init(gl: WebGL2RenderingContext): void {
 this.setData(this.add.get515Triangles());
 super.init(gl);    

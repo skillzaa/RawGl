@@ -1,4 +1,4 @@
-import BaseTriComp from "../core/baseTriComp.js";
+import BaseTriComp from "../core/baseComp.js";
 import TriangleFifteen from "./triangleFifteen.js";
 
 /**

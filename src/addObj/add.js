@@ -1,5 +1,6 @@
 import Primitive from "../primtives/primitives.js";
 import TriangleDataWColor from "./triangleDataWColor.js";
+import perc2glCoord from "./perc2glCoord.js";
 export default class Add {
     constructor() {
         this.triangles = [];
@@ -43,6 +44,28 @@ export default class Add {
             retNmbArr.push(tri.b());
             retNmbArr.push(tri.x3());
             retNmbArr.push(tri.y3());
+            retNmbArr.push(tri.r());
+            retNmbArr.push(tri.g());
+            retNmbArr.push(tri.b());
+        }
+        return retNmbArr;
+    }
+    get515TriGlCoords() {
+        const retNmbArr = [];
+        for (let i = 0; i < this.triangles.length; i++) {
+            const tri = this.triangles[i];
+            retNmbArr.push(perc2glCoord(tri.x1()));
+            retNmbArr.push(perc2glCoord(tri.y1()));
+            retNmbArr.push(tri.r());
+            retNmbArr.push(tri.g());
+            retNmbArr.push(tri.b());
+            retNmbArr.push(perc2glCoord(tri.x2()));
+            retNmbArr.push(perc2glCoord(tri.y2()));
+            retNmbArr.push(tri.r());
+            retNmbArr.push(tri.g());
+            retNmbArr.push(tri.b());
+            retNmbArr.push(perc2glCoord(tri.x3()));
+            retNmbArr.push(perc2glCoord(tri.y3()));
             retNmbArr.push(tri.r());
             retNmbArr.push(tri.g());
             retNmbArr.push(tri.b());

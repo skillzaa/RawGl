@@ -2,6 +2,7 @@ import Primitive from "../primtives/primitives.js";
 // Primtives return data in TriangleData
 import TriangleData from "../primtives/triangleData.js";
 import TriangleDataWColor from "./triangleDataWColor.js";
+import perc2glCoord from "./perc2glCoord.js";
 ///////////////////////////////////////////////
 // There are 2 tirangle formats since the Primtives dont care about color they just return triangle vertex thus we add colors here bu inserting TriangleData into TriangleDataWColor. 
 // Simple we get r,g,b but we dont send that to Primtives module and that made Primtives module very simple. 
@@ -70,6 +71,31 @@ for (let i = 0; i < this.triangles.length; i++) {
     //-------- Third vertex
     retNmbArr.push(tri.x3());
     retNmbArr.push(tri.y3());
+    retNmbArr.push(tri.r());
+    retNmbArr.push(tri.g());
+    retNmbArr.push(tri.b());
+}    
+return retNmbArr;
+}
+public get515TriGlCoords():number[]{
+const retNmbArr:number[] = [];
+for (let i = 0; i < this.triangles.length; i++) {
+    const tri = this.triangles[i];
+    //-------- first vertex
+    retNmbArr.push(perc2glCoord(tri.x1()));
+    retNmbArr.push(perc2glCoord(tri.y1()));
+    retNmbArr.push(tri.r());
+    retNmbArr.push(tri.g());
+    retNmbArr.push(tri.b());
+    //-------- Second vertex
+    retNmbArr.push(perc2glCoord(tri.x2()));
+    retNmbArr.push(perc2glCoord(tri.y2()));
+    retNmbArr.push(tri.r());
+    retNmbArr.push(tri.g());
+    retNmbArr.push(tri.b());
+    //-------- Third vertex
+    retNmbArr.push(perc2glCoord(tri.x3()));
+    retNmbArr.push(perc2glCoord(tri.y3()));
     retNmbArr.push(tri.r());
     retNmbArr.push(tri.g());
     retNmbArr.push(tri.b());

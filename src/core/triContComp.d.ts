@@ -1,4 +1,4 @@
-import BaseTriComp from "./baseTriComp.js";
+import BaseTriComp from "./baseComp.js";
 export default class TriContComp extends BaseTriComp {
     x: number;
     y: number;

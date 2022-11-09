@@ -1,19 +1,16 @@
-import TriContComp from "../facade/triCont.js";
+import { TriCont } from "../rawGl.js";
 import ClrObj from "../color/clrObj.js";
-import Palette from "./palette.js";
 import Add from "./add.js";
-export default class AssetBuilder {
+import IAssetBuilder from "./IAssetBuilder.js";
+export default class AssetBuilder implements IAssetBuilder {
     showBackground: boolean;
+    colorBackground: ClrObj;
     x: number;
     y: number;
     width: number;
     height: number;
-    palette: Palette;
-    sizes: number[];
-    switches: boolean[];
     add: Add;
     constructor(x?: number, y?: number, width?: number, height?: number);
-    getAsset(): TriContComp;
-    setClrIfNull(clrobj: ClrObj | null, r: number, g: number, b: number): ClrObj;
+    getAsset(): TriCont;
 }
 //# sourceMappingURL=assetBuilder.d.ts.map

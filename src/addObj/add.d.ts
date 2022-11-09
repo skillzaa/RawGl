@@ -9,6 +9,7 @@ export default class Add {
     polygon(x?: number, y?: number, width?: number, height?: number, steps?: number, r?: number, g?: number, b?: number): void;
     getTriangles(): TriangleDataWColor[];
     get515Triangles(): number[];
+    get515TriGlCoords(): number[];
     private save;
 }
 //# sourceMappingURL=add.d.ts.map

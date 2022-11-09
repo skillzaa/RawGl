@@ -1,5 +1,5 @@
 import GlUtil from "./glUtil.js";
-import BaseTriComp from "./baseTriComp.js";
+import BaseTriComp from "./baseComp.js";
 /**
  * TriContComp extneds BaseTriComp
  * TriContComp Class also works on 5-15 format - this format is baked in.

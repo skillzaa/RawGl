@@ -3,14 +3,13 @@
 */
 
 //----Components 2 core and 1 facade component
-import TriCont from "./facade/triCont.js";
+import ContainerComp from "./facade/ContainerComp.js";
 // BaseTriComp has been renames as BaseTri
-import BaseTri from "./core/baseTriComp.js";
-import Tri from "./core/triComp.js";
+import BaseComp from "./core/baseComp.js";
 ///////////////////////////////////////////////////
 //----Assets and Asset Builder
-import AssetsCollection from "./assets/assetsCollection.js";
-import AssetBuilder from "./assetBuilder/assetBuilder.js";
+// import AssetsCollection from "./assets/assetsCollection.js";
+// import AssetBuilder from "./assetBuilder/assetBuilder.js";
 
 //--finally also export GlUtil so that it can be used later
 import GlUtil from "./core/glUtil.js";
@@ -20,12 +19,11 @@ import GlUtil from "./core/glUtil.js";
 ////////////////////////////////////////////
 ////////////////////////////////////////////
 export {
-    BaseTri,
-    Tri,
-    TriCont,
+    BaseComp,
+    ContainerComp,
 
-    AssetsCollection,
-    AssetBuilder,
+    // AssetsCollection,
+    // AssetBuilder,
     
     GlUtil
 }

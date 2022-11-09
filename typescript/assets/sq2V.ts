@@ -1,7 +1,7 @@
 import AssetBuilder from "../assetBuilder/assetBuilder.js";
 import ClrObj from "../color/clrObj.js";
 import getClrObj from "../color/getClrObj.js";
-import TriContComp from "../facade/triCont.js";
+import TriContComp from "../facade/ContainerComp.js";
 ////////////////////////////////////////////////////////////
 export default class SqV extends AssetBuilder {
 public clrSq2 :ClrObj;

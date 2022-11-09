@@ -1,6 +1,6 @@
 import AssetBuilder from "../assetBuilder/assetBuilder.js";
 import getClrObj from "../color/getClrObj.js";
-import TriContComp from "../facade/triCont.js";
+import TriContComp from "../facade/ContainerComp.js";
 
 export default class QuestionMark extends AssetBuilder {
 constructor(x:number=10,y:number=40,width:number= 30,height:number=50){

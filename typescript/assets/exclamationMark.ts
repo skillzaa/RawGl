@@ -1,6 +1,6 @@
 import AssetBuilder from "../assetBuilder/assetBuilder.js";
 import getClrObj from "../color/getClrObj.js";
-import TriContComp from "../facade/triCont.js";
+import TriContComp from "../facade/ContainerComp.js";
 
 
 export default class ExclamationMark extends AssetBuilder {

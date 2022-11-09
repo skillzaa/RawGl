@@ -8,7 +8,7 @@ export default class Add {
     rectWH(x: number, y: number, width: number, height: number, r?: number, g?: number, b?: number): void;
     polygon(x?: number, y?: number, width?: number, height?: number, steps?: number, r?: number, g?: number, b?: number): void;
     getTriangles(): TriangleDataWColor[];
-    getNumbersArray(): number[];
+    get515Triangles(): number[];
     private save;
 }
 //# sourceMappingURL=add.d.ts.map

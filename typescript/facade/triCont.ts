@@ -19,5 +19,10 @@ constructor(x:number= 25,y:number= 25,width:number= 50,height:number= 50){
     super(x,y,width,height);
     this.add = new Add();
 }
+
+public init(gl: WebGL2RenderingContext): void {
+this.setData(this.add.get515Triangles());
+super.init(gl);    
+}
 ///////----class ends-------------//////
 }

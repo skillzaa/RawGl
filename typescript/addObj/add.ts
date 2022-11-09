@@ -40,24 +40,45 @@ this.save(t ,r,g,b);
 public getTriangles():TriangleDataWColor[]{
 return this.triangles;    
 }
-////////////////////////////////////////////////////////
-public getNumbersArray():number[]{
-    const nmbrArr = [];
-    for (let i = 0; i < this.triangles.length; i++) {
-        const tri = this.triangles[i];
-        nmbrArr.push(tri.x1());        
-        nmbrArr.push(tri.x2());        
-        nmbrArr.push(tri.y2());        
-        nmbrArr.push(tri.x3());        
-        nmbrArr.push(tri.y3());        
-        nmbrArr.push(tri.r());        
-        nmbrArr.push(tri.g());        
-        nmbrArr.push(tri.b());        
-    }
-////now return 
-return nmbrArr;
+
+//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX    
+//-----------very important code
+//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX 
+/**
+ * getGlTriangles is the main method which insert data into comp. Each and every other triangle into comp must go through this format.
+ * Every Triangle has 15 data points 5 for each vertex.
+ * Array index 0-14
+ * Private so that I can only use it with expect-error
+ */
+
+public get515Triangles():number[]{
+const retNmbArr:number[] = [];
+for (let i = 0; i < this.triangles.length; i++) {
+    const tri = this.triangles[i];
+    //-------- first vertex
+    retNmbArr.push(tri.x1());
+    retNmbArr.push(tri.y1());
+    retNmbArr.push(tri.r());
+    retNmbArr.push(tri.g());
+    retNmbArr.push(tri.b());
+    //-------- Second vertex
+    retNmbArr.push(tri.x2());
+    retNmbArr.push(tri.y2());
+    retNmbArr.push(tri.r());
+    retNmbArr.push(tri.g());
+    retNmbArr.push(tri.b());
+    //-------- Third vertex
+    retNmbArr.push(tri.x3());
+    retNmbArr.push(tri.y3());
+    retNmbArr.push(tri.r());
+    retNmbArr.push(tri.g());
+    retNmbArr.push(tri.b());
+}    
+return retNmbArr;
 }
-//////////////////////////////////////
+//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX    
+//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX//XX      
+
 private save(incommingTri :TriangleData[],r :number, g :number, b :number){
         for (let i = 0; i < incommingTri.length; i++) {
             const tri = incommingTri[i];
@@ -70,5 +91,29 @@ private save(incommingTri :TriangleData[],r :number, g :number, b :number){
         this.triangles.push(triWColor);    
         }
 }
+//////////////////////////////////////
+// private addGlTri(x1 :number,y1:number,x2:number,y2:number,x3:number,y3:number,r:number=1,g:number=0,b:number=0){
+// ///Following is placed for testing to cut off RGB    
+// // r=1;g=0;b=0;    
+// ///////////////---------vertex 1
+// this.vertices.push((x1));
+// this.vertices.push((y1));  
+// this.vertices.push((r));  
+// this.vertices.push((g));  
+// this.vertices.push((b));  
+// ///////////////---------vertex 2
+// this.vertices.push((x2));
+// this.vertices.push((y2));  
+// this.vertices.push((r));  
+// this.vertices.push((g));  
+// this.vertices.push((b));
+// ///////////////---------vertex 3
+// this.vertices.push((x3));
+// this.vertices.push((y3));  
+// this.vertices.push((r));  
+// this.vertices.push((g));  
+// this.vertices.push((b));  
+// }
+
 //////////////////////////////////////
 }

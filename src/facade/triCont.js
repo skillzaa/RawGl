@@ -5,4 +5,8 @@ export default class TriCont extends TriContCompBase {
         super(x, y, width, height);
         this.add = new Add();
     }
+    init(gl) {
+        this.setData(this.add.get515Triangles());
+        super.init(gl);
+    }
 }

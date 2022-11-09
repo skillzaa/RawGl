@@ -27,20 +27,27 @@ export default class Add {
     getTriangles() {
         return this.triangles;
     }
-    getNumbersArray() {
-        const nmbrArr = [];
+    get515Triangles() {
+        const retNmbArr = [];
         for (let i = 0; i < this.triangles.length; i++) {
             const tri = this.triangles[i];
-            nmbrArr.push(tri.x1());
-            nmbrArr.push(tri.x2());
-            nmbrArr.push(tri.y2());
-            nmbrArr.push(tri.x3());
-            nmbrArr.push(tri.y3());
-            nmbrArr.push(tri.r());
-            nmbrArr.push(tri.g());
-            nmbrArr.push(tri.b());
+            retNmbArr.push(tri.x1());
+            retNmbArr.push(tri.y1());
+            retNmbArr.push(tri.r());
+            retNmbArr.push(tri.g());
+            retNmbArr.push(tri.b());
+            retNmbArr.push(tri.x2());
+            retNmbArr.push(tri.y2());
+            retNmbArr.push(tri.r());
+            retNmbArr.push(tri.g());
+            retNmbArr.push(tri.b());
+            retNmbArr.push(tri.x3());
+            retNmbArr.push(tri.y3());
+            retNmbArr.push(tri.r());
+            retNmbArr.push(tri.g());
+            retNmbArr.push(tri.b());
         }
-        return nmbrArr;
+        return retNmbArr;
     }
     save(incommingTri, r, g, b) {
         for (let i = 0; i < incommingTri.length; i++) {

@@ -13,8 +13,6 @@ const asset = new AC.Sq2X2(0);
 //---Extract the asset
 const assetcomp = asset.getAsset();
 //////////////////////////////////////////////////
-//--- init and draw
-assetcomp.init(gl);
 //---Update so that the changes take effect
 assetcomp.update(gl);
 //////////////////////////////////////////////////

@@ -5,8 +5,8 @@ export default class BaseTri extends BaseTriComp {
         super();
         this.add = new Add();
     }
-    init(gl) {
+    update(gl) {
         this.setData(this.add.get515TriGlCoords());
-        super.init(gl);
+        super.update(gl);
     }
 }

@@ -11,9 +11,9 @@ constructor(){
     this.add = new Add();
 }
  
-public init(gl: WebGL2RenderingContext): void {
+public update(gl: WebGL2RenderingContext): void {
 this.setData(this.add.get515TriGlCoords());
-super.init(gl);    
+super.update(gl);    
 }
 ///////----class ends-------------//////
 }

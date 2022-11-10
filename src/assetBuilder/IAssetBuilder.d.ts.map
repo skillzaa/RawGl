@@ -1,1 +1,1 @@
-{"version":3,"file":"IAssetBuilder.d.ts","sourceRoot":"","sources":["../../typescript/assetBuilder/IAssetBuilder.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,OAAO,EAAC,MAAM,aAAa,CAAC;AAGpC,MAAM,CAAC,OAAO,WAAW,aAAa;IAEtC,QAAQ,IAAG,OAAO,CAAC;CAElB"}
+{"version":3,"file":"IAssetBuilder.d.ts","sourceRoot":"","sources":["../../typescript/assetBuilder/IAssetBuilder.ts"],"names":[],"mappings":"AAAA,OAAO,WAAW,MAAM,8BAA8B,CAAC;AAGvD,MAAM,CAAC,OAAO,WAAW,aAAa;IAEtC,QAAQ,IAAG,WAAW,CAAC;CAEtB"}

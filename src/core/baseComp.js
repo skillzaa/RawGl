@@ -28,7 +28,7 @@ export default class BaseTriComp {
     setData(vertices) {
         this.vertices = vertices;
     }
-    init(gl) {
+    update(gl) {
         const vertexShader = GlUtil.createShader(gl, vertexShaderSrc, gl.VERTEX_SHADER);
         const fragmentShader = GlUtil.createShader(gl, fragShaderSrc, gl.FRAGMENT_SHADER);
         this.program = GlUtil.getProgram(gl, vertexShader, fragmentShader);
@@ -38,7 +38,6 @@ export default class BaseTriComp {
         GlUtil.setAttribute(gl, "a_pos", this.program, 2, 4 * 5, 0);
         GlUtil.setAttribute(gl, "a_clr", this.program, 3, 4 * 5, 2 * 4);
     }
-    update(gl) { }
     draw(gl) {
         if (this.buffer == null) {
             throw new Error("buffer is null the comp may not be initialized");

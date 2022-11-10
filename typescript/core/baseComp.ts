@@ -45,7 +45,7 @@ setData(vertices  :number[]){
 }
 
 //--------------------new - init
-public init (gl :WebGL2RenderingContext){
+public update (gl :WebGL2RenderingContext){
 
 const vertexShader = GlUtil.createShader(gl,vertexShaderSrc,gl.VERTEX_SHADER);
 const fragmentShader = GlUtil.createShader(gl, fragShaderSrc,gl.FRAGMENT_SHADER);
@@ -60,7 +60,7 @@ GlUtil.setAttribute(gl, "a_clr",this.program, 3 , 4 * 5, 2 * 4);
 //--------------------------------
 }
 ////--no uniforms thus update is emty
-public update(gl :WebGL2RenderingContext):void{}
+// public update(gl :WebGL2RenderingContext):void{}
 
 ///////////////////
 public draw(gl :WebGL2RenderingContext){

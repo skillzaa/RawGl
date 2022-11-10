@@ -72,7 +72,7 @@ this.u_heightLoc = null;
 /**
  * Init method load the uniforms
  */
-public init (gl :WebGL2RenderingContext){
+public update (gl :WebGL2RenderingContext){
 
 const vertexShader = GlUtil.createShader(gl,vertexShaderSrc,gl.VERTEX_SHADER);
 const fragmentShader = GlUtil.createShader(gl, fragShaderSrc,gl.FRAGMENT_SHADER);
@@ -88,14 +88,14 @@ GlUtil.setAttribute(gl, "a_clr",this.program, 3 , 4 * 5, 2 * 4);
 //--------------------------------
 this.u_xLoc = GlUtil.getUniformLocation(gl,this.program, "u_x");
 this.u_yLoc = GlUtil.getUniformLocation(gl,this.program, "u_y");
-this.u_widthLoc = GlUtil.getUniformLocation(gl,this.program, "u_width");
+this.u_widthLoc = GlUtil.getUniformLocation(gl,this.program, "u_width"); 
 this.u_heightLoc = GlUtil.getUniformLocation(gl,this.program, "u_height");
-//------------>>>check following line
-this.update(gl); // so the new item just need init and not init n update
-}
+// //------------>>>worst mistake
+// // this.update(gl); // so the new item just need init and not init n update
+// }
 
-///////////////////////////////////////////////////////
-public update(gl: WebGL2RenderingContext){
+// ///////////////////////////////////////////////////////
+// public update(gl: WebGL2RenderingContext){
 const twoDivBy100 = 2/100;
 
 gl.uniform1f(this.u_xLoc, (twoDivBy100 * this.x));

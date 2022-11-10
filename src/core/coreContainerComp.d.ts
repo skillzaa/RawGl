@@ -1,5 +1,5 @@
 import BaseTriComp from "./baseComp.js";
-export default class TriContComp extends BaseTriComp {
+export default class CoreContainerComp extends BaseTriComp {
     x: number;
     y: number;
     width: number;
@@ -9,7 +9,6 @@ export default class TriContComp extends BaseTriComp {
     private u_widthLoc;
     private u_heightLoc;
     constructor(x?: number, y?: number, width?: number, height?: number);
-    init(gl: WebGL2RenderingContext): void;
     update(gl: WebGL2RenderingContext): void;
 }
 //# sourceMappingURL=coreContainerComp.d.ts.map

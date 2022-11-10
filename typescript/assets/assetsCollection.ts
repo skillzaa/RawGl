@@ -3,7 +3,8 @@ import sq2H from "./sq2H.js";
 import sq2V from "./sq2V.js";
 // import plus from "./plus.js";
 // import multiply from "./multiply.js";
-import mountains from "./mountains.js";
+import Mountains from "./mountains.js";
+import UnionJack from "./unionJack.js";
 import grid from "./grid.js";
 // import questionMark from "./questionMark.js";
 // import ExclamationMark from "./exclamationMark.js";
@@ -14,7 +15,8 @@ static Sq2X2 = sq2X2;
 static Sq2H = sq2H; //chq
 static Sq2V = sq2V; //chq
 // static Plus = plus;
-static Mountains = mountains;
+static Mountains = Mountains;
+static UnionJack = UnionJack;
 // static Multiply = multiply;
 static Grid = grid;
 // static QuestionMark = questionMark;

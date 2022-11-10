@@ -1,5 +1,5 @@
-import { TriCont } from "../rawGl.js";
+import TriContComp from "../core/coreContainerComp.js";
 export default interface IAssetBuilder {
-    getAsset(): TriCont;
+    getAsset(): TriContComp;
 }
 //# sourceMappingURL=IAssetBuilder.d.ts.map

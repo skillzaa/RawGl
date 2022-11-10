@@ -42,7 +42,7 @@ export default class CoreContainerComp extends BaseTriComp {
         this.u_widthLoc = null;
         this.u_heightLoc = null;
     }
-    init(gl) {
+    update(gl) {
         const vertexShader = GlUtil.createShader(gl, vertexShaderSrc, gl.VERTEX_SHADER);
         const fragmentShader = GlUtil.createShader(gl, fragShaderSrc, gl.FRAGMENT_SHADER);
         this.program = GlUtil.getProgram(gl, vertexShader, fragmentShader);
@@ -55,9 +55,6 @@ export default class CoreContainerComp extends BaseTriComp {
         this.u_yLoc = GlUtil.getUniformLocation(gl, this.program, "u_y");
         this.u_widthLoc = GlUtil.getUniformLocation(gl, this.program, "u_width");
         this.u_heightLoc = GlUtil.getUniformLocation(gl, this.program, "u_height");
-        this.update(gl);
-    }
-    update(gl) {
         const twoDivBy100 = 2 / 100;
         gl.uniform1f(this.u_xLoc, (twoDivBy100 * this.x));
         gl.uniform1f(this.u_yLoc, (twoDivBy100 * this.y));

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel='stylesheet' href='./misc/dark.css'>
+
+<script src="./misc/prism.js"></script>
+<link rel="stylesheet" href="./misc/prism.css">   
+  
+<link rel="stylesheet" href="./misc/custom.css">   
+
+<title>RawGl</title>
+
+</head>
+<body>
+
+<blockquote> RawGl is an Ultra Simple WebGl2 frameWork designed to hide as much of webGl boiler plate as possible and yet keep it low level.
+</blockquote>
+
+<h1> What Version 0.0.1 Achieved </h1>
+
+<h4>Provide Components For Drawing Triangles</h4>
+
+<p>It can be said that the one main objective of WebGl is to draw triangles on the screen. For this purpose this version provides 3 components to draw triangles and hence any shape on the canvas.These components are "BaseTri", "Tri" and "TriCont". Each of these components has their own qualities.</p>
+
+<h4> Primtives</h4>
+<p>We will not get far if we start building every thing triangle by triangle. Thus we need some basic primtives that we can quickly add and use.</p>  
+
+<h4> Grouping of Created shapes </h4>
+<p>Once we have drawn some shapes on the screen we will like them to be grouped so that we can collectively move them and change their width and height. This is achieved by "TriCont" components.</p>
+
+<h4> Assets and Asset Builder </h4>
+<p>Once we have created shapes we will like to bundle them into "Assets" for later use.</p>
+<p>We will also need a way to change these stored assets a little bit the next time we want to use a previously stored asset. This is achieved by the "Asset Builder" object.</p>
+
+<hr>
+<h3><a href="https://skillzaa.github.io/RawGl/samples/helloWorld.html">
+Hello World Example</a></h3>
+<img src="./images/helloWorld.png">    
+
+<hr>
+<hr>
+
+<h3>The following docs are being written..please (2022-Nov-08)</h3>
+
+<h4><a href="https://skillzaa.github.io/RawGl/docs/coreComps.html">The Components</a></h4>
+<p>Overview of the RawGl framework components.</p>
+
+<hr/>
+
+<h4>TriCont Component Examples</h4>
+
+<h4><a href="https://skillzaa.github.io/RawGl/samples/hundredRectanglesExample.html">Hundred Rectangles</a></h4>
+
+
+
+<hr/>
+
+<h4><a href="#">Using Existing Assets</a></h4>
+<p>There are some demo assets created for explanation.</p>
+
+
+<hr/>
+
+<h4><a href="./docs/triCont.html">Creating Assets</a></h4>
+<p> How to create you own Assets
+
+
+<hr/>
+
+<h4><a href="./docs/triCont.html">BaseTri Component</a></h4>
+<p>Base Component for other Components</p>
+
+
+<hr/>
+
+<h4><a href="./docs/triCont.html">Tri Component</a></h4>
+<p>Tri Component draw on entire screen unlike "TriCont" component.</p>
+
+
+<hr/>
+<h4><a href="./docs/triCont.html">GlUtil</a></h4>
+<p>The low level collection of WebGl functions.</p>
+
+---
+
+<p>2022-Noc-08  (version 0.0.1)</p>
+
+
+</body>
+</html>

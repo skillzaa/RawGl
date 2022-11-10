@@ -10,3 +10,7 @@ table, th, td {
 .green{color:green;}
 .blue{color:rgb(220, 220, 244);}
 .magenta{color:magenta;}
+.blackNwhite{color:rgb(0.9,0.9,0.9); background-color: rgb(1,1,1);}
+
+
+p { line-height: 1.6; margin-top: 1.6;}

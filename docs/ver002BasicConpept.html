@@ -15,9 +15,29 @@
 
 </head>
 <body>
-<h1>Basic Concept Ver 0.0.2</h1>
+<h1>RawGl Quick Overview</h1>
 
+<ol>
+<li>The (almost) only thing that WebGl do is to draw triangles.</li>
+<li>We can draw simples shapes ("Primtives") using these triangles.</li>
+<li>Examples of Primtives are rectangle, diagonal, triangle, polygon etc.</li>
+<li>In RawGl every thing that is drawn on the screen is a component. We have 2 core components called The "BaseComp" and The "ContainerComp".</li>
+<li>The "BaseComp" is lower level component and takes in WebGl coordinates from -1 to 1. This is not for direct use and just act as base for ContainerComp.</li>
 
+<li>The ContainerComp is the more user firendly component that gets used.The coordinate system that ContainerComp uses is from 0 to 100 for x and y (we can also go negative). So unlike "BaseComp" we do not use WebGl native coordinate system.</li>
+
+<li>The main concept is to "Add" primtives to a component and then draw the component.</li>
+
+<li>When we "Add" Primtives to BaseComp the width and height of these primtives are in relation to the main canvas. The BaseComp has no control over with width, height and location of the added primtives. </li>
+
+<li>The ContainerComp contains all the primtives inserted into it. The corrdinates given to Primtives while adding them into ContainerComp are relative to the width and height of the ContainerComp and not that of the entire canvas.</li>
+
+<li>Using the ContainerComp we can group Primtives and can change their x,y, width or height along with the x,y, width and height of the ContainerComp.</li>
+
+<li>Once we have created Assets using ContainerComp (i.e added the required primtives with colors) we will like to reuse these assets. We have <b>AssetBuilder</b> object that has properties that we can change. Once we have given the desired values to the properties we get a ContainerComp out of the <b>AssetBuilder</b> that we can draw.</li>
+
+<li>We can create as many assets as well like using <b>AssetBuilder</b>. RawGl has <b>AssetsCollection</b> object that contains the prebuild assets. </li>
+</ol>
 
 
 <p>2022-Nov-11  (version 0.0.2)</p>

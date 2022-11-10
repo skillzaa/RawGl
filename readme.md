@@ -1,55 +1,52 @@
+<h1>RawGl</h1>
+
 <blockquote> RawGl is an Ultra Simple WebGl2 frameWork designed to hide as much of webGl boiler plate as possible and yet keep it low level.
 </blockquote>
 
-<h1> What Version 0.0.1 Achieved </h1>
+<h1> Version 0.0.2 </h1>
 
-<h4>Provide Components For Drawing Triangles</h4>
+<blockquote>Main Objective of version 0.0.2 is to provide tools for creating reusable WebGl assets.</blockquote>
 
-<p>It can be said that the one main objective of WebGl is to draw triangles on the screen. For this purpose this version provides 3 components to draw triangles and hence any shape on the canvas.These components are "BaseTri", "Tri" and "TriCont". Each of these components has their own qualities.</p>
+<p>An Asset is a Webgl drawable object that has properties which can be changed and the results will show once the asset is drawn.</p>
 
-<h4> Primtives</h4>
-<p>We will not get far if we start building every thing triangle by triangle. Thus we need some basic primtives that we can quickly add and use.</p>  
+<hr/>
+<h2><a href="./samples/helloWorld.html">
+    Hello World Example</a></h2>
+    <img src="./images/helloWorld.png">    
+<hr>
+<h2><a href="./docs/ver002BasicConpept.html">RawGl Basic Concepts</a> </h2>
+<small>Primtives, Components, BaseComp, ContainerComp, AssetsCollection,AssetBuilder</small>
 
-<h4> Grouping of Created shapes </h4>
-<p>Once we have drawn some shapes on the screen we will like them to be grouped so that we can collectively move them and change their width and height. This is achieved by "TriCont" components.</p>
 
-<h4> Assets and Asset Builder </h4>
-<p>Once we have created shapes we will like to bundle them into "Assets" for later use.</p>
-<p>We will also need a way to change these stored assets a little bit the next time we want to use a previously stored asset. This is achieved by the "Asset Builder" object.</p>
+
 
 <hr>
-<h3><a href="https://skillzaa.github.io/RawGl/samples/helloWorld.html">
-Hello World Example</a></h3>
-<img src="./images/helloWorld.png">    
+<h2>Using Existing Assets</h2>
+<ul>
+    <li><a href="./samples/unionJackGrow.html">UnionJack Flag Example</a></li>
+</ul>
+
+
 
 <hr>
+<h2>Creating Assets</h2>
+<ul>
+<li><a href="https://github.com/skillzaa/RawGl/blob/master/typescript/assets/unionJack.ts">UnionJack Asset</a></li>
+<li><a href="https://github.com/skillzaa/RawGl/blob/master/typescript/assets/mountains.ts">Mountains Asset</a></li>
+<li><a href="https://github.com/skillzaa/RawGl/blob/master/typescript/assets/sq2H.ts"> 2 Horizontal Rectangles</a></li>
+</ul>
 <hr>
 
-<h3>The following docs are being written..please (2022-Nov-08)</h3>
 
-<h4><a href="https://skillzaa.github.io/RawGl/docs/coreComps.html">The Components</a></h4>
-<p>Overview of the RawGl framework components.</p>
+<h2>Using ContainerComp</h2>
+<ul>
+<li><a href="./samples/hundredRectanglesExample.html">100 Rectangle Example</a></li>
+</ul>
+<hr>
 
-<h4><a href="https://skillzaa.github.io/RawGl/docs/triContExamples.html"> Using TriCont Component</a></h4>
-<p>Build basic Shapes with TriCont Component.</p>
 
 
-<h4><a href="https://skillzaa.github.io/RawGl/docs/coreComps.html">Using Existing Assets</a></h4>
-<p>There are some demo assets created for explanation.</p>
 
-<h4><a href="./docs/triCont.html">Creating Assets</a></h4>
-<p> How to create you own Assets
 
-<h4><a href="./docs/triCont.html">BaseTri Component</a></h4>
-<p>Base Component for other Components</p>
-
-<h4><a href="./docs/triCont.html">Tri Component</a></h4>
-<p>Tri Component draw on entire screen unlike "TriCont" component.</p>
-
-<h4><a href="./docs/triCont.html">GlUtil</a></h4>
-<p>The low level collection of WebGl functions.</p>
-
----
-
-<p>2022-Noc-08  (version 0.0.1)</p>
+<p>2022-Nov-11  (version 0.0.2)</p>
 

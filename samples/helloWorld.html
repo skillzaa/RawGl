@@ -51,6 +51,7 @@ comp.add.polygon(80,20,  10,10, 3,    0,1,1);
 
 /////////////////////////////////////
 GlUtil.clear(gl,0.2,0.1,0.1);
+comp.update(gl);
 comp.draw(gl);
 </script>
 
@@ -72,9 +73,9 @@ comp.add.polygon(80,60,  10,10, 6,    1,1,0);
 comp.add.polygon(80,40,  10,10, 4,    0,1,0);
 comp.add.polygon(80,20,  10,10, 3,    0,1,1);
 
-comp.init(gl);
 /////////////////////////////////////
 GlUtil.clear(gl,0.2,0.1,0.1);
+comp.update(gl);
 comp.draw(gl);
 </code>
 </pre>

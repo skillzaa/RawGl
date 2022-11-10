@@ -1,4 +1,4 @@
-import { GlUtil, AssetsCollection as ACol } from "./rawGl.js";
+import { GlUtil, AssetsCollection as ACol } from "../../rawGl.js";
 const gl = GlUtil.getGl("bilza");
 function drawFlag(width, height) {
     const flag = new ACol.UnionJack(0, 0, width, height).getAsset();

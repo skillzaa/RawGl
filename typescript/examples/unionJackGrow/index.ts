@@ -1,4 +1,4 @@
-import {GlUtil,AssetBuilder,AssetsCollection as ACol} from "./rawGl.js";
+import {GlUtil,AssetBuilder,AssetsCollection as ACol} from "../../rawGl.js";
 ////////////////////////////////////////////////
 const gl = GlUtil.getGl("bilza");
 

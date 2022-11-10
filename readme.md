@@ -10,11 +10,11 @@
 <p>An Asset is a Webgl drawable object that has properties which can be changed and the results will show once the asset is drawn.</p>
 
 <hr/>
-<h2><a href="./samples/helloWorld.html">
+<h2><a href="https://skillzaa.github.io/RawGl/samples/helloWorld.html">
     Hello World Example</a></h2>
     <img src="./images/helloWorld.png">    
 <hr>
-<h2><a href="./docs/ver002BasicConpept.html">RawGl Basic Concepts</a> </h2>
+<h2><a href="https://skillzaa.github.io/RawGl/docs/ver002BasicConpept.html">RawGl Basic Concepts</a> </h2>
 <small>Primtives, Components, BaseComp, ContainerComp, AssetsCollection,AssetBuilder</small>
 
 
@@ -23,7 +23,7 @@
 <hr>
 <h2>Using Existing Assets</h2>
 <ul>
-    <li><a href="./samples/unionJackGrow.html">UnionJack Flag Example</a></li>
+    <li><a href="https://skillzaa.github.io/RawGl/samples/unionJackGrow.html">UnionJack Flag Example</a></li>
 </ul>
 
 
@@ -40,7 +40,7 @@
 
 <h2>Using ContainerComp</h2>
 <ul>
-<li><a href="./samples/hundredRectanglesExample.html">100 Rectangle Example</a></li>
+<li><a href="https://skillzaa.github.io/RawGl/samples/hundredRectanglesExample.html">100 Rectangle Example</a></li>
 </ul>
 <hr>
 

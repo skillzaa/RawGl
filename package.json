@@ -1,7 +1,7 @@
 {
 
   "name": "rawgl",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "RawGl is an Ultra Simple WebGl2 frameWork designed to hide as much of webGl boiler plate as possible and yet keep it low level",
   "main": "./src/rawGl.js",
   "devDependencies": {},

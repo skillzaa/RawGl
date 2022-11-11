@@ -3,6 +3,8 @@ import { GlUtil } from "./rawGl.js";
 import getLinePoints from "./core/pointFns/getLinePoints.js";
 import getFullLine from "./core/pointFns/getfullLine.js";
 import {AssetsCollection} from "./rawGl.js";
+import Line from "./primtives/col/line.js";
+
 const gl = GlUtil.getGl("bilza");
 
 const grid = new AssetsCollection.Grid().getAsset();

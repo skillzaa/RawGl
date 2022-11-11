@@ -27,8 +27,3 @@ const P = P1 * invT^3 +
 return P;
 }
 
-export function lerp(pt1 :number,pt2 :number, t :number):number{
-if (t > 1 ){throw new Error("t can not be greater than 1 in a lerp function");}    
-return pt1 + ( (pt2 - pt1) * t);     
-
-}

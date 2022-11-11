@@ -1,1 +1,1 @@
-{"version":3,"file":"getLinePoints.d.ts","sourceRoot":"","sources":["../../../typescript/core/pointFns/getLinePoints.ts"],"names":[],"mappings":"AASA,MAAM,CAAC,OAAO,UAAU,aAAa,CAAE,EAAE,GAAE,MAAQ,EAAC,EAAE,GAAC,MAAU,EAAE,GAAG,GAAC,MAAS,GAAE,MAAM,EAAE,CAkBzF"}
+{"version":3,"file":"getLinePoints.d.ts","sourceRoot":"","sources":["../../../typescript/core/pointFns/getLinePoints.ts"],"names":[],"mappings":"AASA,MAAM,CAAC,OAAO,UAAU,aAAa,CAAE,EAAE,GAAE,MAAQ,EAAC,EAAE,GAAC,MAAU,EAAE,CAAC,GAAC,MAAS,EAAC,GAAG,GAAC,MAAQ,EAAC,SAAS,GAAC,MAAS,GAAE,MAAM,EAAE,CA4BxH"}

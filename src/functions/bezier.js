@@ -15,9 +15,3 @@ export function bezier02(t, P1, P2, P3, P4) {
         P4 * t ^ 3;
     return P;
 }
-export function lerp(pt1, pt2, t) {
-    if (t > 1) {
-        throw new Error("t can not be greater than 1 in a lerp function");
-    }
-    return pt1 + ((pt2 - pt1) * t);
-}

@@ -37,8 +37,12 @@ polygon(x :number=50,y :number=50, width :number= 10,height :number=20,steps :nu
 const t = Primitive.polygon(x,y, width,height,steps );
 this.save(t ,r,g,b); 
 }
-line(x1 :number,y1:number,x2 :number,y2:number,width:number=5,height:number=5,r :number=0, g :number=0, b :number=0,gap:number=0.01){
+line(x1 :number,y1:number,x2 :number,y2:number,width:number=5,height:number=5,r :number=0, g :number=0, b :number=0,gap:number=1){
 const t = Primitive.line(x1,y1,x2,y2,width,height,gap);
+this.save(t ,r,g,b); 
+}
+curveQuad(x1 :number,y1:number,x2 :number,y2:number,x3 :number,y3:number,width:number=5,height:number=5,r :number=0, g :number=0, b :number=0,gap:number=1){
+const t = Primitive.curveQuad(x1,y1, x2,y2, x3,y3, width,height,gap);
 this.save(t ,r,g,b); 
 }
 ////////////////////////////////////////////////////////

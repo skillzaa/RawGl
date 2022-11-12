@@ -25,8 +25,12 @@ export default class Add {
         const t = Primitive.polygon(x, y, width, height, steps);
         this.save(t, r, g, b);
     }
-    line(x1, y1, x2, y2, width = 5, height = 5, r = 0, g = 0, b = 0, gap = 0.01) {
+    line(x1, y1, x2, y2, width = 5, height = 5, r = 0, g = 0, b = 0, gap = 1) {
         const t = Primitive.line(x1, y1, x2, y2, width, height, gap);
+        this.save(t, r, g, b);
+    }
+    curveQuad(x1, y1, x2, y2, x3, y3, width = 5, height = 5, r = 0, g = 0, b = 0, gap = 1) {
+        const t = Primitive.curveQuad(x1, y1, x2, y2, x3, y3, width, height, gap);
         this.save(t, r, g, b);
     }
     getTriangles() {

@@ -4,19 +4,26 @@ import lerp from "../../core/pointFns/lerp.js";
 
 ////////////////////////////////////////////////////
 
-export default function line(x1 :number,y1:number,x2 :number,y2:number,width:number=5,height:number=5,gap:number=1):TriangleData[]{
+export default function CurveQuad(x1 :number,y1:number,x2 :number,y2:number,x3 :number,y3:number,width:number=5,height:number=5,gap:number=1):TriangleData[]{
 if (gap < 1){throw new Error("gap value can not be less than 1");}
 gap = gap/100;
-const p1 = new Point(x1,y1);   
-const p2 = new Point(x2 , y2);   
+const p1 = new Point( x1 , y1 );   
+const p2 = new Point( x2 , y2 );   
+const p3 = new Point( x3 , y3 );   
 const ret:TriangleData[] = []; 
 //---------------------------------------
 for (let t = 0; t < 1; t += gap) {
 
-const x = lerp(p1.x,p2.x,t); //   p0.x + (p1.x - p0.x ) * t;    
-const y = lerp(p1.y,p2.y,t); //   p0.y + (p1.y - p0.y ) * t;
-// console.log("x",x);
-// console.log("y",y);
+const x1Calc = lerp(p1.x,p2.x,t); //   p0.x + (p1.x - p0.x ) * t;    
+const y1Calc = lerp(p1.y,p2.y,t); //   p0.y + (p1.y - p0.y ) * t;
+
+const x2Calc = lerp(p2.x,p3.x,t);
+const y2Calc = lerp(p2.y,p3.y,t);
+
+const x = lerp ( x1Calc , x2Calc , t );
+const y = lerp ( y1Calc , y2Calc , t );
+
+////////////////////////////////////////////////////
 const tri1 = new TriangleData(x,y, x+width,y, x+width,y+height);    
 const tri2 = new TriangleData(x+width,y+height, x,y+height, x,y);    
 

@@ -5,6 +5,7 @@ import rectWH from "./col/rectWH.js";
 import diagonal from "./col/diagonal.js";
 import polygon from "./col/polygon.js";
 import line from "./col/line.js";
+import curveQuad from "./col/curveQuad.js";
 import triRtR from "./extended/triRtR.js";
 import triRtL from "./extended/triRtL.js";
 import triRtLInv from "./extended/triRtLInv.js";
@@ -33,6 +34,7 @@ static rectWH = rectWH;
 static diagonal = diagonal;
 static polygon = polygon;
 static line = line;
+static curveQuad = curveQuad;
 ///////////////////////////////////////////////////////
 static tri = tri; // --- The ultimate core
 ///////////////////////////////////////////////////////

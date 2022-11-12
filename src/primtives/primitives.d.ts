@@ -4,6 +4,7 @@ import rectWH from "./col/rectWH.js";
 import diagonal from "./col/diagonal.js";
 import polygon from "./col/polygon.js";
 import line from "./col/line.js";
+import curveQuad from "./col/curveQuad.js";
 import triRtR from "./extended/triRtR.js";
 import triRtL from "./extended/triRtL.js";
 import triRtLInv from "./extended/triRtLInv.js";
@@ -16,6 +17,7 @@ export default class Primtive {
     static diagonal: typeof diagonal;
     static polygon: typeof polygon;
     static line: typeof line;
+    static curveQuad: typeof curveQuad;
     static tri: typeof tri;
 }
 //# sourceMappingURL=primitives.d.ts.map

@@ -6,6 +6,7 @@ import sq2V from "./sq2V.js";
 import Mountains from "./mountains.js";
 import UnionJack from "./unionJack.js";
 import grid from "./grid.js";
+import leaf from "./leaf.js";
 // import questionMark from "./questionMark.js";
 // import ExclamationMark from "./exclamationMark.js";
 
@@ -19,6 +20,7 @@ static Mountains = Mountains;
 static UnionJack = UnionJack;
 // static Multiply = multiply;
 static Grid = grid;
+static Leaf = leaf;
 // static QuestionMark = questionMark;
 // static ExclamationMark = ExclamationMark;
 

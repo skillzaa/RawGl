@@ -4,6 +4,7 @@ import sq2V from "./sq2V.js";
 import Mountains from "./mountains.js";
 import UnionJack from "./unionJack.js";
 import grid from "./grid.js";
+import leaf from "./leaf.js";
 export default class AssetsCollection {
     static Sq2X2: typeof sq2X2;
     static Sq2H: typeof sq2H;
@@ -11,5 +12,6 @@ export default class AssetsCollection {
     static Mountains: typeof Mountains;
     static UnionJack: typeof UnionJack;
     static Grid: typeof grid;
+    static Leaf: typeof leaf;
 }
 //# sourceMappingURL=assetsCollection.d.ts.map

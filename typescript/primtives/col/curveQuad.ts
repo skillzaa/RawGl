@@ -5,7 +5,7 @@ import lerp from "../../core/pointFns/lerp.js";
 ////////////////////////////////////////////////////
 
 export default function CurveQuad(x1 :number,y1:number,x2 :number,y2:number,x3 :number,y3:number,width:number=5,height:number=5,gap:number=1):TriangleData[]{
-if (gap < 1){throw new Error("gap value can not be less than 1");}
+if (gap < 0.1){throw new Error("gap value can not be less than 1");}
 gap = gap/100;
 const p1 = new Point( x1 , y1 );   
 const p2 = new Point( x2 , y2 );   

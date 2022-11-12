@@ -2,7 +2,7 @@ import TriangleData from "../triangleData.js";
 import Point from "../../core/pointFns/vertex.js";
 import lerp from "../../core/pointFns/lerp.js";
 export default function CurveQuad(x1, y1, x2, y2, x3, y3, width = 5, height = 5, gap = 1) {
-    if (gap < 1) {
+    if (gap < 0.1) {
         throw new Error("gap value can not be less than 1");
     }
     gap = gap / 100;

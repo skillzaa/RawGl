@@ -15,6 +15,20 @@ static getGl(canvasId :string ="bilza"):WebGL2RenderingContext{
 //---Got gl    
 return gl;
 }
+static getGl1(canvasId :string ="bilza"):WebGLRenderingContext{
+    const canvas = document.getElementById(canvasId) as HTMLCanvasElement;
+
+    if (canvas == null){
+        throw new Error("canvas not found");
+    }
+
+    const gl = canvas.getContext("webgl");
+    if (gl == null) {
+        throw new Error("Unable to initialize WebGL. Your browser or machine may not support it.");
+    }
+//---Got gl    
+return gl;
+}
 ////////////////////////////////////////////
 static getProgram(gl :WebGL2RenderingContext,vshader:WebGLShader, fshader :WebGLShader) :WebGLProgram {
     const pgm = gl.createProgram();
@@ -23,9 +37,8 @@ static getProgram(gl :WebGL2RenderingContext,vshader:WebGLShader, fshader :WebGL
  //-----------   
     gl.attachShader(pgm, vshader);
     gl.attachShader(pgm, fshader);
- //-------------
- // pgm.vertexPosAttrib = gl.getAttribLocation( pgm , 'pos');
- // this.gl.useProgram(this.program);  
+ //-------------Error Checking
+ 
  return pgm; 
  }
 /////////////////////////////////////////////////////////
@@ -60,6 +73,13 @@ gl.STATIC_DRAW);
 }
 static linkNuseProgram(gl :WebGL2RenderingContext,prgrm :WebGLProgram){
     gl.linkProgram(prgrm);
+
+  var success = gl.getProgramParameter(prgrm, gl.LINK_STATUS);
+  if (success ==false) {
+    console.log(gl.getProgramInfoLog(prgrm));
+    throw new Error("");
+    
+  }
     gl.useProgram(prgrm);
 }
 ////////////////////////////////
@@ -104,6 +124,10 @@ const canvas = gl.canvas as HTMLCanvasElement;
   }
  
   return needResize;
+}
+static info(gl :WebGL2RenderingContext){
+    console.log("gl.getParameter(gl.VERSION);", gl.getParameter(gl.VERSION));
+
 }
 ///////////////////////////////////////////////
 }

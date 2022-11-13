@@ -10,6 +10,17 @@ export default class GlUtil {
         }
         return gl;
     }
+    static getGl1(canvasId = "bilza") {
+        const canvas = document.getElementById(canvasId);
+        if (canvas == null) {
+            throw new Error("canvas not found");
+        }
+        const gl = canvas.getContext("webgl");
+        if (gl == null) {
+            throw new Error("Unable to initialize WebGL. Your browser or machine may not support it.");
+        }
+        return gl;
+    }
     static getProgram(gl, vshader, fshader) {
         const pgm = gl.createProgram();
         if (pgm == null) {
@@ -46,6 +57,11 @@ export default class GlUtil {
     }
     static linkNuseProgram(gl, prgrm) {
         gl.linkProgram(prgrm);
+        var success = gl.getProgramParameter(prgrm, gl.LINK_STATUS);
+        if (success == false) {
+            console.log(gl.getProgramInfoLog(prgrm));
+            throw new Error("");
+        }
         gl.useProgram(prgrm);
     }
     static clear(gl, r = 0, g = 0, b = 0, a = 1) {
@@ -75,5 +91,8 @@ export default class GlUtil {
             canvas.height = displayHeight;
         }
         return needResize;
+    }
+    static info(gl) {
+        console.log("gl.getParameter(gl.VERSION);", gl.getParameter(gl.VERSION));
     }
 }

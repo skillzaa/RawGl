@@ -1,19 +1,16 @@
-import CorePoint from "./core/corePoint.js";
-import { ContainerComp, GlUtil } from "./rawGl.js";
-import getLinePoints from "./core/pointFns/getLinePoints.js";
-import getFullLine from "./core/pointFns/getfullLine.js";
-import {AssetsCollection} from "./rawGl.js";
-
+import CoreFragComp from "./coreFrag/coreFragComp.js";
+import { GlUtil } from "./rawGl.js";
 
 ///////////////////////////////////////////////////////
 const gl = GlUtil.getGl("bilza");
 
-const asset = new AssetsCollection.Leaf();
-const comp = asset.getAsset();
+// const vertices :number[] = [-1, -1, 1, -1, -1, 1, 1, 1];
+
+const comp = new CoreFragComp();
 
 GlUtil.clear(gl,0.2,0.2,0.2);
 
 comp.update(gl);
 comp.draw(gl);
-console.log("comp", comp);
 
+GlUtil.info(gl);

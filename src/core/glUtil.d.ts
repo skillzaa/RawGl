@@ -1,5 +1,6 @@
 export default class GlUtil {
     static getGl(canvasId?: string): WebGL2RenderingContext;
+    static getGl1(canvasId?: string): WebGLRenderingContext;
     static getProgram(gl: WebGL2RenderingContext, vshader: WebGLShader, fshader: WebGLShader): WebGLProgram;
     static getBuffer(gl: WebGL2RenderingContext): WebGLBuffer;
     static createShader(gl: WebGL2RenderingContext, shaderSource: string, shaderType: number): WebGLShader;
@@ -9,5 +10,6 @@ export default class GlUtil {
     static setAttribute(gl: WebGL2RenderingContext, nameStr: string, programe: WebGLProgram, numberOfComps: number, stride: number, offset?: number): void;
     static getUniformLocation(gl: WebGL2RenderingContext, programe: WebGLProgram, uniformName: string): WebGLUniformLocation;
     static setCanvasToScreen(gl: WebGL2RenderingContext): boolean;
+    static info(gl: WebGL2RenderingContext): void;
 }
 //# sourceMappingURL=glUtil.d.ts.map
